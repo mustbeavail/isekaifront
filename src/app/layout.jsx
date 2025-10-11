@@ -1,6 +1,4 @@
-'use client'
-import {Provider} from "react-redux";
-import {store} from "../redux/store";
+import ReduxProvider from "./ReduxProvider";
 
 export const metadata = {
   title: 'IsekaiSimulator',
@@ -14,9 +12,9 @@ export default function RootLayout({ children }) {
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
       </head>
       <body>
-        <Provider store = {store}>
+        <ReduxProvider>
           {children}
-        </Provider>
+        </ReduxProvider>
       </body>
     </html>
   )

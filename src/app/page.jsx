@@ -1,6 +1,16 @@
+'use client';
 import Link from 'next/link';
+import {useEffect} from "react";
+import {store} from "../redux/store";
+import { v4 } from "uuid";
+import {useSelector} from "react-redux";
 
 export default function Home() {
+
+  useEffect(()=>{
+
+  },[]);
+
   return (
     <>
       <div>메인페이지 해윙</div><br/>
