@@ -1,7 +1,6 @@
-import { Inter } from 'next/font/google'
-import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+'use client'
+import {Provider} from "react-redux";
+import {store} from "@/redux/Store";
 
 export const metadata = {
   title: 'IsekaiSimulator',
@@ -14,7 +13,11 @@ export default function RootLayout({ children }) {
       <head>
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
       </head>
-      <body>{children}</body>
+      <body>
+        <Provider store = {store}>
+          {children}
+        </Provider>
+      </body>
     </html>
   )
 }
