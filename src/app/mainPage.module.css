@@ -1,0 +1,78 @@
+.mainWrapper {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.animeWrapper {
+    width: 50%;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    position: relative;
+}
+
+.movingHuman {
+    position: absolute;
+    display: inline-block;
+    top: 80%;
+    left: 35%;
+    height: fit-content;
+    width: fit-content;
+}
+
+.spinningHuman {
+    height: 100%;
+    width: 100%;
+}
+
+.truck {
+    position: absolute;
+    display: inline-block;
+    white-space: nowrap;
+    top: 80%;
+    left: 250vw;
+    animation: driving 0.5s linear forwards;
+    animation-delay: 3s;
+}
+
+@keyframes driving{
+    100% {left:37%};
+}
+
+@keyframes flyingMovement {
+    0% {
+      transform: translate(0, 0); 
+    }
+    100% {
+      transform: translate(-500vw, -500vh); 
+    }
+}
+
+@keyframes spinning {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(7200deg); 
+    }
+}
+
+.humanFly {
+    animation: flyingMovement 7s ease-out forwards;
+}
+
+.humanSpinner {
+    display: inline-block;
+    animation: spinning 0.3s linear forwards;
+}
+
+.item {
+    width: 100%;
+    text-align: center;
+}

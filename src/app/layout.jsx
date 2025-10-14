@@ -1,4 +1,5 @@
 import ReduxProvider from "./ReduxProvider";
+import "@/app/globals.css";
 
 export const metadata = {
   title: 'IsekaiSimulator',
