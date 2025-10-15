@@ -49,3 +49,14 @@ img {
         font-size: 14px;
     }
 }
+
+a {
+    all: unset;
+    display: inline;
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    cursor: pointer;
+}

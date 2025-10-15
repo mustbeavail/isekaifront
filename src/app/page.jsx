@@ -98,10 +98,14 @@ export default function Home() {
               </div>
             {!animeEnd ? null :
               <div className={styles.mainWrapper}>
-                <div className={`${styles.itemPhrase} ${styles.item}`}>저런! 당신은 소환마법(물리) 에 당하고 말았어요!<br/>여행준비는 되셨나요?</div>
-                <div className={`${styles.itemButton} ${styles.item}`}>
-                  <Link href="/component/reincarnation">
-                  이세계 전문 여행사 <br/><span className={styles.gem}>GemExpress</span> 방문하기</Link>
+                <div className={`${styles.itemPhrase} ${styles.item}`}>
+                  <span>저런! 당신은 소환마법(물리) 에 당하고 말았어요!<br/>여행준비는 되셨나요?</span>
+                </div>
+                <div className={`${styles.itemSmallPhrase} ${styles.item}`}>
+                  <span className={styles.buttonDescription}>이세계 전문 여행사</span>
+                  <Link href="/component/reincarnation" className={styles.button}>
+                    <span className={styles.gem}>GemExpress</span> 방문하기
+                  </Link>
                 </div>
               </div>     
             }
