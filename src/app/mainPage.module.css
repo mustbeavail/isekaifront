@@ -1,6 +1,7 @@
 .mainWrapper {
     margin-top: 20px;
-    width: 50%;
+    width: 100%;
+    min-width: 555px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -10,8 +11,10 @@
 }
 
 .animeWrapper {
-    width: 50%;
-    height: 500px;
+    width: 100%;
+    min-width: 548px;
+    aspect-ratio: 100 / 40;
+    max-height: 500px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -24,13 +27,12 @@
     top: 50%;
     left: 35%;
     height: fit-content;
-    width: fit-content;
+    width: 13%;
     animation: walking 1s infinite;
 }
 
 .spinningHuman {
-    height: 35%;
-    width: 35%;
+    width: 100%;
 }
 
 .truck {
@@ -41,6 +43,7 @@
     left: 250vw;
     animation: driving 0.5s forwards;
     animation-delay: 3s;
+    width: 35%;
 }
 
 @keyframes driving{
@@ -93,18 +96,27 @@
     to { opacity: 1; }
 }
 
-.item {
-    width: 100%;
-    text-align: center;
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fadeIn {
     animation: fadeIn 1.5s ease forwards;
 }
 
-.itemPhrase {
+.fadeOut {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+.phrase {
+    width: 100%;
+    text-align: center;
     font-family: Jua;
     font-size: 30px;
 }
 
-.itemSmallPhrase {
+.smallPhrase {
     width: fit-content;
     border-radius: 10px;
     padding: 20px;
@@ -139,4 +151,28 @@
         rgba(235,141,19,0.9) 75%,
         rgba(235,166,19,0.9) 100%
     );
+}
+
+.skip {
+    margin-right:auto;
+    margin-top: 65px;
+    font-size: 25px;
+    font-family: Jua;
+    height: fit-content;
+}
+
+.skip:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+
 }
