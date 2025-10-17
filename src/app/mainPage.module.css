@@ -1,7 +1,7 @@
 .mainWrapper {
     margin-top: 20px;
     width: 100%;
-    min-width: 555px;
+    min-width: 200px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -12,13 +12,13 @@
 
 .animeWrapper {
     width: 100%;
-    min-width: 548px;
-    aspect-ratio: 100 / 40;
-    max-height: 500px;
+    min-width: 200px;
+    height: 500px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     position: relative;
+    flex-wrap: wrap;
 }
 
 .movingHuman {
@@ -27,12 +27,12 @@
     top: 50%;
     left: 35%;
     height: fit-content;
-    width: 13%;
+    width: fit-content;
     animation: walking 1s infinite;
 }
 
 .spinningHuman {
-    width: 100%;
+    width: 150px;
 }
 
 .truck {
@@ -40,14 +40,21 @@
     display: inline-block;
     white-space: nowrap;
     top: 38%;
-    left: 250vw;
+    left: 250%;
     animation: driving 0.5s forwards;
     animation-delay: 3s;
-    width: 35%;
+    width: 400px;
+}
+
+.dead {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
 }
 
 @keyframes driving{
-    100% {left:37%};
+    100% {left: -90%};
+    
 }
 
 @keyframes walking {
@@ -137,6 +144,7 @@
 }
 
 .button {
+    font-size: 20px;
     margin-left: 5px;
     color: #5a3000;
     border: 2.5px solid rgb(235, 141, 19);
@@ -154,11 +162,11 @@
 }
 
 .skip {
-    margin-right:auto;
-    margin-top: 65px;
+    margin-top: 5%;
     font-size: 25px;
     font-family: Jua;
     height: fit-content;
+    flex: 0 0 100%;
 }
 
 .skip:hover {
@@ -170,9 +178,67 @@
 }
 
 @media (max-width: 768px) {
-
+    .animeWrapper {
+        height: 300px;
+    }
+    .spinningHuman {
+        width: 90px;
+    }
+    .truck {
+        width: 240px;
+    }
+    .dead {
+        width: 180px;
+    }
+    .phrase {
+        font-size: 18px;
+    }
+    .smallPhrase {
+        padding: 10px;
+    }
+    .button {
+        font-size: 12px;
+    }
+    .buttonDescription {
+        font-size: 9px;
+    }
+    .gem {
+        font-size: 15px;
+    }
+    .skip {
+        font-size: 15px;
+    }
 }
 
 @media (max-width: 480px) {
-
+    .animeWrapper {
+        height: 180px;
+    }
+    .spinningHuman {
+        width: 54px;
+    }
+    .truck {
+        width: 144px;
+    }
+    .dead {
+        width: 108px;
+    }
+    .phrase {
+        font-size: 10.8px;
+    }
+    .smallPhrase {
+        font-size: 6px;
+    }
+    .button {
+        font-size: 7.2px;
+    }
+    .buttonDescription {
+        font-size: 5.4px;
+    }
+    .gem {
+        font-size: 9px;
+    }
+    .skip {
+        font-size: 9px;
+    }
 }

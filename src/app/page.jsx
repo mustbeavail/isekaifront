@@ -57,13 +57,14 @@ export default function Entrance() {
     waitForRef(truckRef, (truck) => {
       truck.style.animationDelay = '0s';
       truck.style.animationDuration = '0.0001s';
-  
-      waitForRef(phraseRef, (phrase) => {
-        phrase.style.animationDuration = '0.0001s';
-    
-        waitForRef(smallPhraseRef, (smallPhrase) => {
-          smallPhrase.style.animationDuration = '0.0001s';
-        });
+      waitForRef(movingHumanRef, (movingHuman) => {
+        movingHuman.style.animationDuration = '0.0001s';
+          waitForRef(phraseRef, (phrase) => {
+            phrase.style.animationDuration = '0.0001s';
+            waitForRef(smallPhraseRef, (smallPhrase) => {
+              smallPhrase.style.animationDuration = '0.0001s';
+            });
+          });
       });
     });
   };
@@ -150,6 +151,8 @@ export default function Entrance() {
                 </div>
                 <img ref={truckRef} className={styles.truck} src="/truck.png" alt="트럭"/>
                 <div className={`${styles.skip} ${smallPhraseEnd ? styles.fadeOut : ''}`} onClick={skip}>건너뛰기⏭️</div>
+                {!animeEnd ? null :
+                  <img className={`${styles.dead} ${styles.fadeIn}`} src="/dead.png" alt="기억할게"/>}
               </div>
             {!animeEnd ? null :
               <div className={styles.mainWrapper}>
