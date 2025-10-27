@@ -6,7 +6,7 @@ import { v4 } from "uuid";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { formatInTimeZone } from "date-fns-tz";
-import styles from "@/app/mainPage.module.css";
+import styles from "@/app/entrancePage.module.css";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 

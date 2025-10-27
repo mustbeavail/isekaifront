@@ -1,6 +1,16 @@
+'use client'
+import styles from "./mainPage.module.css"
+
 const Reincarnation = () => {
     return (
-        <div>시뮬레이션 페이지 해윙</div>
+        <>
+            <div className="container">
+                <img className="ghost" src="/ghost.png"/>
+                <div className={styles.clipboard}>
+                    <input type="text"></input>
+                </div>
+            </div>
+        </>
     )
 }
 

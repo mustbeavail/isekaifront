@@ -1,0 +1,7 @@
+.clipboard {
+    background-image: url("/board.png");
+    background-size: cover;
+    background-position: center;
+    width: 300px;
+    height: 200px;
+}
