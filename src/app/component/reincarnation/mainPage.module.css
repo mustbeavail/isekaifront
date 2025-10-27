@@ -1,7 +1,48 @@
-.clipboard {
+.mainWrapper {
+    width: 100%;
+    min-width: 200px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.ghostWrapper {
+    width:fit-content;
+    height:fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10%;
+    position: relative;
+    z-index: 1;
+}
+
+.ghost {
+    width: 150px;
+    opacity: 70%;
+}
+
+.clipboardWrapper {
     background-image: url("/board.png");
     background-size: cover;
     background-position: center;
-    width: 300px;
-    height: 200px;
+    margin-top : -15%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    height: 1300px;
+    display: flex;
+    padding: 300px 220px 200px;
+    position: relative;
+    z-index: 2;
+}
+
+.inputContent {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
