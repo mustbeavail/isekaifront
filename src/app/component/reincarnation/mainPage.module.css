@@ -10,18 +10,54 @@
 }
 
 .ghostWrapper {
-    width:fit-content;
-    height:fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:500px;
+    height:500px;
+    margin-top: 1%;
     margin-left: auto;
     margin-right: auto;
     padding-top: 10%;
     position: relative;
     z-index: 1;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, #030525 60%);
 }
 
 .ghost {
+    position: absolute;
     width: 150px;
     opacity: 70%;
+    top: 30%;
+    left: 50%;
+    animation : float 7s linear infinite;
+    transform: translateX(-50%);
+}
+
+@keyframes float {
+    10% {top: 27%; left: 49.5%}
+    20% {top: 26%; left: 49.7%}
+    30% {top: 25%; left: 50%}
+    40% {top: 27%; left: 50.5%}
+    50% {top: 26%; left: 50.7%}
+    60% {top: 27%; left: 50.5%}
+    70% {top: 28%; left: 50%}
+    80% {top: 29%; left: 50%}
+    90% {top: 28%; left: 50.5%}
+    100% {top: 30%; left: 50%}
+}
+
+.phraseCommon {
+    position: absolute;
+    top: 8%;
+    left: -40%;
+    color: rgb(231, 217, 14);
+    font-family: Jua;
+    font-size: 30px;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.8) 0%, #030525 75%);
+    width: fit-content;
+    text-align: center;
+    padding: 20px 40px;
 }
 
 .clipboardWrapper {
@@ -37,6 +73,7 @@
     padding: 300px 220px 200px;
     position: relative;
     z-index: 2;
+    display: none;
 }
 
 .inputContent {

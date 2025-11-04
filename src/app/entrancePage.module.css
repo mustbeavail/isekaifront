@@ -69,7 +69,7 @@
     80% {top: 50%; left: 34%;}
     90% {top: 48%; left: 35%;}
     100% {top: 50%; left: 35%;}
-  }
+}
 
 @keyframes flyingMovement {
     0% {
