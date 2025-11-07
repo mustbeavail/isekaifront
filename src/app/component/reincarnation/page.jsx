@@ -38,7 +38,7 @@ const Reincarnation = () => {
                 <div className={styles.clipboardWrapper}>
                     {!nextFlag ?
                         <>
-                            <div ref={inputDescRef} className={styles.inputDesc}>
+                            <div ref={inputDescRef} className={styles.inputWrapper}>
                                 <span className={styles.inputDescItem1}>
                                     이세계 전문 여행사<br/>GemExpress에 어서오세요!
                                 </span>
@@ -63,7 +63,41 @@ const Reincarnation = () => {
                     }
                     {nextFlag ?
                         <>
-                            <div ref={inputContentRef}>해위잉</div>
+                            <div ref={inputContentRef} className={`${styles.inputWrapper} ${styles.inputCommon}`}>
+                                <span className={styles.inputItem}>① 이름 : <input type='text'/></span>
+                                <span className={styles.inputItem}>② 생년월일 : <input type='date'/></span>
+                                <span className={styles.inputItem}>③ 성별 : <input type='text'/></span>
+                                <span className={styles.inputItem}>④ 희망 여행지 : <span>선택하기</span></span>
+                                <span className={styles.inputItemOneRow}>⑤ 직업 혹은 취미, 특기 : <input type='text'/></span>
+                                <div className={styles.isekaiSpecialWrapper}>
+                                    <span className={`${styles.specialHead} ${styles.specialAbilHead}`}>⑥ 치트 능력치💪</span>
+                                    <span className={styles.specialAbilOption}>·명석한 두뇌<br/>
+                                        <span className={styles.specialAnno}> 머리가 안좋으면 몸이 고생한다</span>
+                                    </span>
+                                    <span className={styles.specialAbilOption}>·강인한 신체<br/>
+                                        <span className={styles.specialAnno}> 몸이 안좋으면 머리가 고생한다</span>
+                                    </span>
+                                    <span className={styles.specialAbilOption}>·치명적 매력<br/>
+                                        <span className={styles.specialAnno}> 알파의 삶을 살아보자</span>
+                                    </span>
+                                    <span className={styles.specialAbilOption}>·압도적인 운<br/>
+                                        <span className={styles.specialAnno}> 압도적인 운 앞에 모든 것은 무의미</span>
+                                    </span>
+                                </div>
+                                <div className={styles.isekaiSpecialWrapper}>
+                                    <span className={`${styles.specialHead} ${styles.specialGiftHead}`}>⑦ 여신의 선물🎁</span>
+                                    <span className={styles.specialGiftOption}>·막대한 재력<br/>
+                                        <span className={styles.specialAnno}> 어떤 세계에도 통용되는 제1가치</span>
+                                    </span>
+                                    <span className={styles.specialGiftOption}>·영혼의 파트너<br/>
+                                        <span className={styles.specialAnno}> 가장 어두운 때에도 혼자가 아니야</span>
+                                    </span>
+                                    <span className={styles.specialGiftOption}>·특별한 장비<br/>
+                                        <span className={styles.specialAnno}> 장인이 아니면 도구탓을 하자</span>
+                                    </span>
+                                </div>
+                                <div className={`${styles.buttonItem} ${styles.submitButton}`}>제출하기</div>
+                            </div>
                         </> : null
                     }
                     <div className={styles.buttons}>
