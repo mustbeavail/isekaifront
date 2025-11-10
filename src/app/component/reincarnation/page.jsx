@@ -3,6 +3,7 @@ import styles from "./mainPage.module.css";
 import { useState, useEffect, useRef } from "react";
 import "./mainPage.css";
 import Link from 'next/link';
+import CatalModal from './cartalogueModal';
 
 const Reincarnation = () => {
 
@@ -10,6 +11,14 @@ const Reincarnation = () => {
     const nextButtonRef = useRef(null);
     const inputContentRef = useRef(null);
     const [nextFlag, setNextFlag] = useState(false);
+    const [catalModalVisible, setCatalModalVisible] = useState(false);
+    const [userName, setUserName] = useState('');
+    const [birth, setBirth] = useState(null);
+    const [gender, setGender] = useState('');
+    const [specialty, setSpecialty] = useState('');
+    const [desiredSekai, setDesiredSekai] = useState('');
+    const [wishedAbil, setWishedAbil] = useState('');
+    const [wishedGift, setWishedGift] = useState('');
 
     // 신청서 html 로 전환
     const next = () => {
@@ -29,9 +38,20 @@ const Reincarnation = () => {
         waitForRef(inputContentRef, addFadeIn);
     }
 
+    useEffect(()=>{
+        console.log(userName);
+        console.log(birth);
+        console.log(gender);
+        console.log(specialty);
+        console.log(desiredSekai);
+        console.log(wishedAbil);
+        console.log(wishedGift);
+    },[userName, birth, gender, specialty, desiredSekai, wishedAbil, wishedGift]);
+
     return (
         <>
             <div className="container">
+                <CatalModal visible={catalModalVisible} onClose={() => setCatalModalVisible(false)} />
                 <div className={styles.ghostWrapper}>
                     <img className={styles.ghost} src="/ghost.png" alt="유령"/>
                 </div>
@@ -64,11 +84,20 @@ const Reincarnation = () => {
                     {nextFlag ?
                         <>
                             <div ref={inputContentRef} className={`${styles.inputWrapper} ${styles.inputCommon}`}>
-                                <span className={styles.inputItem}>① 이름 : <input type='text'/></span>
-                                <span className={styles.inputItem}>② 생년월일 : <input type='date'/></span>
-                                <span className={styles.inputItem}>③ 성별 : <input type='text'/></span>
-                                <span className={styles.inputItem}>④ 희망 여행지 : <span>선택하기</span></span>
-                                <span className={styles.inputItemOneRow}>⑤ 직업 혹은 취미, 특기 : <input type='text'/></span>
+                                <span className={styles.inputItem} onChange={(e)=>setUserName(e.target.value)}>
+                                    ① 이름 : <input type='text' className={styles.inputBox}/></span>
+                                <span className={styles.inputItem}>
+                                    ② 생년월일 : <input type='date' className={styles.dateBox} onChange={(e)=>setBirth(e.target.value)}/></span>
+                                <span className={styles.inputItem}>③ 성별 : 
+                                    <label className={styles.genderBox}>
+                                        <input type='radio' name="gender" value="남자" onChange={(e)=>setGender(e.target.value)}/>남자</label>
+                                    <label className={styles.genderBox}>
+                                        <input type='radio' name="gender" value="여자" onChange={(e)=>setGender(e.target.value)}/>여자</label>
+                                </span>
+                                <span className={styles.inputItem}>④ 희망 여행지 : 
+                                    <span className={styles.selectButton} onClick={() => setCatalModalVisible(true)}>둘러보기</span></span>
+                                <span className={styles.inputItemOneRow}>
+                                    ⑤ 직업 혹은 취미, 특기 : <input type='text' className={styles.inputBox} onChange={(e)=>setSpecialty(e.target.value)}/></span>
                                 <div className={styles.isekaiSpecialWrapper}>
                                     <span className={`${styles.specialHead} ${styles.specialAbilHead}`}>⑥ 치트 능력치💪</span>
                                     <span className={styles.specialAbilOption}>·명석한 두뇌<br/>
