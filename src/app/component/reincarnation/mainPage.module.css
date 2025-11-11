@@ -296,7 +296,7 @@
     box-shadow: 0 2px 6px rgba(40, 15, 10, 0.4);
 }
 
-.specialGift.selected {
+.specialGiftOption.selected {
     background: linear-gradient(135deg, #8a4b3c, #6d362a);
     color: #fff4de;
     border-color: #4d241c;
@@ -319,7 +319,7 @@
     font-family: Noto Sans KR;
     text-align: center;
     margin-top: -5px;
-    margin-left: 27px;
+    margin-left: 34px;
 }
 
 .genderBox {
@@ -343,6 +343,14 @@
     padding: 3px 6px;
     border-radius: 6px;
     cursor: pointer;
+}
+
+.desiredIsekai {
+    font-size: 25px;
+    font-family: Noto Sans KR;
+    margin-top: -5px;
+    cursor: pointer;
+    color: #3f7fd4;
 }
 
 @keyframes fadeIn {
@@ -508,6 +516,10 @@
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.selBtn {
+    margin-left: 3%;
 }
 
 .backBtn:hover,

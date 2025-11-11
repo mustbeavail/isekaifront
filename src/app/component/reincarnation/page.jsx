@@ -4,9 +4,12 @@ import { useState, useEffect, useRef } from "react";
 import "./mainPage.css";
 import Link from 'next/link';
 import CatalModal from './cartalogueModal';
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const Reincarnation = () => {
 
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
     const inputDescRef = useRef(null);
     const nextButtonRef = useRef(null);
     const inputContentRef = useRef(null);
@@ -16,9 +19,12 @@ const Reincarnation = () => {
     const [birth, setBirth] = useState(null);
     const [gender, setGender] = useState('');
     const [specialty, setSpecialty] = useState('');
-    const [desiredSekai, setDesiredSekai] = useState('');
+    const [desiredIsekai, setDesiredIsekai] = useState('');
     const [wishedAbil, setWishedAbil] = useState('');
     const [wishedGift, setWishedGift] = useState('');
+    const today = new Date().toISOString().split('T')[0];
+    let guestId = useSelector(state => state.guest.guestId);
+    let isFirst = useSelector(state => state.guest.isFirst);
 
     // 신청서 html 로 전환
     const next = () => {
@@ -38,20 +44,62 @@ const Reincarnation = () => {
         waitForRef(inputContentRef, addFadeIn);
     }
 
+    const runSim = async () => {
+        if(!guestId){
+            alert('유저 식별불가, 다시 시도해주세요.');
+            location.href='/';
+            return;
+        } else if (!userName) {
+            alert('이름을 입력해주세요.');
+            return;
+        } else if (!birth) {
+            alert('생년월일을 입력해주세요.');
+            return;
+        } else if (!gender) {
+            alert('성별을 선택해주세요.');
+            return;
+        } else if (!specialty) {
+            alert('직업 혹은 취미, 특기를 입력해주세요.');
+            return;
+        } else if (!wishedAbil) {
+            alert('치트 능력치를 선택해주세요.');
+            return;
+        } else if (!wishedGift) {
+            alert('여신의 선물을 선택해주세요.');
+            return;
+        } else if (!desiredIsekai) {
+            if(confirm('희망 여행지 미선택시 무작위 이세계로 정해집니다. 무작위로 진행하시겠습니까?')){
+                setDesiredIsekai('상관없음');
+            }else{
+                return;
+            }
+        }
+        try{
+            const {data} = await axios.post(`${API_URL}/reincarnation`, {guestId, userName, birth, gender, specialty, wishedAbil, wishedGift});
+            console.log(data);
+        }catch(err){
+            alert(err);
+            location.href='/component/reincarnation';
+        };
+
+    };
+
+    // 오버플로우 끄기
     useEffect(()=>{
-        console.log(userName);
-        console.log(birth);
-        console.log(gender);
-        console.log(specialty);
-        console.log(desiredSekai);
-        console.log(wishedAbil);
-        console.log(wishedGift);
-    },[userName, birth, gender, specialty, desiredSekai, wishedAbil, wishedGift]);
+
+        if(!guestId) return;
+
+        document.body.style.overflowX = 'hidden';
+
+        return () => {
+            document.body.style.overflowX = '';
+        }
+    },[guestId]);
 
     return (
         <>
             <div className="container">
-                <CatalModal visible={catalModalVisible} onClose={() => setCatalModalVisible(false)} />
+                <CatalModal visible={catalModalVisible} onClose={() => setCatalModalVisible(false)} onSend={(value)=>setDesiredIsekai(value)}/>
                 <div className={styles.ghostWrapper}>
                     <img className={styles.ghost} src="/ghost.png" alt="유령"/>
                 </div>
@@ -87,7 +135,7 @@ const Reincarnation = () => {
                                 <span className={styles.inputItem} onChange={(e)=>setUserName(e.target.value)}>
                                     ① 이름 : <input type='text' className={styles.inputBox}/></span>
                                 <span className={styles.inputItem}>
-                                    ② 생년월일 : <input type='date' className={styles.dateBox} onChange={(e)=>setBirth(e.target.value)}/></span>
+                                    ② 생년월일 : <input type='date' max={today} className={styles.dateBox} onChange={(e)=>setBirth(e.target.value)}/></span>
                                 <span className={styles.inputItem}>③ 성별 : 
                                     <label className={styles.genderBox}>
                                         <input type='radio' name="gender" value="남자" onChange={(e)=>setGender(e.target.value)}/>남자</label>
@@ -95,37 +143,61 @@ const Reincarnation = () => {
                                         <input type='radio' name="gender" value="여자" onChange={(e)=>setGender(e.target.value)}/>여자</label>
                                 </span>
                                 <span className={styles.inputItem}>④ 희망 여행지 : 
-                                    <span className={styles.selectButton} onClick={() => setCatalModalVisible(true)}>둘러보기</span></span>
+                                    {desiredIsekai ?
+                                        <span className={styles.desiredIsekai} onClick={() => setCatalModalVisible(true)}>{desiredIsekai}</span> :
+                                        <span className={styles.selectButton} onClick={() => setCatalModalVisible(true)}>둘러보기</span>}
+                                </span>
                                 <span className={styles.inputItemOneRow}>
                                     ⑤ 직업 혹은 취미, 특기 : <input type='text' className={styles.inputBox} onChange={(e)=>setSpecialty(e.target.value)}/></span>
                                 <div className={styles.isekaiSpecialWrapper}>
                                     <span className={`${styles.specialHead} ${styles.specialAbilHead}`}>⑥ 치트 능력치💪</span>
-                                    <span className={styles.specialAbilOption}>·명석한 두뇌<br/>
-                                        <span className={styles.specialAnno}> 머리가 안좋으면 몸이 고생한다</span>
+                                    <span 
+                                        className={wishedAbil=='명석한두뇌' ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
+                                        onClick={(e)=>setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                            ·명석한 두뇌<br/>
+                                            <span className={styles.specialAnno}> 머리가 안좋으면 몸이 고생한다</span>
                                     </span>
-                                    <span className={styles.specialAbilOption}>·강인한 신체<br/>
-                                        <span className={styles.specialAnno}> 몸이 안좋으면 머리가 고생한다</span>
+                                    <span
+                                        className={wishedAbil=='강인한신체' ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
+                                        onClick={(e)=>setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                            ·강인한 신체<br/>
+                                            <span className={styles.specialAnno}> 몸이 안좋으면 머리가 고생한다</span>
                                     </span>
-                                    <span className={styles.specialAbilOption}>·치명적 매력<br/>
-                                        <span className={styles.specialAnno}> 알파의 삶을 살아보자</span>
+                                    <span
+                                        className={wishedAbil=='치명적매력' ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
+                                        onClick={(e)=>setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                            ·치명적 매력<br/>
+                                            <span className={styles.specialAnno}> 알파의 삶을 살아보자</span>
                                     </span>
-                                    <span className={styles.specialAbilOption}>·압도적인 운<br/>
-                                        <span className={styles.specialAnno}> 압도적인 운 앞에 모든 것은 무의미</span>
+                                    <span
+                                        className={wishedAbil=='압도적인운' ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
+                                        onClick={(e)=>setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                            ·압도적인 운<br/>
+                                            <span className={styles.specialAnno}> 압도적인 운 앞에 모든 것은 무의미</span>
                                     </span>
                                 </div>
                                 <div className={styles.isekaiSpecialWrapper}>
                                     <span className={`${styles.specialHead} ${styles.specialGiftHead}`}>⑦ 여신의 선물🎁</span>
-                                    <span className={styles.specialGiftOption}>·막대한 재력<br/>
-                                        <span className={styles.specialAnno}> 어떤 세계에도 통용되는 제1가치</span>
+                                    <span
+                                        className={wishedGift=='막대한재력' ? `${styles.specialGiftOption} ${styles.selected}` : styles.specialGiftOption}
+                                        onClick={(e)=>setWishedGift(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                            ·막대한 재력<br/>
+                                            <span className={styles.specialAnno}> 어떤 세계에도 통용되는 제1가치</span>
                                     </span>
-                                    <span className={styles.specialGiftOption}>·영혼의 파트너<br/>
-                                        <span className={styles.specialAnno}> 가장 어두운 때에도 혼자가 아니야</span>
+                                    <span
+                                        className={wishedGift=='영혼의파트너' ? `${styles.specialGiftOption} ${styles.selected}` : styles.specialGiftOption}
+                                        onClick={(e)=>setWishedGift(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                            ·영혼의 파트너<br/>
+                                            <span className={styles.specialAnno}> 가장 어두운 때에도 혼자가 아니야</span>
                                     </span>
-                                    <span className={styles.specialGiftOption}>·특별한 장비<br/>
-                                        <span className={styles.specialAnno}> 장인이 아니면 도구탓을 하자</span>
+                                    <span
+                                        className={wishedGift=='특별한장비' ? `${styles.specialGiftOption} ${styles.selected}` : styles.specialGiftOption}
+                                        onClick={(e)=>setWishedGift(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                            ·특별한 장비<br/>
+                                            <span className={styles.specialAnno}> 장인이 아니면 도구탓을 하자</span>
                                     </span>
                                 </div>
-                                <div className={`${styles.buttonItem} ${styles.submitButton}`}>제출하기</div>
+                                <div className={`${styles.buttonItem} ${styles.submitButton}`} onClick={()=>runSim()}>제출하기</div>
                             </div>
                         </> : null
                     }

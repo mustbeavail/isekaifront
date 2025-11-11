@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './mainPage.module.css';
 
-export default function CatalModal({ visible, onClose }) {
+export default function CatalModal({ visible, onClose, onSend }) {
     const topics = [
         {
             id: 1,
@@ -21,7 +21,7 @@ export default function CatalModal({ visible, onClose }) {
         {
             id: 4,
             title: '동양 판타지',
-            description: '요괴와 혼령, 신선들이 존재하는 동양 신화의 세계에요. 이 신비로운 세계에서 당신은 전국을 돌며 요괴들을 해치워 산산조각난 구슬조각을 모으거나, 요괴가 돼버린 동생을 인간으로 되돌리거나, 하늘에 서보는 것도, 암행어사나 마을이장이 돼보는 것도 좋겠죠.',
+            description: '요괴와 혼령, 신선들이 존재하는 동양 신화의 세계에요. 이 신비로운 세계에서 당신은 전국을 돌며 요괴들을 해치워 산산조각난 구슬조각을 모으거나, 요괴가 돼버린 동생을 인간으로 되돌리거나, 수천년간 공백이었던 하늘에 서보는 것도, 암행어사나 마을이장이 돼보는 것도 좋겠죠.',
         },
         {
             id: 5,
@@ -30,7 +30,7 @@ export default function CatalModal({ visible, onClose }) {
         },
         {
             id: 6,
-            title: '어디든 좋아요',
+            title: '상관 없음',
             description: '결과의 무작위성은 재미를 더 해주죠. 당신의 새로운 운명은 당신의 지금 운명에 달렸어요.',
         }
     ];
@@ -81,6 +81,13 @@ export default function CatalModal({ visible, onClose }) {
                             type="button"
                         >
                             ← 뒤로 가기
+                        </button>
+                        <button
+                            className={`${styles.backBtn} ${styles.selBtn}`}
+                            onClick={() => onSend(selectedTopic.title.replace(/\s+/g, ""), onClose())}
+                            type="button"
+                        >
+                            선택 하기
                         </button>
                     </>
                 )}

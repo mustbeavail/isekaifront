@@ -1,14 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from "react";
-import { store } from "../redux/store";
-import { v4 } from "uuid";
 import { useSelector } from "react-redux";
-import axios from "axios";
-import { formatInTimeZone } from "date-fns-tz";
 import styles from "@/app/entrancePage.module.css";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Entrance() {
 
@@ -24,28 +18,6 @@ export default function Entrance() {
   const spinningHumanRef = useRef(null);
   const phraseRef = useRef(null);
   const smallPhraseRef = useRef(null);
-
-
-  // 첫 방문 게스트아이디, 방문기록 저장
-  const saveGuest = async (guestId, issuedDate) => {
-    try {
-      const { data } = await axios.post(`${API_URL}/saveGuest`, { guestId, issuedDate });
-      if (data.success) {
-        localStorage.setItem('guestId', guestId);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  // 재방문 게스트 방문기록 저장
-  const revisitingGuest = async (guestId, now) => {
-    try {
-      const { data } = await axios.post(`${API_URL}/revisitingGuest`, { guestId, "visitDate": now });
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   // 애니메이션 스킵
   const waitForRef = (ref, callback) => {
@@ -69,26 +41,18 @@ export default function Entrance() {
     });
   };
 
-  // 게스트아이디, 첫 방문여부 체크
+  // 오버플로우 끄기
   useEffect(() => {
-    // 오버플로우 끄기
+
+    if(!guestId) return;
     document.body.style.overflow = 'hidden';
 
-    const now = formatInTimeZone(new Date(), 'Asia/Seoul', 'yyyy-MM-dd HH:mm:ss');
-    if (!guestId) {
-      const newId = v4();
-      store.dispatch({ type: 'guest/getId', payload: { newId } });
-      saveGuest(newId, now);
-    } else {
-      store.dispatch({ type: 'guest/isFirst' });
-      revisitingGuest(guestId, now);
-    }
     setIsLoading(false);
 
     return () => {
       document.body.style.overflow = '';
     }
-  }, []);
+  }, [guestId]);
 
   // 애니메이션
   useEffect(() => {

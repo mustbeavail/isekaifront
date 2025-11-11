@@ -3,12 +3,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const guestSlice = createSlice({
     name: "guest",
     initialState: {
-        guestId : typeof window !== 'undefined' ? localStorage.getItem('guestId') : null,
+        guestId : null,
         isFirst : true
     },
     reducers: {
-        getId(state, action){
-            state.guestId = action.payload.newId;
+        setId(state, action){
+            state.guestId = action.payload.storedId;
         },
         isFirst(state){
             state.isFirst = false;
