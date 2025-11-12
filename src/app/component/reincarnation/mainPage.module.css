@@ -31,6 +31,23 @@
     transform: translateX(-50%);
 }
 
+.truckWrapper {
+    position: absolute;
+    top: 13%;
+    left: 150%;
+}
+
+.driving {
+    animation: driving 0.3s linear forwards;
+    animation-delay: 6.7s;
+}
+
+@keyframes driving {
+    100% {
+        left: -50%;
+    }
+}
+
 @keyframes float {
     10% {
         top: 12%;
@@ -113,6 +130,13 @@
     z-index: 2;
     animation: clipboardMoving 0.7s linear forwards;
     animation-delay: 2.5s;
+}
+
+.clipboardWrapper.callbackAnime {
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg);
+    animation : callbackClipboard 0.5s linear forwards;
+    animation-delay: 0.7s;
 }
 
 .inputWrapper {
@@ -345,7 +369,7 @@
     cursor: pointer;
 }
 
-.desiredIsekai {
+.preferredIsekai {
     font-size: 25px;
     font-family: Noto Sans KR;
     margin-top: -5px;
@@ -377,8 +401,35 @@
     animation: fadeIn 1s linear forwards;
 }
 
+.fadeInDelay {
+    animation: fadeIn 1s linear forwards;
+    animation-delay: 1.3s;
+}
+
 .fadeOut {
     animation: fadeOut 1s linear forwards;
+}
+
+.callbackPhraseWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: -6px;
+    align-items: center;
+    margin-top: -10%;
+    font-family: Jua;
+    font-size: 40px;
+}
+
+.callbackPhrase {
+    color: rgba(85, 41, 0, 0.658);
+    background: radial-gradient(
+        ellipse at center, rgba(255, 208, 0, 0.5) 0%, rgba(255, 208, 0, 0.3) 30%, rgba(255, 208, 0, 0.1) 60%, rgba(255,210,0,0) 80%);
+    padding: 3% 6%;
+    text-align: center;
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    opacity: 0;
 }
 
 @keyframes clipboardMoving {
@@ -406,6 +457,15 @@
     100% {
         left: 50%;
         transform: translateX(-50%) rotate(0deg);
+    }
+}
+
+@keyframes callbackClipboard {
+    30% {
+        transform: translateX(-50%) rotate(15deg);
+    }
+    100% {
+        left: -50%;
     }
 }
 

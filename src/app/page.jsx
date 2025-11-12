@@ -114,7 +114,9 @@ export default function Entrance() {
                   <img ref={spinningHumanRef} className={styles.spinningHuman} src="/human.png" alt="사람"/>
                 </div>
                 <img ref={truckRef} className={styles.truck} src="/truck.png" alt="트럭"/>
-                <div className={`${styles.skip} ${smallPhraseEnd ? styles.fadeOut : ''}`} onClick={skip}>건너뛰기⏭️</div>
+                <div className={styles.skipWrapper}>
+                  <div className={`${styles.skip} ${smallPhraseEnd ? styles.fadeOut : ''}`} onClick={skip}>건너뛰기⏭️</div>
+                </div>
                 {!animeEnd ? null :
                   <img className={`${styles.dead} ${styles.fadeIn}`} src="/dead.png" alt="기억할게"/>}
               </div>

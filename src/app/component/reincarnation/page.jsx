@@ -13,18 +13,40 @@ const Reincarnation = () => {
     const inputDescRef = useRef(null);
     const nextButtonRef = useRef(null);
     const inputContentRef = useRef(null);
+    const callbackPhraseRef1 = useRef(null);
+    const callbackPhraseRef2 = useRef(null);
+    const callbackPhraseRef3 = useRef(null);
+    const truckRef = useRef(null);
+    const ghostRef = useRef(null);
     const [nextFlag, setNextFlag] = useState(false);
     const [catalModalVisible, setCatalModalVisible] = useState(false);
     const [userName, setUserName] = useState('');
     const [birth, setBirth] = useState(null);
     const [gender, setGender] = useState('');
     const [specialty, setSpecialty] = useState('');
-    const [desiredIsekai, setDesiredIsekai] = useState('');
+    const [preferredIsekai, setPreferredIsekai] = useState('');
     const [wishedAbil, setWishedAbil] = useState('');
     const [wishedGift, setWishedGift] = useState('');
     const today = new Date().toISOString().split('T')[0];
+    const [callbackAnime, setCallbackAnime] = useState(false);
     let guestId = useSelector(state => state.guest.guestId);
     let isFirst = useSelector(state => state.guest.isFirst);
+
+    // ref 기다리기
+    const waitForRef = (ref, callback) => {
+        if (ref.current) callback(ref.current);
+        else requestAnimationFrame(() => waitForRef(ref, callback));
+    };
+
+    // 페이드인 추가
+    const addFadeIn = (ref) => {
+        ref.classList.add(styles.fadeIn);
+    };
+
+    // 딜레이 페이드인 추가
+    const addFadeInDelay = (ref) => {
+        ref.classList.add(styles.fadeInDelay);
+    };
 
     // 신청서 html 로 전환
     const next = () => {
@@ -34,17 +56,50 @@ const Reincarnation = () => {
         inputDesc.classList.add(styles.fadeOut);
         nextButton.classList.add(styles.fadeOut);
         inputDesc.addEventListener('animationend', ()=>setNextFlag(true));
-        const waitForRef = (ref, callback) => {
-            if (ref.current) callback(ref.current);
-            else requestAnimationFrame(() => waitForRef(ref, callback));
-        };
-        const addFadeIn = () => {
-            inputContentRef.current.classList.add(styles.fadeIn);
-        };
         waitForRef(inputContentRef, addFadeIn);
     }
 
+    const firstCallbackAnime = () => {
+        return new Promise(resolve => {
+            waitForRef(callbackPhraseRef1, addFadeInDelay);
+            resolve();
+        });
+    };
+    const secondCallbackAnime = () => {
+        console.log('두번째실행');
+        return new Promise(resolve => {
+            callbackPhraseRef1.current.addEventListener('animationend', ()=>waitForRef(callbackPhraseRef2, addFadeInDelay));
+            resolve()
+        });
+    };
+    const thirdCallbackAnime = () => {
+        return new Promise(resolve => {
+            callbackPhraseRef2.current.addEventListener('animationend', truckRef.current.classList.add(styles.driving));
+            truckRef.current.addEventListener('animationend', ghostRef.current.classList.add(styles.flying));
+            //ghostRef.current.addEventListener('animationend', waitForRef(callbackPhraseRef3, addFadeInDelay));
+            resolve();
+        });
+    };
+    const fourthCallbackAnime = () => {
+        return new Promise(resolve => {
+            console.log('화면전환은 내일하죠');
+            resolve();
+        });
+    };
+
+    const callbackAnimeSeq = async () => {
+        await new Promise(resolve => setTimeout(resolve, 500));
+        await firstCallbackAnime();
+        await secondCallbackAnime();
+        await thirdCallbackAnime();
+        await fourthCallbackAnime();
+    };
+
+    // 시뮬레이션 실행
     const runSim = async () => {
+
+        let finalPreferred = preferredIsekai;
+
         if(!guestId){
             alert('유저 식별불가, 다시 시도해주세요.');
             location.href='/';
@@ -67,20 +122,31 @@ const Reincarnation = () => {
         } else if (!wishedGift) {
             alert('여신의 선물을 선택해주세요.');
             return;
-        } else if (!desiredIsekai) {
+        } else if (!finalPreferred) {
             if(confirm('희망 여행지 미선택시 무작위 이세계로 정해집니다. 무작위로 진행하시겠습니까?')){
-                setDesiredIsekai('상관없음');
+                finalPreferred ='상관없음';
+                setPreferredIsekai('상관없음');
             }else{
                 return;
             }
         }
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        setCallbackAnime(true);
+        callbackAnimeSeq();
         try{
-            const {data} = await axios.post(`${API_URL}/reincarnation`, {guestId, userName, birth, gender, specialty, wishedAbil, wishedGift});
+            const {data} = await axios.post(`${API_URL}/reincarnation`, {guestId, userName, birth, gender, specialty, wishedAbil, wishedGift, finalPreferred});
             console.log(data);
         }catch(err){
-            alert(err);
+            alert(err.response.data.message);
             location.href='/component/reincarnation';
         };
+    };
+
+    // 애니메이션 실행
+    const runAnime = () => {
 
     };
 
@@ -99,11 +165,21 @@ const Reincarnation = () => {
     return (
         <>
             <div className="container">
-                <CatalModal visible={catalModalVisible} onClose={() => setCatalModalVisible(false)} onSend={(value)=>setDesiredIsekai(value)}/>
-                <div className={styles.ghostWrapper}>
+                <CatalModal visible={catalModalVisible} onClose={() => setCatalModalVisible(false)} onSend={(value)=>setPreferredIsekai(value)}/>
+                <div ref={ghostRef} className={styles.ghostWrapper}>
                     <img className={styles.ghost} src="/ghost.png" alt="유령"/>
                 </div>
-                <div className={styles.clipboardWrapper}>
+                <div ref={truckRef} className={styles.truckWrapper}>
+                    <img className={styles.truck} src="/truck.png" alt="트럭"/>
+                </div>
+                {!callbackAnime ? null :
+                    <div className={styles.callbackPhraseWrapper}>
+                        <span ref={callbackPhraseRef1} className={styles.callbackPhrase}>이번생에 고생 참 많으셨어요</span>
+                        <span ref={callbackPhraseRef2} className={styles.callbackPhrase}>잠시만 서계시면 여신님의 마법으로 새로운 세계로 가게되실거에요</span>
+                        <span ref={callbackPhraseRef3} className={styles.callbackPhrase}>새로운 운명에 축복 가득하시길 기원해요</span>
+                    </div>    
+                }
+                <div className={!callbackAnime ? styles.clipboardWrapper : `${styles.clipboardWrapper} ${styles.callbackAnime}`}>
                     {!nextFlag ?
                         <>
                             <div ref={inputDescRef} className={styles.inputWrapper}>
@@ -143,8 +219,8 @@ const Reincarnation = () => {
                                         <input type='radio' name="gender" value="여자" onChange={(e)=>setGender(e.target.value)}/>여자</label>
                                 </span>
                                 <span className={styles.inputItem}>④ 희망 여행지 : 
-                                    {desiredIsekai ?
-                                        <span className={styles.desiredIsekai} onClick={() => setCatalModalVisible(true)}>{desiredIsekai}</span> :
+                                    {preferredIsekai ?
+                                        <span className={styles.preferredIsekai} onClick={() => setCatalModalVisible(true)}>{preferredIsekai}</span> :
                                         <span className={styles.selectButton} onClick={() => setCatalModalVisible(true)}>둘러보기</span>}
                                 </span>
                                 <span className={styles.inputItemOneRow}>
