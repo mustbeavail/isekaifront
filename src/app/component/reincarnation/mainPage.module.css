@@ -143,7 +143,7 @@
     background-image: url("/clipboard.png");
     background-size: cover;
     background-position: center;
-    margin-top: -23%;
+    top: 5%;
     left: 150%;
     transform: translateX(-50%) rotate(15deg);
     width: 1096px;
@@ -438,6 +438,10 @@
 }
 
 .callbackPhraseWrapper {
+    position: absolute;
+    top:58%;
+    left:50%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -500,8 +504,8 @@
 .lightOut {
     background-color: black;
     animation: fadeIn 2s linear forwards;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
 }
 
 .loadingPhrase {

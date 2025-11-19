@@ -1,11 +1,11 @@
 'use client'
 import styles from "./mainPage.module.css";
 import { useState, useEffect, useRef } from "react";
-import "./mainPage.css";
 import Link from 'next/link';
 import CatalModal from './cartalogueModal';
 import { useSelector } from "react-redux";
 import axios from "axios";
+import Mirrors from './mirrors';
 
 const Reincarnation = () => {
 
@@ -32,7 +32,11 @@ const Reincarnation = () => {
     const [callbackAnime, setCallbackAnime] = useState(false);
     const [animeEnd, setAnimeEnd] = useState(false);
     const [resDone, setResDone] = useState('idle');
+    const [loadingStop, setLoadingStop] = useState(false);
+    let freshResDone = useRef(resDone);
+    let loadingPhraseRef = useRef(null);
     const [loadingPhrase, setLoadingPhrase] = useState('');
+    const [simResult, setSimResult] = useState(null);
     let guestId = useSelector(state => state.guest.guestId);
     let isFirst = useSelector(state => state.guest.isFirst);
 
@@ -43,7 +47,7 @@ const Reincarnation = () => {
             if(resolve){
                 resolve();
             }}
-        else requestAnimationFrame(() => waitForRef(ref, callback));
+        else requestAnimationFrame(() => waitForRef(ref, callback, resolve));
     };
 
     // 페이드인 추가
@@ -92,27 +96,38 @@ const Reincarnation = () => {
         await secondCallbackAnime();
     };
 
-    const randomLoadingPhrase = async () => {
-        let idx = -1
+    // 로딩
+    const randomLoadingPhrase = async (freshResDone) => {
+
         const loadingPhrases1 = ['로딩중', '로딩중.', '로딩중..', '로딩중...'];
         const loadingPhrases2 = ['이세계물 시청중', '이세계물 시청중.', '이세계물 시청중..', '이세계물 시청중...'];
         const loadingPhrases3 = ['멋있는 대사 생각중', '멋있는 대사 생각중.', '멋있는 대사 생각중..', '멋있는 대사 생각중...'];
         const loadingPhrases4 = ['운명 수정중', '운명 수정중.', '운명 수정중..', '운명 수정중...'];
         const loadingPhrases5 = ['고난과 억까 만드는중', '고난과 억까 만드는중.', '고난과 억까 만드는중..', '고난과 억까 만드는중...',];
         const loadingPhrases6 = ['행복한 한 때 생성중', '행복한 한 때 생성중.', '행복한 한 때 생성중..', '행복한 한 때 생성중...',];
-        const wholeLoadingPhrases = [loadingPhrases1, loadingPhrases2, loadingPhrases3, loadingPhrases4, loadingPhrases5, loadingPhrases6];
+        const loadingPhrases7 = ['낯선 천장 생성중', '낯선 천장 생성중.', '낯선 천장 생성중..', '낯선 천장 생성중...',];
+        const wholeLoadingPhrases = [
+            loadingPhrases1, loadingPhrases2, loadingPhrases3, loadingPhrases4,
+            loadingPhrases5, loadingPhrases6, loadingPhrases7];
+
         const getRandom = (arr) => {
             const idx = Math.floor(Math.random() * arr.length);
             return arr[idx];
         }
-
-        for (;;) {
+        let loadingCnt = 0;
+        while (freshResDone.current !== 'done' && !loadingStop){
             let phrases = getRandom(wholeLoadingPhrases);
+
             for (let index = 0; index < phrases.length; index++) {
                 setLoadingPhrase(phrases[index]);
                 await new Promise(resolve => setTimeout(resolve, 500));
             }
-        }
+            loadingCnt++;
+            if(loadingCnt > 6) freshResDone.current = 'done';
+        };
+        await new Promise(resolve => {loadingPhraseRef.current.classList.add(styles.fadeOut); resolve();});
+        await new Promise(resolve => {loadingPhraseRef.current.addEventListener('animationend', ()=>{setTimeout(resolve, 1500);})});
+        setResDone('done');
     };
 
     // 시뮬레이션 실행
@@ -160,6 +175,7 @@ const Reincarnation = () => {
         try{
             const {data} = await axios.post(`${API_URL}/reincarnation`, {guestId, userName, birth, gender, specialty, wishedAbil, wishedGift, finalPreferred});
             console.log(data);
+            setSimResult(data);
             setResDone('done');
         }catch(err){
             alert(err.response.data.message);
@@ -181,8 +197,12 @@ const Reincarnation = () => {
 
     // 로딩문구 띄우기
     useEffect(()=>{
+        freshResDone.current = resDone;
         if(resDone !== 'start') return;
-        else randomLoadingPhrase();
+        if(loadingStop == 'stop') randomLoadingPhrase(freshResDone, loadingStop);
+        else randomLoadingPhrase(freshResDone);
+
+        return () => setLoadingStop(true);
     },[resDone]);
 
     return (
@@ -307,8 +327,8 @@ const Reincarnation = () => {
                                 <Link href="/component/reincarnation" className={styles.buttonItem}>🕰️ 내 이전 세계 보러가기</Link>
                             </div>
                         </div>
-                    </> : animeEnd && resDone=='start' ? <span className={styles.loadingPhrase}>{loadingPhrase}</span> :
-                    null
+                    </> : animeEnd && resDone == 'start' ? <span ref={loadingPhraseRef} className={styles.loadingPhrase}>{loadingPhrase}</span> :
+                    animeEnd && resDone == 'done' ? <Mirrors waitForRef={waitForRef} simResult={simResult}/> : null
                 }
             </div>
         </div>

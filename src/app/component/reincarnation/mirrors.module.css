@@ -1,0 +1,314 @@
+.mirrorContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.center {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    z-index: 11;
+}
+
+.mainMirrorWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 10;
+    width: 570px;
+}
+
+.mainMirror {
+    margin: auto;
+}
+
+.aWrapper {
+    opacity: 0;
+}
+
+.subMirrorWrapperA1 {
+    position: absolute;
+    top: -340%;
+    left: -570%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 6;
+    transform: scaleX(-1);
+    width: 370px;
+}
+
+.subMirrorA1 {
+    filter: blur(1.1px);
+    opacity: 0.8;
+}
+
+.subMirrorWrapperA2 {
+    position: absolute;
+    top: 50%;
+    left: -220%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 5;
+    width: 230px;
+}
+
+.subMirrorA2 {
+    filter: blur(1px);
+    opacity: 0.95;
+}
+
+.subMirrorWrapperA3 {
+    position: absolute;
+    top: -30%;
+    left: 320%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 5;
+    width: 320px;
+}
+
+.subMirrorA3 {
+    filter: blur(0.8px);
+}
+
+.subMirrorWrapperA4 {
+    position: absolute;
+    top: -120%;
+    left: 460%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 3;
+    width: 250px;
+}
+
+.subMirrorA4 {
+    filter: blur(1.4px);
+    opacity: 0.8;
+}
+
+.bWrapper {
+    opacity: 0;
+}
+
+.subMirrorWrapperB1 {
+    position: absolute;
+    top: -280%;
+    left: -170%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 2;
+    width: 180px;
+}
+
+.subMirrorB1 {
+    filter: blur(2px);
+    opacity: 0.8;
+}
+
+.subMirrorWrapperB2 {
+    position: absolute;
+    top: -250%;
+    left: 250%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 2;
+    width: 190px;
+}
+
+.subMirrorB2 {
+    filter: blur(2.8px);
+    opacity: 0.7;
+}
+
+.subMirrorWrapperB3 {
+    position: absolute;
+    top: -200%;
+    left: -260%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 2;
+    width: 150px;
+}
+
+.subMirrorB3 {
+    filter: blur(2.8px);
+    opacity: 0.8;
+}
+
+.cWrapper {
+    opacity: 0;
+}
+
+.subMirrorWrapperC1 {
+    position: absolute;
+    top: -290%;
+    left: 120%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 2;
+    width: 50px;
+}
+
+.subMirrorC1 {
+    filter: blur(5px);
+    opacity: 0.2;
+}
+
+.subMirrorWrapperC2 {
+    position: absolute;
+    top: -280%;
+    left: -80%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 2;
+    width: 80px;
+}
+
+.subMirrorC2 {
+    filter: blur(2.8px);
+    opacity: 0.3;
+}
+
+.subMirrorWrapperC3 {
+    position: absolute;
+    top: -330%;
+    left: 150%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 2;
+    width: 75px
+}
+
+.subMirrorC3 {
+    filter: blur(2.8px);
+    opacity: 0.3;
+}
+
+.subMirrorWrapperC4 {
+    position: absolute;
+    top: -320%;
+    left: -30%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 1;
+    width: 70px;
+}
+
+.subMirrorC4 {
+    filter: blur(3.2px);
+    opacity: 0.1;
+}
+
+.subMirrorWrapperC5 {
+    position: absolute;
+    top: -360%;
+    left: -70%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 1;
+    width: 60px;
+}
+
+.subMirrorC5 {
+    filter: blur(3.2px);
+    opacity: 0.1;
+}
+
+.subMirrorWrapperC6 {
+    position: absolute;
+    top: -320%;
+    left: 90%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 1;
+    width: 45px;
+}
+
+.subMirrorC6 {
+    filter: blur(3.4px);
+    opacity: 0.1;
+}
+
+.subMirrorWrapperC7 {
+    position: absolute;
+    top: -280%;
+    left: 15%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 1;
+    width: 40px;
+}
+
+.subMirrorC7 {
+    filter: blur(3.7px);
+    opacity: 0.08;
+}
+
+.subMirrorWrapperC8 {
+    position: absolute;
+    top: -310%;
+    left: 60%;
+    width: fit-content;
+    height: fit-content;
+    transform: translateX(-58%) translateY(-55%);
+    z-index: 1;
+    width: 35px;
+}
+
+.subMirrorC8 {
+    filter: blur(3.7px);
+    opacity: 0.08;
+}
+
+.fadeIn {
+    animation: fadeIn 1s linear forwards;
+}
+
+.gettingBigger {
+    animation: gettingBigger 4s forwards;
+    animation-timing-function: cubic-bezier(0.85, 0, 0.25, 1);
+}
+
+.gettingBiggerCenter {
+    animation: gettingBiggerCenter 1.9s forwards;
+    animation-timing-function: cubic-bezier(0.85, 0, 0.25, 1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes gettingBigger {
+    20% {filter: brightness(170%);}
+    50% {filter: brightness(200%); opacity: 1;}
+    70% {transform: scale(7);}
+    100% {opacity: 0;}
+}
+
+@keyframes gettingBiggerCenter {
+    100% {transform: scale(7.7);}
+}
