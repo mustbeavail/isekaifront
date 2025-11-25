@@ -31,9 +31,28 @@ export default function Mirrors({waitForRef, simResult}) {
                 }, 800));
     };
 
+    // 세션스토리지 초기화
     useEffect(()=>{
-        animeSeq();
+        sessionStorage.removeItem('userName');
+        sessionStorage.removeItem('birth');
+        sessionStorage.removeItem('gender');
+        sessionStorage.removeItem('specialty');
+        sessionStorage.removeItem('wishedAbil');
+        sessionStorage.removeItem('wishedGift');
+        sessionStorage.removeItem('preferredIsekai');
     },[]);
+
+    // 애니메이션
+    useEffect(()=>{
+        if(!animeEnd) {
+            document.body.style.overflow = 'hidden';
+            animeSeq();
+        }
+        if(animeEnd) document.body.style.overflow = '';
+        return () => {
+            document.body.style.overflow = '';
+          }
+    },[animeEnd]);
 
     return (
         <div className={styles.mirrorContainer}>

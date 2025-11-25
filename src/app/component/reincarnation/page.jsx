@@ -37,8 +37,10 @@ const Reincarnation = () => {
     let loadingPhraseRef = useRef(null);
     const [loadingPhrase, setLoadingPhrase] = useState('');
     const [simResult, setSimResult] = useState(null);
+    const [loadingDone, setLoadingDone] = useState(false);
     let guestId = useSelector(state => state.guest.guestId);
     let isFirst = useSelector(state => state.guest.isFirst);
+    
 
     // ref 기다리기
     const waitForRef = (ref, callback, resolve) => {
@@ -85,7 +87,6 @@ const Reincarnation = () => {
                     ghostWrapperRef.current.classList.add(styles.flying);
                     ghostRef.current.classList.add(styles.spinning);
                     ghostWrapperRef.current.addEventListener('animationend', ()=>waitForRef(callbackPhraseRef3, addFadeIn));});
-            callbackPhraseRef3.current.addEventListener('animationend', ()=>setTimeout(()=>setAnimeEnd(true), 2500))
             resolve()
         });
     };
@@ -94,6 +95,8 @@ const Reincarnation = () => {
         await new Promise(resolve => setTimeout(resolve, 500));
         await firstCallbackAnime();
         await secondCallbackAnime();
+        await new Promise(resolve => callbackPhraseRef3.current.addEventListener('animationend', ()=>setTimeout(()=>resolve(), 2500)));
+        await new Promise(resolve => {setAnimeEnd(true); resolve();});
     };
 
     // 로딩
@@ -114,20 +117,23 @@ const Reincarnation = () => {
             const idx = Math.floor(Math.random() * arr.length);
             return arr[idx];
         }
-        let loadingCnt = 0;
-        while (freshResDone.current !== 'done' && !loadingStop){
+/*         let loadingCnt = 0; */
+        while (freshResDone.current == 'start' && !loadingStop){
+            console.log('로딩문구 출력중');
             let phrases = getRandom(wholeLoadingPhrases);
 
             for (let index = 0; index < phrases.length; index++) {
                 setLoadingPhrase(phrases[index]);
                 await new Promise(resolve => setTimeout(resolve, 500));
             }
-            loadingCnt++;
-            if(loadingCnt > 6) freshResDone.current = 'done';
+/*             loadingCnt++;
+            if(loadingCnt > 6) freshResDone.current = 'done'; */
         };
-        await new Promise(resolve => {loadingPhraseRef.current.classList.add(styles.fadeOut); resolve();});
-        await new Promise(resolve => {loadingPhraseRef.current.addEventListener('animationend', ()=>{setTimeout(resolve, 1500);})});
-        setResDone('done');
+        if(loadingPhraseRef.current){
+            await new Promise(resolve => {loadingPhraseRef.current.classList.add(styles.fadeOut); resolve();});
+            await new Promise(resolve => {loadingPhraseRef.current.addEventListener('animationend', ()=>{setTimeout(resolve, 1500);})});
+        }
+        setLoadingDone(true);
     };
 
     // 시뮬레이션 실행
@@ -178,7 +184,12 @@ const Reincarnation = () => {
             setSimResult(data);
             setResDone('done');
         }catch(err){
-            alert(err.response.data.message);
+            if(err.response) {
+                alert(err.response.data.message);
+            }
+            else {
+                alert('서버에 연결할 수 없습니다. 잠시 후 다시 시도해주세요.');
+            }
             location.href='/component/reincarnation';
         };
     };
@@ -199,11 +210,33 @@ const Reincarnation = () => {
     useEffect(()=>{
         freshResDone.current = resDone;
         if(resDone !== 'start') return;
-        if(loadingStop == 'stop') randomLoadingPhrase(freshResDone, loadingStop);
+        if(loadingStop) randomLoadingPhrase(freshResDone, loadingStop);
         else randomLoadingPhrase(freshResDone);
 
         return () => setLoadingStop(true);
-    },[resDone]);
+    },[resDone, loadingStop]);
+
+    // 입력중이던 내용 세션스토리지 저장
+    useEffect(()=>{
+        sessionStorage.setItem('userName', userName);
+        sessionStorage.setItem('birth', birth);
+        sessionStorage.setItem('gender', gender);
+        sessionStorage.setItem('specialty', specialty);
+        sessionStorage.setItem('wishedAbil', wishedAbil);
+        sessionStorage.setItem('wishedGift', wishedGift);
+        sessionStorage.setItem('preferredIsekai', preferredIsekai);
+    },[userName, birth, gender, specialty, wishedAbil, wishedGift ,preferredIsekai]);
+
+    // 새로고침시 이전 입력값 가져오기
+    useEffect(()=>{
+        setUserName(sessionStorage.getItem('userName') || '');
+        setBirth(sessionStorage.getItem('birth') || '');
+        setGender(sessionStorage.getItem('gender') || '');
+        setSpecialty(sessionStorage.getItem('specialty') || '');
+        setWishedAbil(sessionStorage.getItem('wishedAbil'));
+        setWishedGift(sessionStorage.getItem('wishedGift'));
+        setPreferredIsekai(sessionStorage.getItem('preferredIsekai'));
+    },[]);
 
     return (
         <div className={animeEnd ? styles.lightOut : ''}>
@@ -253,15 +286,34 @@ const Reincarnation = () => {
                             {nextFlag ?
                                 <>
                                     <div ref={inputContentRef} className={`${styles.inputWrapper} ${styles.inputCommon}`}>
-                                        <span className={styles.inputItem} onChange={(e)=>setUserName(e.target.value)}>
-                                            ① 이름 : <input type='text' className={styles.inputBox}/></span>
                                         <span className={styles.inputItem}>
-                                            ② 생년월일 : <input type='date' max={today} className={styles.dateBox} onChange={(e)=>setBirth(e.target.value)}/></span>
+                                            ① 이름 : <input
+                                                        type='text'
+                                                        className={styles.inputBox}
+                                                        value={userName}
+                                                        onChange={(e)=>setUserName(e.target.value)}/></span>
+                                        <span className={styles.inputItem}>
+                                            ② 생년월일 : <input
+                                                            type='date'max={today}
+                                                            className={styles.dateBox}
+                                                            onChange={(e)=>setBirth(e.target.value)}
+                                                            value={birth}/>
+                                        </span>
                                         <span className={styles.inputItem}>③ 성별 : 
                                             <label className={styles.genderBox}>
-                                                <input type='radio' name="gender" value="남자" onChange={(e)=>setGender(e.target.value)}/>남자</label>
+                                                <input
+                                                    type='radio'
+                                                    name="gender"
+                                                    value="남자"
+                                                    onChange={(e)=>setGender(e.target.value)}
+                                                    checked={gender === '남자'}/>남자</label>
                                             <label className={styles.genderBox}>
-                                                <input type='radio' name="gender" value="여자" onChange={(e)=>setGender(e.target.value)}/>여자</label>
+                                                <input
+                                                    type='radio'
+                                                    name="gender"
+                                                    value="여자"
+                                                    onChange={(e)=>setGender(e.target.value)}
+                                                    checked={gender === '여자'}/>여자</label>
                                         </span>
                                         <span className={styles.inputItem}>④ 희망 여행지 : 
                                             {preferredIsekai ?
@@ -269,7 +321,11 @@ const Reincarnation = () => {
                                                 <span className={styles.selectButton} onClick={() => setCatalModalVisible(true)}>둘러보기</span>}
                                         </span>
                                         <span className={styles.inputItemOneRow}>
-                                            ⑤ 직업 혹은 취미, 특기 : <input type='text' className={styles.inputBox} onChange={(e)=>setSpecialty(e.target.value)}/></span>
+                                            ⑤ 직업 혹은 취미, 특기 : <input
+                                                                        type='text'
+                                                                        className={styles.inputBox}
+                                                                        onChange={(e)=>setSpecialty(e.target.value)}
+                                                                        value={specialty}/></span>
                                         <div className={styles.isekaiSpecialWrapper}>
                                             <span className={`${styles.specialHead} ${styles.specialAbilHead}`}>⑥ 치트 능력치💪</span>
                                             <span 
@@ -327,8 +383,8 @@ const Reincarnation = () => {
                                 <Link href="/component/reincarnation" className={styles.buttonItem}>🕰️ 내 이전 세계 보러가기</Link>
                             </div>
                         </div>
-                    </> : animeEnd && resDone == 'start' ? <span ref={loadingPhraseRef} className={styles.loadingPhrase}>{loadingPhrase}</span> :
-                    animeEnd && resDone == 'done' ? <Mirrors waitForRef={waitForRef} simResult={simResult}/> : null
+                    </> : animeEnd && !loadingDone ? <span ref={loadingPhraseRef} className={styles.loadingPhrase}>{loadingPhrase}</span> :
+                    animeEnd && loadingDone ? <Mirrors waitForRef={waitForRef} simResult={simResult}/> : null
                 }
             </div>
         </div>
