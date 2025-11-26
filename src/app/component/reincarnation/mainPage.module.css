@@ -38,7 +38,7 @@
 }
 
 .driving {
-    animation: driving 0.3s linear forwards;
+    animation: driving 0.4s linear forwards;
     animation-delay: 1.5s;
 }
 
@@ -53,7 +53,7 @@
 
 @keyframes driving {
     100% {
-        left: -30%;
+        left: -80%;
     }
 }
 
@@ -144,7 +144,7 @@
     background-size: cover;
     background-position: center;
     top: 5%;
-    left: 150%;
+    left: 200%;
     transform: translateX(-50%) rotate(15deg);
     width: 1096px;
     height: 1424px;
@@ -155,14 +155,14 @@
     padding: 330px 210px 200px 225px;
     position: absolute;
     z-index: 2;
-    animation: clipboardMoving 0.7s linear forwards;
+    animation: clipboardMoving 0.9s linear forwards;
     animation-delay: 2.5s;
 }
 
 .clipboardWrapper.callbackAnime {
     left: 50%;
     transform: translateX(-50%) rotate(0deg);
-    animation : callbackClipboard 0.5s linear forwards;
+    animation : callbackClipboard 1s linear forwards;
     animation-delay: 0.7s;
 }
 
@@ -439,7 +439,7 @@
 
 .callbackPhraseWrapper {
     position: absolute;
-    top:58%;
+    top:100%;
     left:50%;
     transform: translateX(-50%);
     display: flex;
@@ -450,6 +450,7 @@
     margin-top: -10%;
     font-family: Jua;
     font-size: 40px;
+    width: 1000px;
 }
 
 .callbackPhrase {
@@ -497,7 +498,7 @@
         transform: translateX(-50%) rotate(15deg);
     }
     100% {
-        left: -50%;
+        left: -100%;
     }
 }
 
@@ -638,4 +639,202 @@
     background-color: #fdfaf5;
     border-color: #a28e6d;
     outline: none;
+}
+
+@media (max-width: 900px) {
+    .clipboardWrapper{
+        left: 170%;
+        width: 822px;
+        height: 1068px;
+        padding: 247.5px 157.5px 45px 168.75px;
+    }
+    .ghost{
+        width: 112.5px;
+    }
+    .truck{
+        width: 300px;
+    }
+    .inputDescItem1{
+        font-size: 28.5px;
+    }
+    .inputDescItem2{
+        font-size: 22px;
+    }
+    .inputDescItem3{
+        font-size: 7px;
+    }
+    .buttonItem{
+        font-size: 12px;
+    }
+    .nextButton{
+        margin-top: 60px;
+    }
+    .inputCommon{
+        font-size: 20px;
+    }
+    .genderBox{
+        font-size: 20px;
+        margin-top: 0px;
+    }
+    .selectButton{
+        font-size: 18.75px;
+        margin-top: 0px;
+    }
+    .preferredIsekai{
+        font-size: 18.75px;
+    }
+    .inputBox{
+        font-size: 18.75px;
+    }
+    .dateBox{
+        margin-left: 15px;
+    }
+    .specialAbilOption{
+        font-size: 18.75px;
+    }
+    .specialGiftOption{
+        font-size: 18.75px;
+    }
+    .isekaiSpecialWrapper{
+        margin-top: 4%;
+    }
+    .specialAnno{
+        font-size: 11px;
+    }
+
+    .callbackPhraseWrapper{
+        top: 80%;
+        width: 750px;
+        font-size: 28px;
+    }
+    .loadingPhrase{
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 690px) {
+    .clipboardWrapper {
+        left: 170%;
+        width: 350px;
+        height: 473px;
+        padding: 121px 69px 20px 80px;
+        background-size: 95%;
+    }
+    .ghostWrapper{
+        width: 200px;
+        height: 200px;
+    }
+    .ghost{
+        width: 70px;
+    }
+    .truck{
+        width: 200px;
+    }
+    .truckWrapper{
+        top: 3%;
+    }
+    .inputDescItem1 {
+        font-size: 13px;
+    }
+    .inputDescItem2 {
+        margin: 4px 9px 0;
+        font-size: 11px;
+    }
+    .inputDescItem3 {
+        margin-top: 1px;
+        font-size: 4px;
+    }
+    .buttonItem {
+        padding: 3px 6px;
+        font-size: 5px;
+    }
+    .nextButton{
+        margin-top: 10px;
+        margin-left: auto;
+    }
+    .buttons{
+        margin-top: 3%;
+        gap: 2px;
+    }
+    .inputCommon{
+        margin-top: 3px;
+        font-size: 9px;
+    }
+    .genderBox{
+        font-size: 7.5px;
+        width: 25px;
+        margin-top: -3px;
+        transform: scale(0.8);
+        flex-basis: 32%;
+    }
+    .selectButton{
+        font-size: 8px;
+        margin-top: 0px;
+        padding: 1.5px 3px;
+    }
+    .preferredIsekai{
+        margin-top: -2px;
+        font-size: 9px;
+    }
+    .inputBox{
+        margin-left: 4px;
+        font-size: 9px;
+        width: 50%;
+        border-bottom: 0.5px solid black;
+    }
+    .inputItem{
+        gap: 2px;
+    }
+    .dateBox{
+        margin-top: 0;
+        margin-left: 0px;
+        font-size: 5px;
+    }
+    .specialAbilOption{
+        font-size: 9px;
+        margin: 1px 0;
+    }
+    .specialGiftOption{
+        font-size: 9px;
+        margin: 1px 0;
+    }
+    .isekaiSpecialWrapper{
+        margin-top: 4%;
+    }
+    .specialAnno{
+        font-size: 5px;
+    }
+    .specialAbilHead{
+        padding: 5px 6px;
+        margin-bottom: 1px;
+    }
+    .specialGiftHead{
+        padding: 5px 6px;
+        margin-bottom: 1px;
+    }
+    .specialAbilOption{
+        padding: 3px 5px;
+    }
+    .specialGiftOption{
+        padding: 3px 5px;
+    }
+    
+    .callbackPhraseWrapper{
+        top: 110%;
+        width: 640px;
+        font-size: 12px;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
+    .description{
+        font-size: 0.7rem;
+    }
+    .backBtn{
+        font-size: 0.7rem;
+    }
+    .loadingPhrase{
+        font-size: 20px;
+    }
 }

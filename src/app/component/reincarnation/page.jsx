@@ -117,7 +117,7 @@ const Reincarnation = () => {
             const idx = Math.floor(Math.random() * arr.length);
             return arr[idx];
         }
-/*         let loadingCnt = 0; */
+        let loadingCnt = 0;
         while (freshResDone.current == 'start' && !loadingStop){
             console.log('로딩문구 출력중');
             let phrases = getRandom(wholeLoadingPhrases);
@@ -126,8 +126,8 @@ const Reincarnation = () => {
                 setLoadingPhrase(phrases[index]);
                 await new Promise(resolve => setTimeout(resolve, 500));
             }
-/*             loadingCnt++;
-            if(loadingCnt > 6) freshResDone.current = 'done'; */
+            loadingCnt++;
+            if(loadingCnt > 6) freshResDone.current = 'done';
         };
         if(loadingPhraseRef.current){
             await new Promise(resolve => {loadingPhraseRef.current.classList.add(styles.fadeOut); resolve();});
@@ -166,6 +166,7 @@ const Reincarnation = () => {
         } else if (!finalPreferred) {
             if(confirm('희망 여행지 미선택시 무작위 이세계로 정해집니다. 무작위로 진행하시겠습니까?')){
                 finalPreferred ='상관없음';
+                sessionStorage.setItem('preferredIsekai', '상관없음');
                 setPreferredIsekai('상관없음');
             }else{
                 return;
@@ -190,7 +191,7 @@ const Reincarnation = () => {
             else {
                 alert('서버에 연결할 수 없습니다. 잠시 후 다시 시도해주세요.');
             }
-            location.href='/component/reincarnation';
+            //location.href='/component/reincarnation';
         };
     };
 
@@ -216,17 +217,6 @@ const Reincarnation = () => {
         return () => setLoadingStop(true);
     },[resDone, loadingStop]);
 
-    // 입력중이던 내용 세션스토리지 저장
-    useEffect(()=>{
-        sessionStorage.setItem('userName', userName);
-        sessionStorage.setItem('birth', birth);
-        sessionStorage.setItem('gender', gender);
-        sessionStorage.setItem('specialty', specialty);
-        sessionStorage.setItem('wishedAbil', wishedAbil);
-        sessionStorage.setItem('wishedGift', wishedGift);
-        sessionStorage.setItem('preferredIsekai', preferredIsekai);
-    },[userName, birth, gender, specialty, wishedAbil, wishedGift ,preferredIsekai]);
-
     // 새로고침시 이전 입력값 가져오기
     useEffect(()=>{
         setUserName(sessionStorage.getItem('userName') || '');
@@ -243,7 +233,10 @@ const Reincarnation = () => {
             <div className="container">
                 {!animeEnd ?
                     <>
-                        <CatalModal visible={catalModalVisible} onClose={() => setCatalModalVisible(false)} onSend={(value)=>setPreferredIsekai(value)}/>
+                        <CatalModal
+                            visible={catalModalVisible}
+                            onClose={() => setCatalModalVisible(false)}
+                            onSend={(value)=>{setPreferredIsekai(value); sessionStorage.setItem('preferredIsekai', value);}}/>
                         <div ref={ghostWrapperRef} className={styles.ghostWrapper}>
                             <img ref={ghostRef} className={styles.ghost} src="/ghost.png" alt="유령"/>
                         </div>
@@ -253,7 +246,7 @@ const Reincarnation = () => {
                         {!callbackAnime ? null :
                             <div className={styles.callbackPhraseWrapper}>
                                 <span ref={callbackPhraseRef1} className={styles.callbackPhrase}>이번생에 고생 참 많으셨어요</span>
-                                <span ref={callbackPhraseRef2} className={styles.callbackPhrase}>잠시만 서계시면 여신님의 마법으로 새로운 세계로 가게되실거에요</span>
+                                <span ref={callbackPhraseRef2} className={styles.callbackPhrase}>잠시만 서계시면 여신님의 마법으로<br/>새로운 세계로 가게되실거에요</span>
                                 <span ref={callbackPhraseRef3} className={styles.callbackPhrase}>새로운 운명에 축복 가득하시길 기원해요</span>
                             </div>    
                         }
@@ -265,7 +258,7 @@ const Reincarnation = () => {
                                             이세계 전문 여행사<br/>GemExpress에 어서오세요!
                                         </span>
                                         <span className={styles.inputDescItem2}>
-                                            우리 여신님은 갑작스러운 전생마법에 희생당한 불운한<br/>영혼들을 위해 두번째 기회를 제공한답니다!<br/>
+                                            우리 여신님은 갑작스러운 전생마법에 희생당한 불운한 영혼들을 위해 두번째 기회를 제공한답니다!<br/>
                                             특별한 능력이나 동료를 비롯한 각종 전생특전 혜택까지!<br/>
                                             어디론가 훌쩍 떠나고싶단 생각 해보신적 있나요?<br/>
                                             반복되는 일상이 너무 지겨우시다구요?<br/>
@@ -291,12 +284,17 @@ const Reincarnation = () => {
                                                         type='text'
                                                         className={styles.inputBox}
                                                         value={userName}
-                                                        onChange={(e)=>setUserName(e.target.value)}/></span>
+                                                        onChange={(e)=>{
+                                                            setUserName(e.target.value);
+                                                            sessionStorage.setItem('userName', e.target.value);}}/>
+                                        </span>
                                         <span className={styles.inputItem}>
                                             ② 생년월일 : <input
                                                             type='date'max={today}
                                                             className={styles.dateBox}
-                                                            onChange={(e)=>setBirth(e.target.value)}
+                                                            onChange={(e)=>{
+                                                                setBirth(e.target.value);
+                                                                sessionStorage.setItem('birth', e.target.value);}}
                                                             value={birth}/>
                                         </span>
                                         <span className={styles.inputItem}>③ 성별 : 
@@ -305,15 +303,21 @@ const Reincarnation = () => {
                                                     type='radio'
                                                     name="gender"
                                                     value="남자"
-                                                    onChange={(e)=>setGender(e.target.value)}
-                                                    checked={gender === '남자'}/>남자</label>
+                                                    onChange={(e)=>{
+                                                        setGender(e.target.value);
+                                                        sessionStorage.setItem('gender', e.target.value);}}
+                                                    checked={gender === '남자'}/>남자
+                                            </label>
                                             <label className={styles.genderBox}>
                                                 <input
                                                     type='radio'
                                                     name="gender"
                                                     value="여자"
-                                                    onChange={(e)=>setGender(e.target.value)}
-                                                    checked={gender === '여자'}/>여자</label>
+                                                    onChange={(e)=>{
+                                                        setGender(e.target.value);
+                                                        sessionStorage.setItem('gender', e.target.value);}}
+                                                    checked={gender === '여자'}/>여자
+                                            </label>
                                         </span>
                                         <span className={styles.inputItem}>④ 희망 여행지 : 
                                             {preferredIsekai ?
@@ -324,31 +328,42 @@ const Reincarnation = () => {
                                             ⑤ 직업 혹은 취미, 특기 : <input
                                                                         type='text'
                                                                         className={styles.inputBox}
-                                                                        onChange={(e)=>setSpecialty(e.target.value)}
-                                                                        value={specialty}/></span>
+                                                                        onChange={(e)=>{
+                                                                            setSpecialty(e.target.value);
+                                                                            sessionStorage.setItem('specialty', e.target.value);}}
+                                                                        value={specialty}/>
+                                        </span>
                                         <div className={styles.isekaiSpecialWrapper}>
                                             <span className={`${styles.specialHead} ${styles.specialAbilHead}`}>⑥ 치트 능력치💪</span>
                                             <span 
                                                 className={wishedAbil=='명석한두뇌' ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
-                                                onClick={(e)=>setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                                onClick={(e)=>{
+                                                        setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
+                                                        sessionStorage.setItem('wishedAbil', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
                                                     ·명석한 두뇌<br/>
                                                     <span className={styles.specialAnno}> 머리가 안좋으면 몸이 고생한다</span>
                                             </span>
                                             <span
                                                 className={wishedAbil=='강인한신체' ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
-                                                onClick={(e)=>setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                                onClick={(e)=>{
+                                                        setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
+                                                        sessionStorage.setItem('wishedAbil', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
                                                     ·강인한 신체<br/>
                                                     <span className={styles.specialAnno}> 몸이 안좋으면 머리가 고생한다</span>
                                             </span>
                                             <span
                                                 className={wishedAbil=='치명적매력' ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
-                                                onClick={(e)=>setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                                onClick={(e)=>{
+                                                        setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
+                                                        sessionStorage.setItem('wishedAbil', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
                                                     ·치명적 매력<br/>
                                                     <span className={styles.specialAnno}> 알파의 삶을 살아보자</span>
                                             </span>
                                             <span
                                                 className={wishedAbil=='압도적인운' ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
-                                                onClick={(e)=>setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                                onClick={(e)=>{
+                                                        setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
+                                                        sessionStorage.setItem('wishedAbil', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
                                                     ·압도적인 운<br/>
                                                     <span className={styles.specialAnno}> 압도적인 운 앞에 모든 것은 무의미</span>
                                             </span>
@@ -357,19 +372,25 @@ const Reincarnation = () => {
                                             <span className={`${styles.specialHead} ${styles.specialGiftHead}`}>⑦ 여신의 선물🎁</span>
                                             <span
                                                 className={wishedGift=='막대한재력' ? `${styles.specialGiftOption} ${styles.selected}` : styles.specialGiftOption}
-                                                onClick={(e)=>setWishedGift(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                                onClick={(e)=>{
+                                                        setWishedGift(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
+                                                        sessionStorage.setItem('wishedGift', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
                                                     ·막대한 재력<br/>
                                                     <span className={styles.specialAnno}> 어떤 세계에도 통용되는 제1가치</span>
                                             </span>
                                             <span
                                                 className={wishedGift=='영혼의파트너' ? `${styles.specialGiftOption} ${styles.selected}` : styles.specialGiftOption}
-                                                onClick={(e)=>setWishedGift(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                                onClick={(e)=>{
+                                                        setWishedGift(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
+                                                        sessionStorage.setItem('wishedGift', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
                                                     ·영혼의 파트너<br/>
                                                     <span className={styles.specialAnno}> 가장 어두운 때에도 혼자가 아니야</span>
                                             </span>
                                             <span
                                                 className={wishedGift=='특별한장비' ? `${styles.specialGiftOption} ${styles.selected}` : styles.specialGiftOption}
-                                                onClick={(e)=>setWishedGift(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''))}>
+                                                onClick={(e)=>{
+                                                        setWishedGift(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
+                                                        sessionStorage.setItem('wishedGift', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
                                                     ·특별한 장비<br/>
                                                     <span className={styles.specialAnno}> 장인이 아니면 도구탓을 하자</span>
                                             </span>

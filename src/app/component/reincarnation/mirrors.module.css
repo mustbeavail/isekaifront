@@ -312,3 +312,113 @@
 @keyframes gettingBiggerCenter {
     100% {transform: scale(7.7);}
 }
+
+@media (max-width: 1200px){
+    .center{
+        width: 70px;
+        height: 70px;
+    }
+    .mainMirrorWrapper{
+        width: 399px;
+    }
+    .subMirrorWrapperA1{
+        width: 259px;
+    }
+    .subMirrorWrapperA2{
+        width: 161px;
+    }
+    .subMirrorWrapperA3{
+        width: 224px;
+    }
+    .subMirrorWrapperA4{
+        width: 175px;
+    }
+    .subMirrorWrapperB1{
+        width: 126px;
+    }
+    .subMirrorWrapperB2{
+        width: 133px;
+    }
+    .subMirrorWrapperB3{
+        width: 105px;
+    }
+    .subMirrorWrapperC1{
+        width: 35px;
+    }
+    .subMirrorWrapperC2{
+        width: 56px;
+    }
+    .subMirrorWrapperC3{
+        width: 52.5px;
+    }
+    .subMirrorWrapperC4{
+        width: 49px;
+    }
+    .subMirrorWrapperC5{
+        width: 42px;
+    }
+    .subMirrorWrapperC6{
+        width: 31.5px;
+    }
+    .subMirrorWrapperC7{
+        width: 28px;
+    }
+    .subMirrorWrapperC8{
+        width: 24.5px;
+    }
+}
+
+@media(max-width: 830px){
+    .center{
+        width: 42px;
+        height: 42px;
+    }
+    .mainMirrorWrapper{
+        width: 239.4px;
+    }
+    .subMirrorWrapperA1{
+        width: 155.4px;
+    }
+    .subMirrorWrapperA2{
+        width: 96.6px;
+    }
+    .subMirrorWrapperA3{
+        width: 134.4px;
+    }
+    .subMirrorWrapperA4{
+        width: 105px;
+    }
+    .subMirrorWrapperB1{
+        width: 75.6px;
+    }
+    .subMirrorWrapperB2{
+        width: 79.8px;
+    }
+    .subMirrorWrapperB3{
+        width: 63px;
+    }
+    .subMirrorWrapperC1{
+        width: 21px;
+    }
+    .subMirrorWrapperC2{
+        width: 33.6px;
+    }
+    .subMirrorWrapperC3{
+        width: 31.5px;
+    }
+    .subMirrorWrapperC4{
+        width: 29.4px;
+    }
+    .subMirrorWrapperC5{
+        width: 25.2px;
+    }
+    .subMirrorWrapperC6{
+        width: 18.9px;
+    }
+    .subMirrorWrapperC7{
+        width: 16.8px;
+    }
+    .subMirrorWrapperC8{
+        width: 14.7px;
+    }
+}
