@@ -117,7 +117,7 @@ const Reincarnation = () => {
             const idx = Math.floor(Math.random() * arr.length);
             return arr[idx];
         }
-        let loadingCnt = 0;
+/*         let loadingCnt = 0; */
         while (freshResDone.current == 'start' && !loadingStop){
             console.log('로딩문구 출력중');
             let phrases = getRandom(wholeLoadingPhrases);
@@ -126,8 +126,8 @@ const Reincarnation = () => {
                 setLoadingPhrase(phrases[index]);
                 await new Promise(resolve => setTimeout(resolve, 500));
             }
-            loadingCnt++;
-            if(loadingCnt > 6) freshResDone.current = 'done';
+/*             loadingCnt++;
+            if(loadingCnt > 6) freshResDone.current = 'done'; */
         };
         if(loadingPhraseRef.current){
             await new Promise(resolve => {loadingPhraseRef.current.classList.add(styles.fadeOut); resolve();});
@@ -191,7 +191,7 @@ const Reincarnation = () => {
             else {
                 alert('서버에 연결할 수 없습니다. 잠시 후 다시 시도해주세요.');
             }
-            //location.href='/component/reincarnation';
+            location.href='/component/reincarnation';
         };
     };
 

@@ -55,8 +55,9 @@ export default function Mirrors({waitForRef, simResult}) {
     },[animeEnd]);
 
     return (
-        <div className={styles.mirrorContainer}>
+        <>
             {!animeEnd ?
+                <div className={styles.mirrorContainer}>
                         <div ref={centerRef} className={styles.center}>
                         <div ref={mainWrapperRef} className={styles.mainMirrorWrapper}>
                             <img ref={mainRef} className={styles.mainMirror} src='/mainMirror.webp' alt='메인거울'/>
@@ -113,7 +114,8 @@ export default function Mirrors({waitForRef, simResult}) {
                             </div>
                         </div>
                     </div>
-            : <SimResult simResult={simResult}/>}
-        </div>
+                </div>
+            : <><SimResult simResult={simResult} waitForRef={waitForRef}/></>}
+        </>
     )
 }
