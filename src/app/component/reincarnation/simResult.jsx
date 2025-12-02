@@ -11,6 +11,7 @@ export default function SimResult({simResult, waitForRef}) {
     const [synopPage, setSynopPage] = useState(0);
     const [cuttedProfile, setCuttedProfile] = useState([]);
     const [cuttedGift, setCuttedGift] = useState([]);
+    let isekaiImageRef = useRef(null);
     let infoWrapperRef = useRef(null);
     let sunRef = useRef(null);
     let subTarot1Ref = useRef(null);
@@ -24,7 +25,9 @@ export default function SimResult({simResult, waitForRef}) {
 
     // 애니메이션 순서대로 실행
     const animeSeq = async () => {
-        await new Promise(resolve=>{waitForRef(infoWrapperRef, (ref)=>{waitFadeIn(ref, resolve)})});
+        await new Promise(resolve=>{waitForRef(isekaiImageRef, (ref)=>{waitFadeIn(ref, resolve)})});
+        await new Promise(resolve=>{infoWrapperRef.current.classList.add(styles.fadeIn); resolve();});
+        await new Promise(resolve=>{waitFadeIn(infoWrapperRef.current, resolve)});
         await new Promise(resolve=>{
             infoWrapperRef.current.classList.add(styles.vibeVerti);
             sunRef.current.classList.add(styles.shining);
@@ -38,6 +41,7 @@ export default function SimResult({simResult, waitForRef}) {
     // 시뮬레이션 결과 길이 자르기
     const cutSim = (simResult) => {
         
+        if(!simResult) return;
         const cuttedResult = [];
 
         for(let from = 0; from < simResult.length; from += 336){
@@ -75,6 +79,7 @@ export default function SimResult({simResult, waitForRef}) {
 
     useEffect(()=>{
         animeSeq();
+        if(!simResult) return;
         setCuttedSynop(cutSim(simResult.시놉시스));
         setCuttedProfile(cutSubSim(simResult.프로필));
         setCuttedGift(cutSubSim(simResult.전생특전));
@@ -86,13 +91,13 @@ export default function SimResult({simResult, waitForRef}) {
         <div className={styles.resultContainer}>
             <div ref={menuRef} className={styles.menuWrapper}>
                 <Link href="/" className={styles.buttonItem}>다시하기</Link>
+                <div className={styles.buttonItem}>📸감상하기</div>
                 <Link href="/component/reincarnation" className={styles.buttonItem}>🌍 다른 세계 보러가기</Link>
             </div>
-            <div className={styles.isekaiImageWrapper}>
+            <div ref={isekaiImageRef} className={styles.isekaiImageWrapper}>
                 <img className={styles.isekaiImage} src={'/fantasy.webp'} alt={'판타지 배경'}/>
             </div>
             <div ref={infoWrapperRef} className={styles.isekaiInfoWrapper}>
-                <span className={animeEnd ? styles.genre : styles.hide}>{simResult.세계관명시}</span>
                 <div ref={sunRef} className={!shiningDone ? styles.theSun : styles.emptyCard}>
                     {animeEnd ?
                         <>

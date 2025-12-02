@@ -1,5 +1,7 @@
 .resultContainer{
     display: flex;
+    position: relative;
+    height: 800px;
 }
 
 .hide{
@@ -8,36 +10,43 @@
 }
 
 .menuWrapper{
-    margin-top: 50px;
+    margin-top: 60px;
     opacity: 0;
     display: flex;
     flex-wrap: wrap;
-    width: fit-content;
-    height: fit-content;
+    width: 180px;
+    height: 100px;
     flex-shrink: 0;
-    margin-left: -350px;
+    margin-left: -320px;
     gap: 10px;
 }
 
 .isekaiImageWrapper{
+    position: absolute;
     width: fit-content;
     flex-shrink: 0;
     animation: fadeIn 1s linear forwards;
     padding-top: 20px;
     margin-left: 40px;
+    transform: translateX(-50%) translateY(-50%);
+    top: 55%;
+    left: 50%;
 }
 
 .isekaiImage{
-    width: 700px;
+    width: 1500px;
+    max-width: 1500px !important;
 }
 
 .isekaiInfoWrapper{
-    position: relative;
-    margin-top: 120px;
-    margin-left: 50px;
+    position: absolute;
+    top:55%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
     flex-shrink: 0;
-    animation: fadeIn 1s linear forwards;
     z-index: 10;
+    flex-basis: 100%;
+    opacity: 0;
 }
 
 .genre{
@@ -168,8 +177,6 @@
 }
 
 .buttonItem {
-    width: 45px;
-    height: 25px;
     flex-basis: 100%;
     background-color: #d8c2a4;
     color: #5a4633;
@@ -209,13 +216,13 @@
 
 @keyframes vibeVerti{
     0% {
-        margin-top: 120px;
+        top: 55%;
     }
     50% {
-        margin-top: 121px;
+        top: 55.5%;
     }
     100% {
-        margin-top: 120px;
+        top: 55%;
     }
 }
 
@@ -241,27 +248,27 @@
 @keyframes spreading1{
     30% {
         transform: translateX(-50%) translateY(-50%) scale(1);
-        left: 145%;
-        top: 15%;
+        left: -50%;
+        top: 30%;
     }
     100% {
         transform: translateX(-50%) translateY(-50%) scale(1);
-        left: 145%;
-        top: 15%;
+        left: -50%;
+        top: 30%;
         filter: brightness(1) blur(0px);
     }
 }
 
 @keyframes spreading2{
     30% {
-        transform: translateX(-50%) translateY(-50%) scale(1);
+        transform: translateX(-50%) translateY(-50%) scale(1.05);
         left: 145%;
-        top: 73%;
+        top: 70%;
     }
     100% {
-        transform: translateX(-50%) translateY(-50%) scale(1);
+        transform: translateX(-50%) translateY(-50%) scale(1.05);
         left: 145%;
-        top: 73%;
+        top: 70%;
         filter: brightness(1) blur(0px);
     }
 }
