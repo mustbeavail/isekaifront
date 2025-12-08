@@ -10,7 +10,7 @@
 }
 
 .menuWrapper{
-    margin-top: 60px;
+    margin-top: 50px;
     opacity: 0;
     display: flex;
     flex-wrap: wrap;
@@ -63,10 +63,11 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 469.8px;
-    height: 678.6px;
+    width: 634.23px;
+    height: 916.11px;
     opacity: 0.9;
     z-index: 10;
+    margin-top: 60px;
 }
 
 .emptyCard{
@@ -77,19 +78,24 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 469.8px;
-    height: 678.6px;
+    width: 634.23px;
+    height: 916.11px;
     opacity: 1;
     filter: brightness(20) blur(7px);
     z-index: 10;
     animation: gettingClear 1.5s linear forwards;
-    padding: 80px 75px 0;
-    font-size: 20px;
+    padding: 110px 110px 0 123px;
+    font-size: 23px;
     font-family: Jua;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 60px;
 }
 
 .subTarot1{
     position: absolute;
+    display: flex;
+    flex-wrap: wrap;
     background-image: url("/subTarot1.webp");
     background-size: contain;
     background-repeat: no-repeat;
@@ -99,16 +105,21 @@
     transform: translateX(-50%) translateY(-50%) scale(0.2);
     left: 50%;
     top: 50%;
-    opacity: 0.9;
+    opacity: 0.85;
     filter: brightness(20) blur(7px);
     z-index: 1;
     animation: spreading1 1.5s ease-out forwards;
     animation-delay: 0.2s;
-    padding: 55px 45px 0;
+    padding: 60px 50px 0 63px;
+    font-family: Jua;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .subTarot2{
     position: absolute;
+    display: flex;
+    flex-wrap: wrap;
     background-image: url("/subTarot2.webp");
     background-size: contain;
     background-repeat: no-repeat;
@@ -118,62 +129,126 @@
     transform: translateX(-50%) translateY(-50%) scale(0.2);
     left: 50%;
     top: 50%;
-    opacity: 0.9;
+    opacity: 0.85;
     filter: brightness(20) blur(7px);
     z-index: 1;
     animation: spreading2 1.5s ease-out forwards;
     animation-delay: 0.2s;
-    padding: 55px 50px 0;
+    padding: 65px 50px 0 55px;
+    font-family: Jua;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Fantasy{
+    font-family: Mea Culpa;
+    font-size: 50px;
+    padding : 0 8px;
+    animation: fadeIn 1s linear forwards;
+    cursor: default;
+}
+
+.profileHead{
+    font-size: 25px;
+    height: 25px;
+    margin-top: -10px;
+    animation: fadeIn 1s linear forwards;
+}
+
+.giftHead{
+    font-size: 25px;
+    height: 25px;
+    margin-top: -10px;
+    animation: fadeIn 1s linear forwards;
+}
+
+.synopWrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding : 0 5px;
+    height: 600px;
+    animation: fadeIn 1s linear forwards;
+}
+
+.profileWrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    height: 300px;
+    animation: fadeIn 1s linear forwards;
+}
+
+.giftWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    height: 280px;
+    animation: fadeIn 1s linear forwards;
 }
 
 .synopsis{
-    padding : 5px 8px 0;
-    height: 483px;
-    animation: fadeIn 1s linear forwards;
-    flex-basis: 100%;
+    padding-right: 13px;
+    cursor: default;
+    white-space: pre-line;
+    display: flex;
+    height: 600px;
+    width: 400px;
 }
 
 .profile{
-    font-size: 20px;
-    font-family: Jua;
-    animation: fadeIn 1s linear forwards;
+    padding-right: 13px;
+    display: flex;
+    font-size: 15px;
+    cursor: default;
+    white-space: pre-line;
+    height: 300px;
+    width: 200px;
 }
 
 .gift{
-    font-size: 20px;
-    font-family: Jua;
-    animation: fadeIn 1s linear forwards;
-}
-
-.btnWrapper {
-    margin-bottom: 5px;
+    padding-right: 13px;
     display: flex;
-    flex-basis: 100%;
-    align-items: center;
-    justify-content: center;
+    font-size: 15px;
+    height: 280px;
+    width: 190px;
+    cursor: default;
+    white-space: pre-line;
 }
 
-.beforeBtn{
-    cursor: pointer;
-    opacity: 0.8;
+.synopTitle{
     font-size: 25px;
-}
-
-.nextBtn{
-    cursor: pointer;
-    opacity: 0.8;
-    font-size: 25px;
-}
-
-.index{
-    font-size: 25px;
-}
-
-.title{
-    font-size: 25px;
-    margin: 6px auto 0;
+    position: absolute;
+    top: 93.3%;
+    left: 40.3%;
     height: fit-content;
     animation: fadeIn 1s linear forwards;
+    cursor: default;
+}
+
+.proFileTitle{
+    position: absolute;
+    top: 94%;
+    left: 41%;
+    z-index: 15;
+    font-size: 15px;
+    height: fit-content;
+    animation: fadeIn 1s linear forwards;
+    cursor: default;
+}
+
+.giftTitle{
+    position: absolute;
+    top: 94%;
+    left: 45%;
+    z-index: 15;
+    font-size: 15px;
+    height: fit-content;
+    animation: fadeIn 1s linear forwards;
+    cursor: default;
 }
 
 .buttonItem {
@@ -191,6 +266,129 @@
     text-align: center;
 }
 
+.fadeTop1,
+.fadeBot1 {
+    flex-shrink: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 410px;
+    height: 70px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.3s;
+}
+
+.fadeTop2,
+.fadeBot2 {
+    flex-shrink: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 200px;
+    height: 50px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.3s;
+}
+
+.fadeTop3,
+.fadeBot3 {
+    flex-shrink: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 190px;
+    height: 50px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.3s;
+}
+
+.fadeTop1 {
+    top: 0;
+    background: linear-gradient(
+        to bottom,
+        #f7e4c2 0%,
+        #f7e4c2 15%,
+        transparent 85%,
+        transparent 100%
+    );
+    transform: translateY(-5%);
+}
+
+.fadeTop2 {
+    top: 0;
+    background: linear-gradient(
+        to bottom,
+        #f5e5b8 0%,
+        #f5e5b8 15%,
+        transparent 85%,
+        transparent 100%
+    );
+    transform: translateY(-5%);
+}
+
+.fadeTop3 {
+    top: 0;
+    background: linear-gradient(
+        to bottom,
+        #f7e6bb 0%,
+        #f7e6bb 15%,
+        transparent 85%,
+        transparent 100%
+    );
+    transform: translateY(-5%);
+}
+
+.fadeBot1 {
+    bottom: 0;
+    background: linear-gradient(
+        to top,
+        #f7e4c2 0%,
+        #f7e4c2 35%,
+        transparent 65%,
+        transparent 100%
+    );
+    transform: translateY(5%);
+}
+
+.fadeBot2 {
+    bottom: 7%;
+    background: linear-gradient(
+        to top,
+        #f5e5b8 0%,
+        #f5e5b8 35%,
+        transparent 65%,
+        transparent 100%
+    );
+    transform: translateY(5%);
+}
+
+.fadeBot3 {
+    bottom: 0;
+    background: linear-gradient(
+        to top,
+        #f7e6bb 0%,
+        #f7e6bb 35%,
+        transparent 65%,
+        transparent 100%
+    );
+    transform: translateY(5%);
+}
+
+.fadeTop1.visible,
+.fadeBot1.visible,
+.fadeTop2.visible,
+.fadeBot2.visible,
+.fadeTop3.visible,
+.fadeBot3.visible {
+    opacity: 1;
+}
+
 .vibeVerti{
     animation: vibeVerti 0.1s linear forwards;
     animation-iteration-count: 20;
@@ -204,6 +402,10 @@
     animation: fadeIn 1s linear forwards;
 }
 
+.fadeOut{
+    animation: fadeOut 1s linear forwards;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -214,12 +416,22 @@
     }
 }
 
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
 @keyframes vibeVerti{
     0% {
         top: 55%;
     }
     50% {
-        top: 55.5%;
+        top: 56%;
     }
     100% {
         top: 55%;
@@ -247,35 +459,35 @@
 
 @keyframes spreading1{
     30% {
-        transform: translateX(-50%) translateY(-50%) scale(1);
-        left: -50%;
-        top: 30%;
+        transform: translateX(-50%) translateY(-50%) scale(1.35);
+        left: -35%;
+        top: 62%;
     }
     100% {
-        transform: translateX(-50%) translateY(-50%) scale(1);
-        left: -50%;
-        top: 30%;
+        transform: translateX(-50%) translateY(-50%) scale(1.35);
+        left: -35%;
+        top: 62%;
         filter: brightness(1) blur(0px);
     }
 }
 
 @keyframes spreading2{
     30% {
-        transform: translateX(-50%) translateY(-50%) scale(1.05);
-        left: 145%;
-        top: 70%;
+        transform: translateX(-50%) translateY(-50%) scale(1.35);
+        left: 135%;
+        top: 45%;
     }
     100% {
-        transform: translateX(-50%) translateY(-50%) scale(1.05);
-        left: 145%;
-        top: 70%;
+        transform: translateX(-50%) translateY(-50%) scale(1.35);
+        left: 135%;
+        top: 45%;
         filter: brightness(1) blur(0px);
     }
 }
 
 @keyframes gettingClear{
     100% {
-        opacity: 0.9;
+        opacity: 0.85;
         filter: brightness(1) blur(0px);
     }
 }
