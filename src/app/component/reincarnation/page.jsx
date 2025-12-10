@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from 'next/link';
 import CatalModal from './cartalogueModal';
 import { useSelector } from "react-redux";
+import { useSearchParams } from "next/navigation";
 import axios from "axios";
 import Mirrors from './mirrors';
 
@@ -40,6 +41,8 @@ const Reincarnation = () => {
     const [loadingDone, setLoadingDone] = useState(false);
     let guestId = useSelector(state => state.guest.guestId);
     let isFirst = useSelector(state => state.guest.isFirst);
+    const searchParams = useSearchParams();
+    const [initDone, setInitDone] = useState(false);
     
 
     // ref 기다리기
@@ -139,7 +142,25 @@ const Reincarnation = () => {
     // 시뮬레이션 실행
     const runSim = async () => {
 
-        let finalPreferred = preferredIsekai;
+        /////////////////////////////////////////////////////////////////
+        const whole = {
+            '세계관명시': '판타지',
+            '시놉시스':'테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스',
+            '프로필':'테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필',
+            '전생특전':'테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전',
+            '고유능력':'테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력'
+        };
+        const simIdx = {'simIdx':1};
+        const subGenre = {'subGenre':'용사물'};
+        setCallbackAnime(true);
+        callbackAnimeSeq();
+        setSimResult({whole, simIdx, subGenre});
+        setResDone('done');
+        setLoadingDone(true);
+        /////////////////////////////////////////////////////////////////
+
+
+/*         let finalPreferred = preferredIsekai;
 
         if(!guestId){
             alert('유저 식별불가, 다시 시도해주세요.');
@@ -192,15 +213,37 @@ const Reincarnation = () => {
                 alert('서버에 연결할 수 없습니다. 잠시 후 다시 시도해주세요.');
             }
             location.href='/component/reincarnation';
+        }; */
+    };
+
+    // idx로 시뮬레이션 결과 불러오기
+    const getResultByIdx = async(idx) => {
+        try {
+            const {data} = await axios.get(`${API_URL}/getResultByIdx`, {idx});
+            setSimResult(data);
+            setAnimeEnd(true);
+            setLoadingDone(true);
+        }catch(err){
+            alert('이세계를 불러오지 못했습니다. 잠시 후 다시 시도해주세요.');
+            location.href='/';
         };
     };
 
-    // 오버플로우 끄기
+    // 오버플로우 끄기, url 쿼리 검사
     useEffect(()=>{
-
         if(!guestId) return;
 
         document.body.style.overflowX = 'hidden';
+
+        const idx = searchParams.get('idx');
+        const run = async () => {
+            if(idx){
+                await getResultByIdx(idx);
+            };
+            setInitDone(true);
+        };
+
+        run();
 
         return () => {
             document.body.style.overflowX = '';
@@ -231,7 +274,7 @@ const Reincarnation = () => {
     return (
         <div className={animeEnd ? styles.lightOut : ''}>
             <div className="container">
-                {!animeEnd ?
+                {!initDone ? null : !animeEnd ?
                     <>
                         <CatalModal
                             visible={catalModalVisible}

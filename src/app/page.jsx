@@ -107,7 +107,7 @@ export default function Entrance() {
 
   return (
     <>
-      {isLoading ? <div>로딩중</div> :
+      {isLoading ? null :
             <div className="container">
               <div className={styles.animeWrapper}>
                 <div  ref={movingHumanRef} className={styles.movingHuman}>

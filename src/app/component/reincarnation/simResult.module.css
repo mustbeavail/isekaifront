@@ -39,13 +39,11 @@
 }
 
 .isekaiInfoWrapper{
-    position: absolute;
-    top:55%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    position: relative;
+    width: 100px;
+    height: 100px;
     flex-shrink: 0;
     z-index: 10;
-    flex-basis: 100%;
     opacity: 0;
 }
 
@@ -58,108 +56,182 @@
 }
 
 .theSun{
-    position: relative;
+    position: absolute;
     background-image: url("/theSun.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 634.23px;
-    height: 916.11px;
-    opacity: 0.9;
+    top: 440%;
+    left: 740%;
+    width: 158.55px;
+    height: 229.02px;
+    transform: translateX(-50%) translateY(-50%) scale(2);
+    opacity: 1;
     z-index: 10;
-    margin-top: 60px;
 }
 
 .emptyCard{
     display: flex;
     flex-wrap: wrap;
-    position: relative;
-    background-image: url("/theSunEmpty.webp");
+    align-content: start;
+    position: absolute;
+    background-image: url("/subTarot4.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 634.23px;
-    height: 916.11px;
+    top:480%;
+    left:-100%;
+    width: 304.76px;
+    height: 432.82px;
     opacity: 1;
-    filter: brightness(20) blur(7px);
-    z-index: 10;
-    animation: gettingClear 1.5s linear forwards;
-    padding: 110px 110px 0 123px;
-    font-size: 23px;
+    transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(0deg);
+    z-index: 9;
+    padding: 55px 40px 0;
     font-family: Jua;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 60px;
+    animation: synopMoving 0.3s ease-out forwards;
+    animation-delay: 0.2s;
 }
 
 .subTarot1{
     position: absolute;
     display: flex;
     flex-wrap: wrap;
+    align-content: start;
     background-image: url("/subTarot1.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     width: 304.76px;
     height: 432.82px;
-    transform: translateX(-50%) translateY(-50%) scale(0.2);
-    left: 50%;
-    top: 50%;
-    opacity: 0.85;
-    filter: brightness(20) blur(7px);
-    z-index: 1;
-    animation: spreading1 1.5s ease-out forwards;
-    animation-delay: 0.2s;
-    padding: 60px 50px 0 63px;
+    transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(0deg);
+    top:480%;
+    left:-100%;
+    opacity: 1;
+    z-index: 8;
+    padding: 45px 50px 0;
     font-family: Jua;
-    flex-direction: column;
-    align-items: flex-start;
+    animation: profileMoving 0.2s ease-out forwards;
+    animation-delay: 0.4s;
 }
 
 .subTarot2{
     position: absolute;
     display: flex;
     flex-wrap: wrap;
+    align-content: start;
     background-image: url("/subTarot2.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     width: 292.98px;
     height: 432.06px;
-    transform: translateX(-50%) translateY(-50%) scale(0.2);
-    left: 50%;
-    top: 50%;
-    opacity: 0.85;
-    filter: brightness(20) blur(7px);
-    z-index: 1;
-    animation: spreading2 1.5s ease-out forwards;
-    animation-delay: 0.2s;
-    padding: 65px 50px 0 55px;
+    transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(0deg);
+    top:480%;
+    left:-100%;
+    opacity: 1;
+    z-index: 7;
+    padding: 50px 50px 0 55px;
     font-family: Jua;
-    flex-direction: column;
-    align-items: flex-start;
+    animation: giftMoving 0.3s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+.subTarot3{
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: start;
+    background-image: url("/subTarot3.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 292.98px;
+    height: 432.06px;
+    transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(0deg);
+    top:480%;
+    left:-100%;
+    opacity: 1;
+    z-index: 6;
+    padding: 45px 50px 0 57px;
+    font-family: Jua;
+    animation: abilMoving 0.3s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.synopReady {
+    text-align: center;
+    font-size: 35px;
+    width: 100%;
+}
+.profileReady {
+    text-align: center;
+    font-size: 35px;
+    width: 100%;
+}
+.giftReady {
+    text-align: center;
+    font-size: 35px;
+    width: 100%;
+}
+.abilReady {
+    text-align: center;
+    font-size: 35px;
+    width: 100%;
+}
+
+.expandBtn {
+    margin: 55px auto 0;
+    font-size: 60px;
+    text-align: center;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.reduceBtnWrapper {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.reduceBtn {
+    margin-top: 15px;
+    margin-right: 10px;
+    font-size: 20px;
+    flex-grow: 0;
+    cursor: pointer;
 }
 
 .Fantasy{
     font-family: Mea Culpa;
-    font-size: 50px;
+    font-size: 35px;
     padding : 0 8px;
     animation: fadeIn 1s linear forwards;
     cursor: default;
+    flex-basis: 50%;
 }
 
 .profileHead{
+    margin-top: 10px;
+    cursor: default;
     font-size: 25px;
-    height: 25px;
-    margin-top: -10px;
     animation: fadeIn 1s linear forwards;
+    flex-basis: 50%;
 }
 
 .giftHead{
-    font-size: 25px;
-    height: 25px;
-    margin-top: -10px;
+    cursor: default;
+    margin-top: 15px;
+    font-size: 20px;
     animation: fadeIn 1s linear forwards;
+    flex-basis: 50%;
+}
+
+.abilHead{
+    margin-top: 13px;
+    cursor: default;
+    font-size: 25px;
+    animation: fadeIn 1s linear forwards;
+    flex-basis: 50%;
 }
 
 .synopWrapper{
@@ -168,7 +240,7 @@
     flex-direction: column;
     margin-top: 10px;
     padding : 0 5px;
-    height: 600px;
+    height: 250px;
     animation: fadeIn 1s linear forwards;
 }
 
@@ -177,7 +249,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 15px;
-    height: 300px;
+    height: 260px;
     animation: fadeIn 1s linear forwards;
 }
 
@@ -186,7 +258,16 @@
     display: flex;
     flex-direction: column;
     margin-top: 15px;
-    height: 280px;
+    height: 260px;
+    animation: fadeIn 1s linear forwards;
+}
+
+.abilWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    height: 260px;
     animation: fadeIn 1s linear forwards;
 }
 
@@ -195,41 +276,51 @@
     cursor: default;
     white-space: pre-line;
     display: flex;
-    height: 600px;
-    width: 400px;
+    height: 250px;
+    width: 210px;
 }
 
 .profile{
-    padding-right: 13px;
+    padding-right: 8px;
     display: flex;
     font-size: 15px;
     cursor: default;
     white-space: pre-line;
-    height: 300px;
+    height: 260px;
     width: 200px;
 }
 
 .gift{
+    padding-right: 8px;
+    display: flex;
+    font-size: 16px;
+    height: 260px;
+    width: 190px;
+    cursor: default;
+    white-space: pre-line;
+}
+
+.abil{
     padding-right: 13px;
     display: flex;
-    font-size: 15px;
-    height: 280px;
+    font-size: 16px;
+    height: 260px;
     width: 190px;
     cursor: default;
     white-space: pre-line;
 }
 
 .synopTitle{
-    font-size: 25px;
+    font-size: 15px;
     position: absolute;
-    top: 93.3%;
-    left: 40.3%;
+    top: 93%;
+    left: 39%;
     height: fit-content;
     animation: fadeIn 1s linear forwards;
     cursor: default;
 }
 
-.proFileTitle{
+.profileTitle{
     position: absolute;
     top: 94%;
     left: 41%;
@@ -244,6 +335,17 @@
     position: absolute;
     top: 94%;
     left: 45%;
+    z-index: 15;
+    font-size: 15px;
+    height: fit-content;
+    animation: fadeIn 1s linear forwards;
+    cursor: default;
+}
+
+.abilTitle{
+    position: absolute;
+    top: 93%;
+    left: 42%;
     z-index: 15;
     font-size: 15px;
     height: fit-content;
@@ -272,8 +374,8 @@
     position: absolute;
     left: 0;
     right: 0;
-    width: 410px;
-    height: 70px;
+    width: 210px;
+    height: 50px;
     pointer-events: none;
     opacity: 0;
     z-index: 10;
@@ -308,12 +410,26 @@
     transition: opacity 0.3s;
 }
 
+.fadeTop4,
+.fadeBot4 {
+    flex-shrink: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 190px;
+    height: 50px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.3s;
+}
+
 .fadeTop1 {
     top: 0;
     background: linear-gradient(
         to bottom,
-        #f7e4c2 0%,
-        #f7e4c2 15%,
+        #f6e5ba 0%,
+        #f6e5ba 15%,
         transparent 85%,
         transparent 100%
     );
@@ -344,20 +460,32 @@
     transform: translateY(-5%);
 }
 
+.fadeTop4 {
+    top: 0;
+    background: linear-gradient(
+        to bottom,
+        #fae7ae 0%,
+        #fae7ae 15%,
+        transparent 85%,
+        transparent 100%
+    );
+    transform: translateY(-5%);
+}
+
 .fadeBot1 {
     bottom: 0;
     background: linear-gradient(
         to top,
-        #f7e4c2 0%,
-        #f7e4c2 35%,
-        transparent 65%,
+        #f3e0b7 0%,
+        #f3e0b7 15%,
+        transparent 85%,
         transparent 100%
     );
     transform: translateY(5%);
 }
 
 .fadeBot2 {
-    bottom: 7%;
+    bottom: 0;
     background: linear-gradient(
         to top,
         #f5e5b8 0%,
@@ -380,22 +508,36 @@
     transform: translateY(5%);
 }
 
+.fadeBot4 {
+    bottom: 0;
+    background: linear-gradient(
+        to top,
+        #fae7ae 0%,
+        #fae7ae 35%,
+        transparent 65%,
+        transparent 100%
+    );
+    transform: translateY(5%);
+}
+
 .fadeTop1.visible,
 .fadeBot1.visible,
 .fadeTop2.visible,
 .fadeBot2.visible,
 .fadeTop3.visible,
-.fadeBot3.visible {
+.fadeBot3.visible,
+.fadeTop4.visible,
+.fadeBot4.visible {
     opacity: 1;
 }
 
-.vibeVerti{
-    animation: vibeVerti 0.1s linear forwards;
-    animation-iteration-count: 20;
+.theSunMoving{
+    animation: theSunMoving 1.5s ease-out forwards;
 }
 
-.shining{
-    animation: shining 2s linear forwards, vibeHori 0.1s ease-out forwards 20;
+.vibe{
+    opacity: 1;
+    animation: vibeVerti 0.08s linear forwards 20, vibeHori 0.08s linear forwards 20 !important;
 }
 
 .fadeIn{
@@ -404,6 +546,31 @@
 
 .fadeOut{
     animation: fadeOut 1s linear forwards;
+}
+
+.slot1{
+    opacity: 0.9;
+    animation : slot1 0.5s ease-out forwards;
+}
+
+.slot2{
+    opacity: 0.9;
+    animation : slot2 0.5s ease-out forwards;
+}
+
+.slot3{
+    opacity: 0.9;
+    animation : slot3 0.5s ease-out forwards;
+}
+
+.slot4{
+    opacity: 0.9;
+    animation : slot4 0.5s ease-out forwards;
+}
+
+.upright{
+    z-index: 20;
+    transform: translateX(-50%) translateY(-50%) scale(0.8) rotate(0deg) !important;
 }
 
 @keyframes fadeIn {
@@ -426,15 +593,64 @@
     }
 }
 
-@keyframes vibeVerti{
-    0% {
-        top: 55%;
+@keyframes theSunMoving {
+    40% {
+        transform: translateX(-50%) translateY(-50%) scale(1.2);
+        top: 440%;
+        left: 740%;
     }
     50% {
-        top: 56%;
+        filter: brightness(35) blur(3px);
     }
     100% {
-        top: 55%;
+        transform: translateX(-50%) translateY(-50%) scale(1.2);
+        filter: brightness(1) blur(0);
+        top:480%;
+        left:-100%;
+    }
+}
+
+@keyframes synopMoving {
+    100% {
+        transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(5deg);
+        top:550%;
+        left:15%;
+    }
+}
+
+@keyframes profileMoving {
+    100% {
+        transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(-2deg);
+        top:400%;
+        left:65%;
+    }
+}
+
+@keyframes giftMoving {
+    100% {
+        transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(1.5deg);
+        top:630%;
+        left:115%;
+    }
+}
+
+@keyframes abilMoving {
+    100% {
+        transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(1deg);
+        top:480%;
+        left:185%;
+    }
+}
+
+@keyframes vibeVerti{
+    0% {
+        margin-top: 0px;
+    }
+    50% {
+        margin-top: 4px;
+    }
+    100% {
+        margin-top: 0px;
     }
 }
 
@@ -443,51 +659,41 @@
         margin-left: 0px;
     }
     50% {
-        margin-left: 1px;
+        margin-left: 4px;
     }
     100% {
         margin-left: 0px;
     }
 }
 
-@keyframes shining {
+@keyframes slot1{
     100% {
-        opacity: 1;
-        filter: brightness(20) blur(7px);
+        transform: translateX(-50%) translateY(-50%) scale(1.1) rotate(0deg);
+        top: 450%;
+        left: 450%;
     }
 }
 
-@keyframes spreading1{
-    30% {
-        transform: translateX(-50%) translateY(-50%) scale(1.35);
-        left: -35%;
-        top: 62%;
-    }
+@keyframes slot2{
     100% {
-        transform: translateX(-50%) translateY(-50%) scale(1.35);
-        left: -35%;
-        top: 62%;
-        filter: brightness(1) blur(0px);
+        transform: translateX(-50%) translateY(-50%) scale(1.1) rotate(0deg);
+        top: 470%;
+        left: 780%;
     }
 }
 
-@keyframes spreading2{
-    30% {
-        transform: translateX(-50%) translateY(-50%) scale(1.35);
-        left: 135%;
-        top: 45%;
-    }
+@keyframes slot3{
     100% {
-        transform: translateX(-50%) translateY(-50%) scale(1.35);
-        left: 135%;
-        top: 45%;
-        filter: brightness(1) blur(0px);
+        transform: translateX(-50%) translateY(-50%) scale(1.1) rotate(0deg);
+        top: 420%;
+        left: 1110%;
     }
 }
 
-@keyframes gettingClear{
+@keyframes slot4{
     100% {
-        opacity: 0.85;
-        filter: brightness(1) blur(0px);
+        transform: translateX(-50%) translateY(-50%) scale(1.1) rotate(0deg);
+        top: 490%;
+        left: 1440%;
     }
 }

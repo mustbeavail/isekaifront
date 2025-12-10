@@ -2,6 +2,7 @@
 import styles from './mirrors.module.css';
 import { useState, useEffect, useRef } from "react";
 import SimResult from './simResult';
+import { useSearchParams } from 'next/navigation';
 
 export default function Mirrors({waitForRef, simResult}) {
 
@@ -12,6 +13,7 @@ export default function Mirrors({waitForRef, simResult}) {
     let bRef = useRef(null);
     let cRef = useRef(null);
     const [animeEnd, setAnimeEnd] = useState(false);
+    const searchParams = useSearchParams();
 
     const addFadeIn = (ref) => {
         ref.classList.add(styles.fadeIn);
@@ -42,11 +44,16 @@ export default function Mirrors({waitForRef, simResult}) {
         sessionStorage.removeItem('preferredIsekai');
     },[]);
 
-    // 애니메이션
+    // 애니메이션, url 쿼리 검사
     useEffect(()=>{
-        if(!animeEnd) {
-            document.body.style.overflow = 'hidden';
-            animeSeq();
+        const idx = searchParams.get('idx');
+        if(idx){
+            setAnimeEnd(true);
+        }else {
+            if(!animeEnd) {
+                document.body.style.overflow = 'hidden';
+                animeSeq();
+            }
         }
         if(animeEnd) document.body.style.overflow = '';
         return () => {
