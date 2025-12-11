@@ -150,8 +150,8 @@ const Reincarnation = () => {
             '전생특전':'테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전',
             '고유능력':'테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력'
         };
-        const simIdx = {'simIdx':1};
-        const subGenre = {'subGenre':'용사물'};
+        const simIdx = 1;
+        const subGenre = '용사물';
         setCallbackAnime(true);
         callbackAnimeSeq();
         setSimResult({whole, simIdx, subGenre});
@@ -235,7 +235,7 @@ const Reincarnation = () => {
 
         document.body.style.overflowX = 'hidden';
 
-        const idx = searchParams.get('idx');
+        const idx = searchParams.get('simIdx');
         const run = async () => {
             if(idx){
                 await getResultByIdx(idx);
@@ -443,7 +443,7 @@ const Reincarnation = () => {
                                 </> : null
                             }
                             <div className={styles.buttons}>
-                                <Link href="/component/reincarnation" className={styles.buttonItem}>🌍 다른 세계 보러가기</Link>
+                                <Link href="/component/archive" className={styles.buttonItem}>🌍 다른 세계 보러가기</Link>
                                 <Link href="/component/reincarnation" className={styles.buttonItem}>🕰️ 내 이전 세계 보러가기</Link>
                             </div>
                         </div>

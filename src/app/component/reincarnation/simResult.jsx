@@ -138,7 +138,7 @@ export default function SimResult({simResult, waitForRef}) {
             location.href='/';
         };
         animeSeq();
-        router.replace(`/component/reincarnation?idx=${simResult.simIdx}`);
+        router.replace(`/component/reincarnation?simIdx=${simResult.simIdx}`);
         genreToEng(simResult.whole.세계관명시);
     },[]);
 
@@ -194,7 +194,7 @@ export default function SimResult({simResult, waitForRef}) {
                     <div className={styles.buttonItem} onClick={!animeEnd ? '' : returnToHome}>다시하기</div>
                     <div className={styles.buttonItem} onClick={!animeEnd ? '' : ()=>setClearInfo(prev=> !prev)}>📸감상하기</div>
                     <div className={styles.buttonItem} onClick={!animeEnd ? '' : ()=>setShowModal(prev=> !prev)}>🌐결과 공유하기</div>
-                    <Link href="/component/reincarnation" className={styles.buttonItem}>🌍 다른 세계 보러가기</Link>
+                    <Link href="/component/archive" className={styles.buttonItem}>🌍 다른 세계 보러가기</Link>
                 </div>
                 <div ref={isekaiImageRef} className={styles.isekaiImageWrapper}>
                     <img className={styles.isekaiImage} src={'/fantasy.webp'} alt={'판타지 배경'}/>

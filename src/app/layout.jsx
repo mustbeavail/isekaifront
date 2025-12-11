@@ -1,5 +1,6 @@
 import ReduxProvider from "./ReduxProvider";
 import "@/app/globals.css";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: 'IsekaiSimulator',
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
       <body>
         <ReduxProvider>
           {children}
+          <Toaster position="bottom-center"/>
         </ReduxProvider>
       </body>
     </html>
