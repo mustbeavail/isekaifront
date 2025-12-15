@@ -1,0 +1,14 @@
+.mainTablet{
+    position: absolute;
+    background-image: url("/tablet.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 440%;
+    left: 740%;
+    width: 158.55px;
+    height: 229.02px;
+    transform: translateX(-50%) translateY(-50%) scale(2);
+    opacity: 1;
+    z-index: 10;
+}

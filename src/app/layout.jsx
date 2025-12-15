@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
-        <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Jua&family=Mea+Culpa&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Condiment&family=Fugaz+One&family=Jua&family=Lavishly+Yours&family=Mea+Culpa&display=swap" rel="stylesheet"/>
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
       </head>
       <body>

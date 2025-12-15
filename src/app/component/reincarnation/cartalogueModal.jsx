@@ -48,7 +48,7 @@ export default function CatalModal({ visible, onClose, onSend }) {
                 aria-modal="true"
                 aria-labelledby="modalTitle"
             >
-                <button className={styles.closeBtn} onClick={onClose} aria-label="Close modal">
+                <button className={styles.closeBtn} onClick={()=>{onClose(); setSelectedTopic(null);}} aria-label="Close modal">
                     &times;
                 </button>
 
@@ -84,7 +84,7 @@ export default function CatalModal({ visible, onClose, onSend }) {
                         </button>
                         <button
                             className={`${styles.backBtn} ${styles.selBtn}`}
-                            onClick={() => onSend(selectedTopic.title.replace(/\s+/g, ""), onClose())}
+                            onClick={() => {onSend(selectedTopic.title.replace(/\s+/g, ""), onClose()); setSelectedTopic(null)}}
                             type="button"
                         >
                             선택 하기
