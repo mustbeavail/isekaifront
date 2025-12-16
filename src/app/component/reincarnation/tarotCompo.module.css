@@ -24,6 +24,65 @@
     background-image: url("/judgement.webp");
 }
 
+.sub4Wrapper{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.sub4Wrapper:hover{
+    opacity: 1;
+    animation: none;
+}
+
+.sub1Wrapper{
+    position: relative;
+    margin-top: -100px;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.sub1Wrapper:hover{
+    opacity: 1;
+    animation: none;
+}
+
+.sub2Wrapper{
+    position: relative;
+    margin-top: -100px;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.sub2Wrapper:hover{
+    opacity: 1;
+    animation: none;
+}
+
+.sub3Wrapper{
+    position: relative;
+    margin-top: -100px;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+}
+
+.sub3Wrapper:hover{
+    opacity: 1;
+    animation: none;
+}
+
+.subWrapperCover{
+    position: relative;
+    margin-top: -100px;
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
 .emptyCard{
     display: flex;
     flex-wrap: wrap;
@@ -491,22 +550,22 @@
 }
 
 .slot1{
-    opacity: 0.9;
+    opacity: 1;
     animation : slot1 0.5s ease-out forwards;
 }
 
 .slot2{
-    opacity: 0.9;
+    opacity: 1;
     animation : slot2 0.5s ease-out forwards;
 }
 
 .slot3{
-    opacity: 0.9;
+    opacity: 1;
     animation : slot3 0.5s ease-out forwards;
 }
 
 .slot4{
-    opacity: 0.9;
+    opacity: 1;
     animation : slot4 0.5s ease-out forwards;
 }
 
@@ -515,27 +574,32 @@
     transform: translateX(-50%) translateY(-50%) scale(0.8) rotate(0deg) !important;
 }
 
+.float{
+    opacity: 0.75;
+    animation : float 4.5s linear infinite;
+}
+
 @keyframes synopMoving {
     100% {
         transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(5deg);
         top:550%;
-        left:15%;
+        left:25%;
     }
 }
 
 @keyframes profileMoving {
     100% {
-        transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(-2deg);
-        top:400%;
+        transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(-4deg);
+        top:405%;
         left:65%;
     }
 }
 
 @keyframes giftMoving {
     100% {
-        transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(1.5deg);
-        top:630%;
-        left:115%;
+        transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(7deg);
+        top:643%;
+        left:160%;
     }
 }
 
@@ -543,39 +607,39 @@
     100% {
         transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(1deg);
         top:480%;
-        left:185%;
+        left:195%;
     }
 }
 
 @keyframes slot1{
     100% {
         transform: translateX(-50%) translateY(-50%) scale(1.1) rotate(0deg);
-        top: 450%;
-        left: 450%;
+        top: 250%;
+        left: 455%;
     }
 }
 
 @keyframes slot2{
     100% {
         transform: translateX(-50%) translateY(-50%) scale(1.1) rotate(0deg);
-        top: 470%;
-        left: 780%;
+        top: 260%;
+        left: 850%;
     }
 }
 
 @keyframes slot3{
     100% {
         transform: translateX(-50%) translateY(-50%) scale(1.1) rotate(0deg);
-        top: 420%;
-        left: 1110%;
+        top: 650%;
+        left: 580%;
     }
 }
 
 @keyframes slot4{
     100% {
         transform: translateX(-50%) translateY(-50%) scale(1.1) rotate(0deg);
-        top: 490%;
-        left: 1440%;
+        top: 640%;
+        left: 1120%;
     }
 }
 
@@ -586,5 +650,23 @@
 
     to {
         opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%{
+        transform: translateY(0);
+    }
+    25%{
+        transform: translateY(-4%);
+    }
+    50%{
+        transform: translateY(0);
+    }
+    75%{
+        transform: translateY(4%);
+    }
+    100%{
+        transform: translateY(0);
     }
 }

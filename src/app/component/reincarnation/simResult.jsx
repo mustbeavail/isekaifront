@@ -7,7 +7,7 @@ import TarotCompo from './tarotCompo';
 import TabletCompo from './tabletCompo';
 import OriCompo from './oriCompo';
 
-export default function SimResult({simResult, waitForRef}) {
+export default function SimResult({simResult, waitForRef, setResultMount}) {
 
     const [mainMoved, setMainMoved] = useState(false);
     const [animeEnd, setAnimeEnd] = useState(false);
@@ -79,6 +79,7 @@ export default function SimResult({simResult, waitForRef}) {
             alert('이세계가 존재하지 않습니다. 다시 시도해주세요.');
             location.href='/';
         };
+        setResultMount(true);
         animeSeq();
         router.replace(`/component/reincarnation?simIdx=${simResult.simIdx}`);
         genreToEng(simResult.whole.세계관명시);

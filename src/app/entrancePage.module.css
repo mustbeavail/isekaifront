@@ -25,7 +25,7 @@
     position: absolute;
     display: inline-block;
     top: 50%;
-    left: 35%;
+    left: 45%;
     height: fit-content;
     width: fit-content;
     animation: walking 1s infinite;
@@ -44,6 +44,7 @@
     animation: driving 0.5s forwards;
     animation-delay: 3s;
     width: 400px;
+    opacity: 0;
 }
 
 .dead {
@@ -53,21 +54,23 @@
 }
 
 @keyframes driving{
-    100% {left: -100%};
+    1% {opacity: 1;}
+    95% {opacity: 1;}
+    100% {left: -100%; opacity:0;}
 }
 
 @keyframes walking {
-    0% {top: 50%; left: 35%;}
-    10% {top: 48%; left: 33%;}
-    20% {top: 50%; left: 33%;}
-    30% {top: 48%; left: 34%;}
-    40% {top: 50%; left: 35%;}
-    50% {top: 48%; left: 33%;}
-    60% {top: 50%; left: 32%;}
-    70% {top: 48%; left: 33%;}
-    80% {top: 50%; left: 34%;}
-    90% {top: 48%; left: 35%;}
-    100% {top: 50%; left: 35%;}
+    0% {top: 50%; left: 45%;}
+    10% {top: 48%; left: 43%;}
+    20% {top: 50%; left: 43%;}
+    30% {top: 48%; left: 44%;}
+    40% {top: 50%; left: 45%;}
+    50% {top: 48%; left: 43%;}
+    60% {top: 50%; left: 42%;}
+    70% {top: 48%; left: 43%;}
+    80% {top: 50%; left: 44%;}
+    90% {top: 48%; left: 45%;}
+    100% {top: 50%; left: 45%;}
 }
 
 @keyframes flyingMovement {

@@ -52,8 +52,12 @@
 }
 
 @keyframes driving {
+    99% {
+        opacity: 1;
+    }
     100% {
         left: -80%;
+        opacity: 0;
     }
 }
 
@@ -157,9 +161,11 @@
     z-index: 2;
     animation: clipboardMoving 0.9s linear forwards;
     animation-delay: 2.5s;
+    opacity: 0;
 }
 
 .clipboardWrapper.callbackAnime {
+    opacity: 1;
     left: 50%;
     transform: translateX(-50%) rotate(0deg);
     animation : callbackClipboard 1s linear forwards;
@@ -218,7 +224,7 @@
     gap: 10px;
     width: 100%;
     height: fit-content;
-    margin-top: 5%;
+    margin-top: 5px;
     margin-left: auto;
 }
 
@@ -466,6 +472,10 @@
 }
 
 @keyframes clipboardMoving {
+    1% {
+        opacity: 1;
+    }
+
     40% {
         left: 60%;
     }
@@ -490,6 +500,7 @@
     100% {
         left: 50%;
         transform: translateX(-50%) rotate(0deg);
+        opacity: 1;
     }
 }
 
@@ -497,8 +508,12 @@
     30% {
         transform: translateX(-50%) rotate(15deg);
     }
+    99% {
+        opacity: 1;
+    }
     100% {
         left: -100%;
+        opacity: 0;
     }
 }
 
@@ -507,6 +522,15 @@
     animation: fadeIn 2s linear forwards;
     width: 100%;
     min-height: 100vh;
+}
+
+.lightOutResult {
+    background-color: black;
+    animation: fadeIn 2s linear forwards;
+    width: 100%;
+    min-width: 1700px;
+    height: 100vh;
+    min-height: 900px;
 }
 
 .loadingPhrase {

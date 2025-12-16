@@ -127,136 +127,145 @@ export default function TarotCompo ({mainRef, subRef1, subRef2, subRef3, subRef4
             ></div>
             {!mainMoved ? null :
                 <>
-                    <div 
-                        ref={subRef4}
-                        className={!synopSelected? styles.emptyCard : `${styles.emptyCard} ${styles[synopClass]}`}
-                        onMouseEnter={()=>{addUpright(subRef4, synopSelected)}}
-                        onMouseLeave={()=>{delUpright(subRef4, synopSelected)}}>
-                        {synopSelected ?
+                    <div className={synopSelected ? `${styles.sub4Wrapper} ${styles.float}` : styles.sub4Wrapper}>
+                        <div 
+                            ref={subRef4}
+                            className={!synopSelected? styles.emptyCard : `${styles.emptyCard} ${styles[synopClass]}`}
+                            onMouseEnter={()=>{addUpright(subRef4, synopSelected)}}
+                            onMouseLeave={()=>{delUpright(subRef4, synopSelected)}}>
+                            {synopSelected ?
+                                    <>
+                                        <span className={styles[genre]}>{genre}</span>
+                                        <div className={styles.reduceBtnWrapper}>
+                                            <span
+                                                className={styles.reduceBtn}
+                                                onClick={()=>{
+                                                    returnSlot(Number(synopClass.replace(/\D/g, "")));
+                                                    setSynopSelected(false);
+                                                    setSynopClass('')}}>✖️
+                                            </span>
+                                        </div>
+                                        <div className={styles.synopWrapper}>
+                                            <div className={!showTopFade1 ? styles.fadeTop1 : `${styles.fadeTop1} ${styles.visible}`}></div>
+                                            <SimpleBar ref={scrollRef1} style={{ flexShrink: 0, maxHeight: 250, minWidth: 210}}>
+                                                <span className={styles.synopsis}>{simResult.whole.시놉시스}</span>
+                                            </SimpleBar>
+                                            <div className={!showBotFade1 ? styles.fadeBot1 : `${styles.fadeBot1} ${styles.visible}`}></div>
+                                        </div>
+                                    </>
+                                    :
+                                    <>
+                                        <span className={styles.synopReady}>시놉시스</span>
+                                        <span className={styles.expandBtn} onClick={()=>{setSynopSelected(true)}}>❔</span>
+                                    </>
+                            }
+                            <span className={styles.synopTitle}>SYNOPSIS</span>
+                        </div>
+                    </div>
+                    <div className={profileSelected ? `${styles.sub1Wrapper} ${styles.float}` : styles.sub1Wrapper}>
+                        <div
+                            ref={subRef1}
+                            className={!profileSelected ? styles.subTarot1 : `${styles.subTarot1} ${styles[profileClass]}`}
+                            onMouseEnter={()=>{addUpright(subRef1, profileSelected)}}
+                            onMouseLeave={()=>{delUpright(subRef1, profileSelected)}}>
+                            {profileSelected ?
                                 <>
-                                    <span className={styles[genre]}>{genre}</span>
+                                    <span className={styles.profileHead}>새로운 몸</span>
                                     <div className={styles.reduceBtnWrapper}>
-                                        <span
-                                            className={styles.reduceBtn}
-                                            onClick={()=>{
-                                                returnSlot(Number(synopClass.replace(/\D/g, "")));
-                                                setSynopSelected(false);
-                                                setSynopClass('')}}>✖️
-                                        </span>
+                                            <span
+                                                className={styles.reduceBtn}
+                                                onClick={()=>{
+                                                    returnSlot(Number(profileClass.replace(/\D/g, "")));
+                                                    setProfileSelected(false);
+                                                    setProfileClass('')}}>✖️
+                                            </span>
                                     </div>
-                                    <div className={styles.synopWrapper}>
-                                        <div className={!showTopFade1 ? styles.fadeTop1 : `${styles.fadeTop1} ${styles.visible}`}></div>
-                                        <SimpleBar ref={scrollRef1} style={{ flexShrink: 0, maxHeight: 250, minWidth: 210}}>
-                                            <span className={styles.synopsis}>{simResult.whole.시놉시스}</span>
+                                    <div className={styles.profileWrapper}>
+                                        <div className={!showTopFade2 ? styles.fadeTop2 : `${styles.fadeTop2} ${styles.visible}`}></div>
+                                        <SimpleBar ref={scrollRef2} style={{ flexShrink: 0, maxHeight: 260, minWidth: 200}}>
+                                            <span className={styles.profile}>{simResult.whole.프로필}</span>
                                         </SimpleBar>
-                                        <div className={!showBotFade1 ? styles.fadeBot1 : `${styles.fadeBot1} ${styles.visible}`}></div>
+                                        <div className={!showBotFade2 ? styles.fadeBot2 : `${styles.fadeBot2} ${styles.visible}`}></div>
                                     </div>
-                                </>
-                                :
+                                    
+                                </> :
                                 <>
-                                    <span className={styles.synopReady}>시놉시스</span>
-                                    <span className={styles.expandBtn} onClick={()=>{setSynopSelected(true)}}>❔</span>
+                                    <span className={styles.profileReady}>새로운 몸</span>
+                                    <span className={styles.expandBtn} onClick={()=>{setProfileSelected(true)}}>❔</span>
                                 </>
-                        }
-                        <span className={styles.synopTitle}>SYNOPSIS</span>
+                            }
+                            <span className={styles.profileTitle}>PROFILE</span>
+                        </div>
                     </div>
-                    <div
-                        ref={subRef1}
-                        className={!profileSelected ? styles.subTarot1 : `${styles.subTarot1} ${styles[profileClass]}`}
-                        onMouseEnter={()=>{addUpright(subRef1, profileSelected)}}
-                        onMouseLeave={()=>{delUpright(subRef1, profileSelected)}}>
-                        {profileSelected ?
-                            <>
-                                <span className={styles.profileHead}>새로운 몸</span>
-                                <div className={styles.reduceBtnWrapper}>
-                                        <span
-                                            className={styles.reduceBtn}
-                                            onClick={()=>{
-                                                returnSlot(Number(profileClass.replace(/\D/g, "")));
-                                                setProfileSelected(false);
-                                                setProfileClass('')}}>✖️
-                                        </span>
-                                </div>
-                                <div className={styles.profileWrapper}>
-                                    <div className={!showTopFade2 ? styles.fadeTop2 : `${styles.fadeTop2} ${styles.visible}`}></div>
-                                    <SimpleBar ref={scrollRef2} style={{ flexShrink: 0, maxHeight: 260, minWidth: 200}}>
-                                        <span className={styles.profile}>{simResult.whole.프로필}</span>
-                                    </SimpleBar>
-                                    <div className={!showBotFade2 ? styles.fadeBot2 : `${styles.fadeBot2} ${styles.visible}`}></div>
-                                </div>
-                                
-                            </> :
-                            <>
-                                <span className={styles.profileReady}>새로운 몸</span>
-                                <span className={styles.expandBtn} onClick={()=>{setProfileSelected(true)}}>❔</span>
-                            </>
-                        }
-                        <span className={styles.profileTitle}>PROFILE</span>
+                    <div className={giftSelected ? `${styles.sub2Wrapper} ${styles.float}` : styles.sub2Wrapper}>
+                        <div
+                            ref={subRef2}
+                            className={!giftSelected ? styles.subTarot2 : `${styles.subTarot2} ${styles[giftClass]}`}
+                            onMouseEnter={()=>{addUpright(subRef2, giftSelected)}}
+                            onMouseLeave={()=>{delUpright(subRef2, giftSelected)}}>
+                            {giftSelected ?
+                                <>
+                                    <span className={styles.giftHead}>여신의 선물</span>
+                                    <div className={styles.reduceBtnWrapper}>
+                                            <span
+                                                className={styles.reduceBtn}
+                                                onClick={()=>{
+                                                    returnSlot(Number(giftClass.replace(/\D/g, "")));
+                                                    setGiftSelected(false);
+                                                    setGiftClass('')}}>✖️
+                                            </span>
+                                    </div>
+                                    <div className={styles.giftWrapper}>
+                                        <div className={!showTopFade3 ? styles.fadeTop3 : `${styles.fadeTop3} ${styles.visible}`}></div>
+                                        <SimpleBar ref={scrollRef3} style={{ flexShrink: 0, maxHeight: 260, minWidth: 190}}>
+                                            <span className={styles.gift}>{simResult.whole.전생특전}</span>
+                                        </SimpleBar>
+                                        <div className={!showBotFade3 ? styles.fadeBot3 : `${styles.fadeBot3} ${styles.visible}`}></div>
+                                    </div>
+                                </> :
+                                <>
+                                    <span className={styles.giftReady}>여신의 선물</span>
+                                    <span className={styles.expandBtn} onClick={()=>{setGiftSelected(true)}}>❔</span>
+                                </>
+                            }
+                            <span className={styles.giftTitle}>GIFT</span>
+                        </div>
                     </div>
-                    <div
-                        ref={subRef2}
-                        className={!giftSelected ? styles.subTarot2 : `${styles.subTarot2} ${styles[giftClass]}`}
-                        onMouseEnter={()=>{addUpright(subRef2, giftSelected)}}
-                        onMouseLeave={()=>{delUpright(subRef2, giftSelected)}}>
-                        {giftSelected ?
-                            <>
-                                <span className={styles.giftHead}>여신의 선물</span>
-                                <div className={styles.reduceBtnWrapper}>
-                                        <span
-                                            className={styles.reduceBtn}
-                                            onClick={()=>{
-                                                returnSlot(Number(giftClass.replace(/\D/g, "")));
-                                                setGiftSelected(false);
-                                                setGiftClass('')}}>✖️
-                                        </span>
-                                </div>
-                                <div className={styles.giftWrapper}>
-                                    <div className={!showTopFade3 ? styles.fadeTop3 : `${styles.fadeTop3} ${styles.visible}`}></div>
-                                    <SimpleBar ref={scrollRef3} style={{ flexShrink: 0, maxHeight: 260, minWidth: 190}}>
-                                        <span className={styles.gift}>{simResult.whole.전생특전}</span>
-                                    </SimpleBar>
-                                    <div className={!showBotFade3 ? styles.fadeBot3 : `${styles.fadeBot3} ${styles.visible}`}></div>
-                                </div>
-                            </> :
-                            <>
-                                <span className={styles.giftReady}>여신의 선물</span>
-                                <span className={styles.expandBtn} onClick={()=>{setGiftSelected(true)}}>❔</span>
-                            </>
-                        }
-                        <span className={styles.giftTitle}>GIFT</span>
+                    <div className={abilSelected ? `${styles.sub3Wrapper} ${styles.float}` : styles.sub3Wrapper}>
+                        <div
+                            ref={subRef3}
+                            className={!abilSelected ? styles.subTarot3 : `${styles.subTarot3} ${styles[abilClass]}`}
+                            onMouseEnter={()=>{addUpright(subRef3, abilSelected)}}
+                            onMouseLeave={()=>{delUpright(subRef3, abilSelected)}}>
+                            {abilSelected ?
+                                <>
+                                    <span className={styles.abilHead}>고유능력</span>
+                                    <div className={styles.reduceBtnWrapper}>
+                                            <span
+                                                className={styles.reduceBtn}
+                                                onClick={()=>{
+                                                    returnSlot(Number(abilClass.replace(/\D/g, "")));
+                                                    setAbilSelected(false);
+                                                    setAbilClass('')}}>✖️
+                                            </span>
+                                    </div>
+                                    <div className={styles.abilWrapper}>
+                                        <div className={!showTopFade4 ? styles.fadeTop4 : `${styles.fadeTop4} ${styles.visible}`}></div>
+                                        <SimpleBar ref={scrollRef4} style={{ flexShrink: 0, maxHeight: 260, minWidth: 190}}>
+                                            <span className={styles.abil}>{simResult.whole.고유능력}</span>
+                                        </SimpleBar>
+                                        <div className={!showBotFade4 ? styles.fadeBot4 : `${styles.fadeBot4} ${styles.visible}`}></div>
+                                    </div>
+                                </> :
+                                <>
+                                    <span className={styles.abilReady}>고유능력</span>
+                                    <span className={styles.expandBtn} onClick={()=>{setAbilSelected(true)}}>❔</span>
+                                </>
+                            }
+                            <span className={styles.abilTitle}>ABILITY</span>
+                        </div>
                     </div>
-                    <div
-                        ref={subRef3}
-                        className={!abilSelected ? styles.subTarot3 : `${styles.subTarot3} ${styles[abilClass]}`}
-                        onMouseEnter={()=>{addUpright(subRef3, abilSelected)}}
-                        onMouseLeave={()=>{delUpright(subRef3, abilSelected)}}>
-                        {abilSelected ?
-                            <>
-                                <span className={styles.abilHead}>고유능력</span>
-                                <div className={styles.reduceBtnWrapper}>
-                                        <span
-                                            className={styles.reduceBtn}
-                                            onClick={()=>{
-                                                returnSlot(Number(abilClass.replace(/\D/g, "")));
-                                                setAbilSelected(false);
-                                                setAbilClass('')}}>✖️
-                                        </span>
-                                </div>
-                                <div className={styles.abilWrapper}>
-                                    <div className={!showTopFade4 ? styles.fadeTop4 : `${styles.fadeTop4} ${styles.visible}`}></div>
-                                    <SimpleBar ref={scrollRef4} style={{ flexShrink: 0, maxHeight: 260, minWidth: 190}}>
-                                        <span className={styles.abil}>{simResult.whole.고유능력}</span>
-                                    </SimpleBar>
-                                    <div className={!showBotFade4 ? styles.fadeBot4 : `${styles.fadeBot4} ${styles.visible}`}></div>
-                                </div>
-                            </> :
-                            <>
-                                <span className={styles.abilReady}>고유능력</span>
-                                <span className={styles.expandBtn} onClick={()=>{setAbilSelected(true)}}>❔</span>
-                            </>
-                        }
-                        <span className={styles.abilTitle}>ABILITY</span>
-                    </div>                        
+                    <div className={styles.subWrapperCover}></div>
                 </>
             }
         </>

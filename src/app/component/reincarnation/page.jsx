@@ -43,6 +43,7 @@ const Reincarnation = () => {
     let isFirst = useSelector(state => state.guest.isFirst);
     const searchParams = useSearchParams();
     const [initDone, setInitDone] = useState(false);
+    const [resultMount, setResultMount] = useState(false);
     
 
     // ref 기다리기
@@ -144,7 +145,7 @@ const Reincarnation = () => {
 
         /////////////////////////////////////////////////////////////////
         const whole = {
-            '세계관명시': '어반판타지',
+            '세계관명시': '판타지',
             '시놉시스':'테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스',
             '프로필':'테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필',
             '전생특전':'테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전',
@@ -272,7 +273,7 @@ const Reincarnation = () => {
     },[]);
 
     return (
-        <div className={animeEnd ? styles.lightOut : ''}>
+        <div className={animeEnd && !resultMount ? styles.lightOut : animeEnd && resultMount ? styles.lightOutResult : ''}>
             <div className="container">
                 {!initDone ? null : !animeEnd ?
                     <>
@@ -448,7 +449,7 @@ const Reincarnation = () => {
                             </div>
                         </div>
                     </> : animeEnd && !loadingDone ? <span ref={loadingPhraseRef} className={styles.loadingPhrase}>{loadingPhrase}</span> :
-                    animeEnd && loadingDone ? <Mirrors waitForRef={waitForRef} simResult={simResult}/> : null
+                    animeEnd && loadingDone ? <Mirrors waitForRef={waitForRef} simResult={simResult} setResultMount={setResultMount}/> : null
                 }
             </div>
         </div>
