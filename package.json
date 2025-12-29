@@ -20,5 +20,10 @@
     "react-redux": "^9.2.0",
     "simplebar-react": "^3.3.2",
     "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.0.3",
+    "@types/react": "19.2.7",
+    "typescript": "5.9.3"
   }
 }

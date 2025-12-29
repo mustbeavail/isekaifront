@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import styles from "@/app/entrancePage.module.css";
+import styles from "./entrancePage.module.css";
 
 export default function Entrance() {
 

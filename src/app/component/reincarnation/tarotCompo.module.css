@@ -20,8 +20,8 @@
     background-image: url("/death.webp");
 }
 
-.mainTarot.judgement{
-    background-image: url("/judgement.webp");
+.mainTarot.theMoon{
+    background-image: url("/theMoon.webp");
 }
 
 .sub4Wrapper{
@@ -172,21 +172,25 @@
 }
 
 .synopReady {
+    cursor: default;
     text-align: center;
     font-size: 35px;
     width: 100%;
 }
 .profileReady {
+    cursor: default;
     text-align: center;
     font-size: 35px;
     width: 100%;
 }
 .giftReady {
+    cursor: default;
     text-align: center;
     font-size: 35px;
     width: 100%;
 }
 .abilReady {
+    cursor: default;
     text-align: center;
     font-size: 35px;
     width: 100%;

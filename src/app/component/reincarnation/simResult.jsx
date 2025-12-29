@@ -115,25 +115,25 @@ export default function SimResult({simResult, waitForRef, setResultMount}) {
                             <img
                                 className={styles.isekaiImage}
                                 src={simResult.subGenre == '능력자 배틀물' ||
-                                    simResult.subGenre == '히어로물' ? '/urbanFanBattle.webp' : '/urbanFantasy.webp'}
+                                    simResult.subGenre == '히어로물' ? '/urbanFanBattle.webp' : '/urbanFan.webp'}
                                 alt={'어반판타지배경'}
                             /> :
 
                         simResult.whole.세계관명시 == '다크판타지' ? 
                             <img
                                 className={styles.isekaiImage}
-                                src={simResult.subGenre == '코즈믹 호러' ? '/darkFanCosmic.webp' : '/darkFantasy.webp'}
+                                src={simResult.subGenre == '코즈믹 호러' ? '/darkFanCosmic.webp' : '/darkFan.webp'}
                                 alt={'다크판타지배경'}
                             /> :
 
                         simResult.whole.세계관명시 == '동양판타지' ?
-                            <img className={styles.isekaiImage} src={'/oriFantasy.webp'} alt={'동양판타지배경'}/> :
+                            <img className={styles.isekaiImage} src={'/oriFan.webp'} alt={'동양판타지배경'}/> :
 
                         simResult.whole.세계관명시 == 'SF' ?
                             <img
                                 className={styles.isekaiImage}
                                 src={simResult.subGenre == '사이버펑크' ? '/SFCyberpunk.webp' :
-                                    simResult.subGenre.includes('아포칼립스') ? '/SFApocalypse.webp' :
+                                    simResult.subGenre.includes('아포칼립스') ? '/SFApocal.webp' :
                                     simResult.subGenre == '거대로봇물' ? '/SFGiantMech.webp' :
                                     '/SF.webp'}
                                 alt={'SF배경'}

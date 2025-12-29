@@ -123,7 +123,7 @@ export default function TarotCompo ({mainRef, subRef1, subRef2, subRef3, subRef4
                 className={
                     simResult.whole.세계관명시 == '판타지' ? `${styles.mainTarot} ${styles.theSun}` :
                     simResult.whole.세계관명시 == '다크판타지' ? `${styles.mainTarot} ${styles.death}` :
-                    simResult.whole.세계관명시 == '어반판타지' ? `${styles.mainTarot} ${styles.judgement}` : ''}
+                    simResult.whole.세계관명시 == '어반판타지' ? `${styles.mainTarot} ${styles.theMoon}` : ''}
             ></div>
             {!mainMoved ? null :
                 <>
