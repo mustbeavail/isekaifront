@@ -152,7 +152,7 @@ const Reincarnation = () => {
             '고유능력':'테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력테스트용 고유능력'
         };
         const simIdx = 1;
-        const subGenre = '던전 공략물';
+        const subGenre = '능력자 배틀물';
         setCallbackAnime(true);
         callbackAnimeSeq();
         setSimResult({whole, simIdx, subGenre});

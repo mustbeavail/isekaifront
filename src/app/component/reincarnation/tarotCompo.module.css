@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-position: center;
     top: 440%;
-    left: 740%;
+    left: 680%;
     width: 158.55px;
     height: 229.02px;
     transform: translateX(-50%) translateY(-50%) scale(2);
@@ -205,7 +205,7 @@
 }
 
 .reduceBtnWrapper {
-    flex-basis: 50%;
+    flex-basis: 25%;
     display: flex;
     justify-content: flex-end;
 }
@@ -224,17 +224,16 @@
     padding : 0 8px;
     animation: fadeIn 1s linear forwards;
     cursor: default;
-    flex-basis: 50%;
+    flex-basis: 75%;
 }
 
 .DarkFantasy{
     font-family: Lavishly Yours;
-    margin-top: 10px;
     padding : 0 0 0 8px;
-    font-size: 23px;
+    font-size: 30px;
     animation: fadeIn 1s linear forwards;
     cursor: default;
-    flex-basis: 50%;
+    flex-basis: 75%;
 }
 
 .UrbanFantasy{
@@ -244,7 +243,7 @@
     padding : 0 0 0 8px;
     animation: fadeIn 1s linear forwards;
     cursor: default;
-    flex-basis: 50%;
+    flex-basis: 75%;
 }
 
 .profileHead{
@@ -252,23 +251,23 @@
     cursor: default;
     font-size: 25px;
     animation: fadeIn 1s linear forwards;
-    flex-basis: 50%;
+    flex-basis: 75%;
 }
 
 .giftHead{
     cursor: default;
-    margin-top: 15px;
-    font-size: 20px;
+    margin-top: 10px;
+    font-size: 25px;
     animation: fadeIn 1s linear forwards;
-    flex-basis: 50%;
+    flex-basis: 75%;
 }
 
 .abilHead{
-    margin-top: 13px;
+    margin-top: 12px;
     cursor: default;
     font-size: 25px;
     animation: fadeIn 1s linear forwards;
-    flex-basis: 50%;
+    flex-basis: 75%;
 }
 
 .synopWrapper{

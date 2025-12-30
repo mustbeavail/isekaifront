@@ -22,6 +22,7 @@ export default function SimResult({simResult, waitForRef, setResultMount}) {
     let subRef3 = useRef(null);
     let subRef4 = useRef(null);
     let menuRef = useRef(null);
+    let loadingRef = useRef(null);
     const router = useRouter();
 
     const waitFadeIn = (ref, resolve) => {
@@ -36,22 +37,26 @@ export default function SimResult({simResult, waitForRef, setResultMount}) {
         await new Promise(resolve=>{waitFadeIn(infoWrapperRef.current, resolve)});
         await new Promise(resolve=>{
             if(simResult.whole.세계관명시 == 'SF'){
-                mainRef.current.classList.add(styles.mainMovingTablet);
+                loadingRef.current.classList.add(styles.fakeLoading);
+                loadingRef.current.addEventListener('animationend', ()=>{mainRef.current.classList.add(styles.mainMovingTablet)});
+                mainRef.current.addEventListener('animationend', (e)=>{
+                    if(e.target !== mainRef.current) return;
+                    setMainMoved(true);
+                    setAnimeEnd(true);
+                    menuRef.current.classList.add(styles.fadeIn);})
                 resolve();
             }else{
                 infoWrapperRef.current.classList.add(styles.vibe);
                 mainRef.current.classList.add(styles.mainMoving);
+                mainRef.current.addEventListener('animationend', ()=>{
+                    setMainMoved(true);
+                    waitForRef(
+                        subRef1,
+                        (ref)=>{ref.addEventListener('animationend', ()=>{setAnimeEnd(true); menuRef.current.classList.add(styles.fadeIn);});});
+                })
                 resolve();
             };
         });
-        await new Promise(resolve=>{mainRef.current.addEventListener(
-            'animationend', ()=>{
-                setMainMoved(true);
-                waitForRef(
-                    subRef1,
-                    (ref)=>{ref.addEventListener('animationend', ()=>{setAnimeEnd(true); menuRef.current.classList.add(styles.fadeIn)});});
-                resolve();}
-        )});
     };
 
     // 시작화면으로 돌아가기 함수
@@ -147,19 +152,20 @@ export default function SimResult({simResult, waitForRef, setResultMount}) {
                             simResult.whole.세계관명시 == '다크판타지' ?
                             <TarotCompo
                                 mainRef = {mainRef} subRef1 = {subRef1} subRef2 = {subRef2}
-                                subRef3 = {subRef3} subRef4 = {subRef4} mainMoved= {mainMoved}
+                                subRef3 = {subRef3} subRef4 = {subRef4} mainMoved = {mainMoved}
                                 genre = {genre} simResult = {simResult}
                             /> :
                             simResult.whole.세계관명시 == 'SF' ?
                             <TabletCompo
                                 mainRef = {mainRef} subRef1 = {subRef1} subRef2 = {subRef2}
-                                subRef3 = {subRef3} subRef4 = {subRef4} mainMoved= {mainMoved}
-                                genre = {genre} simResult = {simResult}
+                                subRef3 = {subRef3} subRef4 = {subRef4} mainMoved = {mainMoved}
+                                genre = {genre} simResult = {simResult} loadingRef = {loadingRef}
+                                animeEnd = {animeEnd}
                             /> :
                             simResult.whole.세계관명시 == '동양판타지' ?
                             <OriCompo
                                 mainRef = {mainRef} subRef1 = {subRef1} subRef2 = {subRef2}
-                                subRef3 = {subRef3} subRef4 = {subRef4} mainMoved= {mainMoved}
+                                subRef3 = {subRef3} subRef4 = {subRef4} mainMoved = {mainMoved}
                                 genre = {genre} simResult = {simResult}
                             /> : null
                         }

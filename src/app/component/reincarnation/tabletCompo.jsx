@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 
-export default function TabletCompo ({mainRef, subRef1, subRef2, subRef3, subRef4, mainMoved, genre, simResult}) {
+export default function TabletCompo ({mainRef, subRef1, subRef2, subRef3, subRef4, mainMoved, genre, simResult, loadingRef, animeEnd}) {
 
     const [synopSelected, setSynopSelected] = useState(false);
     const [profileSelected, setProfileSelected] = useState(false);
@@ -118,47 +118,69 @@ export default function TabletCompo ({mainRef, subRef1, subRef2, subRef3, subRef
 
     return (
         <>
-            <div ref={mainRef} className={styles.tablet}></div>
+            <div ref={mainRef} className={styles.tablet}>
+                {!animeEnd ?
+                    <>
+                        <div className={styles.loadingPhrase}>GEMEXPRESS</div>
+                        <div className={styles.loadingBar}>
+                            <div ref={loadingRef} className={styles.loadingFill}></div>
+                        </div>
+                    </> :
+                    <>
+                        <div className={styles.infoBtnWrapper}>
+                            <div
+                                className={!synopSelected ? styles.infoBtn : `${styles.infoBtn} ${styles.infoBtn1Sel}`}
+                                onClick={()=>{setSynopSelected(prev => !prev)}}>
+                                {!synopSelected ?'ㆍ 시놉시스 ❔' :'ㆍ 시놉시스'}
+                            </div>
+                            <div
+                                className={!profileSelected ? styles.infoBtn : `${styles.infoBtn} ${styles.infoBtn2Sel}`}
+                                onClick={()=>{setProfileSelected(prev => !prev)}}>
+                                {!profileSelected ?'ㆍ 새로운 몸 ❔' :'ㆍ 새로운 몸'}
+                            </div>
+                            <div
+                                className={!giftSelected ? styles.infoBtn : `${styles.infoBtn} ${styles.infoBtn3Sel}`}
+                                onClick={()=>{setGiftSelected(prev => !prev)}}>
+                                {!giftSelected ?'ㆍ 여신의 선물 ❔' :'ㆍ 여신의 선물'}
+                            </div>
+                            <div
+                                className={!abilSelected ? styles.infoBtn : `${styles.infoBtn} ${styles.infoBtn4Sel}`}
+                                onClick={()=>{setAbilSelected(prev => !prev)}}>
+                                {!abilSelected ?'ㆍ 고유능력 ❔' :'ㆍ 고유능력'}
+                            </div>
+                        </div>
+                    </>
+                }
+            </div>
             {!mainMoved ? null :
                 <>
                     <div className={synopSelected ? `${styles.sub4Wrapper} ${styles.float}` : styles.sub4Wrapper}>
                         <div 
                             ref={subRef4}
-                            className={!synopSelected? styles.emptyCard : `${styles.emptyCard} ${styles[synopClass]}`}
-                            onMouseEnter={()=>{addUpright(subRef4, synopSelected)}}
-                            onMouseLeave={()=>{delUpright(subRef4, synopSelected)}}>
-                            {synopSelected ?
-                                    <>
-                                        <span className={styles[genre]}>{genre}</span>
-                                        <div className={styles.reduceBtnWrapper}>
-                                            <span
-                                                className={styles.reduceBtn}
-                                                onClick={()=>{
-                                                    returnSlot(Number(synopClass.replace(/\D/g, "")));
-                                                    setSynopSelected(false);
-                                                    setSynopClass('')}}>✖️
-                                            </span>
-                                        </div>
-                                        <div className={styles.synopWrapper}>
-                                            <div className={!showTopFade1 ? styles.fadeTop1 : `${styles.fadeTop1} ${styles.visible}`}></div>
-                                            <SimpleBar ref={scrollRef1} style={{ flexShrink: 0, maxHeight: 250, minWidth: 210}}>
-                                                <span className={styles.synopsis}>{simResult.whole.시놉시스}</span>
-                                            </SimpleBar>
-                                            <div className={!showBotFade1 ? styles.fadeBot1 : `${styles.fadeBot1} ${styles.visible}`}></div>
-                                        </div>
-                                    </>
-                                    :
-                                    <>
-                                        <span className={styles.synopReady}>시놉시스</span>
-                                        <span className={styles.expandBtn} onClick={()=>{setSynopSelected(true)}}>❔</span>
-                                    </>
-                            }
+                            className={!synopSelected? styles.subPopup1 : `${styles.subPopup1} ${styles[synopClass]}`}>
+                                <span className={styles[genre]}>{genre}</span>
+                                <div className={styles.reduceBtnWrapper}>
+                                    <span
+                                        className={styles.reduceBtn}
+                                        onClick={()=>{
+                                            returnSlot(Number(synopClass.replace(/\D/g, "")));
+                                            setSynopSelected(false);
+                                            setSynopClass('')}}>✖️
+                                    </span>
+                                </div>
+                                <div className={styles.synopWrapper}>
+                                    <div className={!showTopFade1 ? styles.fadeTop1 : `${styles.fadeTop1} ${styles.visible}`}></div>
+                                    <SimpleBar ref={scrollRef1} style={{ flexShrink: 0, maxHeight: 250, minWidth: 210}}>
+                                        <span className={styles.synopsis}>{simResult.whole.시놉시스}</span>
+                                    </SimpleBar>
+                                    <div className={!showBotFade1 ? styles.fadeBot1 : `${styles.fadeBot1} ${styles.visible}`}></div>
+                                </div>
                         </div>
                     </div>
                     <div className={profileSelected ? `${styles.sub1Wrapper} ${styles.float}` : styles.sub1Wrapper}>
                         <div
                             ref={subRef1}
-                            className={!profileSelected ? styles.subTarot1 : `${styles.subTarot1} ${styles[profileClass]}`}
+                            className={!profileSelected ? styles.subPopup2 : `${styles.subPopup2} ${styles[profileClass]}`}
                             onMouseEnter={()=>{addUpright(subRef1, profileSelected)}}
                             onMouseLeave={()=>{delUpright(subRef1, profileSelected)}}>
                             {profileSelected ?
@@ -192,7 +214,7 @@ export default function TabletCompo ({mainRef, subRef1, subRef2, subRef3, subRef
                     <div className={giftSelected ? `${styles.sub2Wrapper} ${styles.float}` : styles.sub2Wrapper}>
                         <div
                             ref={subRef2}
-                            className={!giftSelected ? styles.subTarot2 : `${styles.subTarot2} ${styles[giftClass]}`}
+                            className={!giftSelected ? styles.subPopup3 : `${styles.subPopup3} ${styles[giftClass]}`}
                             onMouseEnter={()=>{addUpright(subRef2, giftSelected)}}
                             onMouseLeave={()=>{delUpright(subRef2, giftSelected)}}>
                             {giftSelected ?
@@ -225,7 +247,7 @@ export default function TabletCompo ({mainRef, subRef1, subRef2, subRef3, subRef
                     <div className={abilSelected ? `${styles.sub3Wrapper} ${styles.float}` : styles.sub3Wrapper}>
                         <div
                             ref={subRef3}
-                            className={!abilSelected ? styles.subTarot3 : `${styles.subTarot3} ${styles[abilClass]}`}
+                            className={!abilSelected ? styles.subPopup4 : `${styles.subPopup4} ${styles[abilClass]}`}
                             onMouseEnter={()=>{addUpright(subRef3, abilSelected)}}
                             onMouseLeave={()=>{delUpright(subRef3, abilSelected)}}>
                             {abilSelected ?

@@ -71,7 +71,7 @@
 }
 
 .mainMovingTablet{
-    animation: mainMovingTablet 1.5s ease-out forwards;
+    animation: mainMovingTablet 1s ease-out forwards;
 }
 
 .vibe{
@@ -85,6 +85,11 @@
 
 .fadeOut{
     animation: fadeOut 1s linear forwards;
+}
+
+.fakeLoading{
+    animation: loadingFill 1.5s forwards;
+    animation-timing-function: cubic-bezier(.76,-0.01,.09,1);
 }
 
 @keyframes fadeIn {
@@ -111,7 +116,7 @@
     40% {
         transform: translateX(-50%) translateY(-50%) scale(1.2);
         top: 440%;
-        left: 740%;
+        left: 680%;
     }
     50% {
         filter: brightness(35) blur(3px);
@@ -126,12 +131,12 @@
 
 @keyframes mainMovingTablet {
     40% {
-        transform: translateX(-50%) translateY(-50%) scale(1.2);
+        transform: translateX(-50%) translateY(-50%) scale(1.4);
         top: 440%;
-        left: 740%;
+        left: 680%;
     }
     100% {
-        transform: translateX(-50%) translateY(-50%) scale(1.2);
+        transform: translateX(-50%) translateY(-50%) scale(1.4);
         top:480%;
         left:-100%;
     }
@@ -158,5 +163,11 @@
     }
     100% {
         margin-left: 0px;
+    }
+}
+
+@keyframes loadingFill{
+    100%{
+        width: 100%;
     }
 }
