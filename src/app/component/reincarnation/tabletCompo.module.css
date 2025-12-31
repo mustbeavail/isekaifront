@@ -28,8 +28,7 @@
     opacity: 0.5;
     width: 80px;
     height: 10px;
-    border-right: 0.3px solid rgb(79, 87, 86);
-    border-bottom: 0.3px solid rgb(79, 87, 86);
+    border: 0.3px solid rgb(217, 243, 240);
     border-radius: 3px;
     overflow: hidden;
 }
@@ -131,6 +130,10 @@
     flex-wrap: wrap;
     align-content: start;
     position: absolute;
+    background-image: url("/subPopup1.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     top:410%;
     left:-100%;
     width: 304.76px;
@@ -138,9 +141,8 @@
     opacity: 1;
     transform: translateX(-50%) translateY(-50%) scale(0.2);
     z-index: 9;
-    padding: 55px 40px 0;
+    padding: 55px 55px 0;
     font-family: Jua;
-    background-color: #90e4c1;
 }
 
 .subPopup2{
@@ -148,6 +150,10 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
+    background-image: url("/subPopup2.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     width: 304.76px;
     height: 432.82px;
     transform: translateX(-50%) translateY(-50%) scale(0.2);
@@ -155,7 +161,7 @@
     left:-100%;
     opacity: 1;
     z-index: 8;
-    padding: 45px 50px 0;
+    padding: 45px 65px 0;
     font-family: Jua;
 }
 
@@ -164,6 +170,10 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
+    background-image: url("/subPopup3.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     width: 292.98px;
     height: 432.06px;
     transform: translateX(-50%) translateY(-50%) scale(0.2);
@@ -171,7 +181,7 @@
     left:-100%;
     opacity: 1;
     z-index: 7;
-    padding: 50px 50px 0 55px;
+    padding: 50px 60px 0 65px;
     font-family: Jua;
 }
 
@@ -180,6 +190,10 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
+    background-image: url("/subPopup4.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     width: 292.98px;
     height: 432.06px;
     transform: translateX(-50%) translateY(-50%) scale(0.2);
@@ -191,31 +205,6 @@
     font-family: Jua;
 }
 
-.synopReady {
-    cursor: default;
-    text-align: center;
-    font-size: 35px;
-    width: 100%;
-}
-.profileReady {
-    cursor: default;
-    text-align: center;
-    font-size: 35px;
-    width: 100%;
-}
-.giftReady {
-    cursor: default;
-    text-align: center;
-    font-size: 35px;
-    width: 100%;
-}
-.abilReady {
-    cursor: default;
-    text-align: center;
-    font-size: 35px;
-    width: 100%;
-}
-
 .expandBtn {
     margin: 55px auto 0;
     font-size: 60px;
@@ -225,7 +214,7 @@
 }
 
 .reduceBtnWrapper {
-    flex-basis: 50%;
+    flex-basis: 25%;
     display: flex;
     justify-content: flex-end;
 }
@@ -238,20 +227,32 @@
     cursor: pointer;
 }
 
+.SF{
+    font-family: Saira Stencil One;
+    font-size: 35px;
+    padding : 0 8px;
+    animation: fadeIn 1s linear forwards;
+    cursor: default;
+    flex-basis: 75%;
+    color: #1F5F5A;
+}
+
 .profileHead{
     margin-top: 10px;
     cursor: default;
     font-size: 25px;
     animation: fadeIn 1s linear forwards;
-    flex-basis: 50%;
+    flex-basis: 75%;
+    color: #1F5F5A;
 }
 
 .giftHead{
     cursor: default;
-    margin-top: 15px;
-    font-size: 20px;
+    margin-top: 13px;
+    font-size: 25px;
     animation: fadeIn 1s linear forwards;
-    flex-basis: 50%;
+    flex-basis: 75%;
+    color: #1F5F5A;
 }
 
 .abilHead{
@@ -259,7 +260,8 @@
     cursor: default;
     font-size: 25px;
     animation: fadeIn 1s linear forwards;
-    flex-basis: 50%;
+    flex-basis: 75%;
+    color: #1F5F5A;
 }
 
 .synopWrapper{
@@ -305,7 +307,8 @@
     white-space: pre-line;
     display: flex;
     height: 250px;
-    width: 210px;
+    width: 190px;
+    color: #1F5F5A;
 }
 
 .profile{
@@ -314,18 +317,20 @@
     font-size: 15px;
     cursor: default;
     white-space: pre-line;
-    height: 260px;
-    width: 200px;
+    height: 245px;
+    width: 180px;
+    color: #1F5F5A;
 }
 
 .gift{
     padding-right: 8px;
     display: flex;
     font-size: 16px;
-    height: 260px;
-    width: 190px;
+    height: 255px;
+    width: 175px;
     cursor: default;
     white-space: pre-line;
+    color: #1F5F5A;
 }
 
 .abil{
@@ -336,49 +341,7 @@
     width: 190px;
     cursor: default;
     white-space: pre-line;
-}
-
-.synopTitle{
-    font-size: 15px;
-    position: absolute;
-    top: 93%;
-    left: 39%;
-    height: fit-content;
-    animation: fadeIn 1s linear forwards;
-    cursor: default;
-}
-
-.profileTitle{
-    position: absolute;
-    top: 94%;
-    left: 41%;
-    z-index: 15;
-    font-size: 15px;
-    height: fit-content;
-    animation: fadeIn 1s linear forwards;
-    cursor: default;
-}
-
-.giftTitle{
-    position: absolute;
-    top: 94%;
-    left: 45%;
-    z-index: 15;
-    font-size: 15px;
-    height: fit-content;
-    animation: fadeIn 1s linear forwards;
-    cursor: default;
-}
-
-.abilTitle{
-    position: absolute;
-    top: 93%;
-    left: 42%;
-    z-index: 15;
-    font-size: 15px;
-    height: fit-content;
-    animation: fadeIn 1s linear forwards;
-    cursor: default;
+    color: #1F5F5A;
 }
 
 .fadeTop1,
@@ -387,7 +350,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    width: 210px;
+    width: 190px;
     height: 50px;
     pointer-events: none;
     opacity: 0;
@@ -401,7 +364,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    width: 200px;
+    width: 170px;
     height: 50px;
     pointer-events: none;
     opacity: 0;
@@ -415,7 +378,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    width: 190px;
+    width: 160px;
     height: 50px;
     pointer-events: none;
     opacity: 0;
@@ -429,7 +392,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    width: 190px;
+    width: 180px;
     height: 50px;
     pointer-events: none;
     opacity: 0;
@@ -441,8 +404,8 @@
     top: 0;
     background: linear-gradient(
         to bottom,
-        #f6e5ba 0%,
-        #f6e5ba 15%,
+        #caf7e6 0%,
+        #caf7e6 15%,
         transparent 85%,
         transparent 100%
     );
@@ -453,8 +416,8 @@
     top: 0;
     background: linear-gradient(
         to bottom,
-        #f5e5b8 0%,
-        #f5e5b8 15%,
+        #d3fae6 0%,
+        #d3fae6 15%,
         transparent 85%,
         transparent 100%
     );
@@ -465,8 +428,8 @@
     top: 0;
     background: linear-gradient(
         to bottom,
-        #f7e6bb 0%,
-        #f7e6bb 15%,
+        #dff6e9 0%,
+        #dff6e9 15%,
         transparent 85%,
         transparent 100%
     );
@@ -477,8 +440,8 @@
     top: 0;
     background: linear-gradient(
         to bottom,
-        #fae7ae 0%,
-        #fae7ae 15%,
+        #eff8f7 0%,
+        #eff8f7 15%,
         transparent 85%,
         transparent 100%
     );
@@ -489,8 +452,8 @@
     bottom: 0;
     background: linear-gradient(
         to top,
-        #f3e0b7 0%,
-        #f3e0b7 15%,
+        #b4f1e0 0%,
+        #b4f1e0 15%,
         transparent 85%,
         transparent 100%
     );
@@ -501,20 +464,20 @@
     bottom: 0;
     background: linear-gradient(
         to top,
-        #f5e5b8 0%,
-        #f5e5b8 35%,
+        #eafdf3 0%,
+        #eafdf3 35%,
         transparent 65%,
         transparent 100%
     );
-    transform: translateY(5%);
+    transform: translateY(-10%);
 }
 
 .fadeBot3 {
     bottom: 0;
     background: linear-gradient(
         to top,
-        #f7e6bb 0%,
-        #f7e6bb 35%,
+        #d6f3e5 0%,
+        #d6f3e5 35%,
         transparent 65%,
         transparent 100%
     );
@@ -525,8 +488,8 @@
     bottom: 0;
     background: linear-gradient(
         to top,
-        #fae7ae 0%,
-        #fae7ae 35%,
+        #ebf8f5 0%,
+        #ebf8f5 35%,
         transparent 65%,
         transparent 100%
     );
@@ -545,22 +508,22 @@
 }
 
 .slot1{
-    opacity: 1;
+    opacity: 0.9;
     animation : slot1 0.5s ease-out forwards;
 }
 
 .slot2{
-    opacity: 1;
+    opacity: 0.9;
     animation : slot2 0.5s ease-out forwards;
 }
 
 .slot3{
-    opacity: 1;
+    opacity: 0.9;
     animation : slot3 0.5s ease-out forwards;
 }
 
 .slot4{
-    opacity: 1;
+    opacity: 0.9;
     animation : slot4 0.5s ease-out forwards;
 }
 
