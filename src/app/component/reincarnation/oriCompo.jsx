@@ -177,7 +177,7 @@ export default function OriCompo ({mainRef, subRef1, subRef2, subRef3, subRef4, 
                                     </div>
                                     <div className={styles.profileWrapper}>
                                         <div className={!showTopFade2 ? styles.fadeTop2 : `${styles.fadeTop2} ${styles.visible}`}></div>
-                                        <SimpleBar ref={scrollRef2} style={{ flexShrink: 0, maxHeight: 200, minWidth: 190}}>
+                                        <SimpleBar ref={scrollRef2} style={{ flexShrink: 0, maxHeight: 200, minWidth: 195}}>
                                             <span className={styles.profile}>{simResult.whole.프로필}</span>
                                         </SimpleBar>
                                         <div className={!showBotFade2 ? styles.fadeBot2 : `${styles.fadeBot2} ${styles.visible}`}></div>

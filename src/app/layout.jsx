@@ -3,8 +3,8 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
 export const metadata = {
-  title: 'IsekaiSimulator',
-  description: '이세계 전생 시뮬레이터',
+  title: '이세계 전생 시뮬레이션',
+  description: '다양한 이세계 세계관 전생 시뮬레이션',
 }
 
 export default function RootLayout({ children }) {

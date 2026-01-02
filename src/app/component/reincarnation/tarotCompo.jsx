@@ -182,7 +182,7 @@ export default function TarotCompo ({mainRef, subRef1, subRef2, subRef3, subRef4
                                     </div>
                                     <div className={styles.profileWrapper}>
                                         <div className={!showTopFade2 ? styles.fadeTop2 : `${styles.fadeTop2} ${styles.visible}`}></div>
-                                        <SimpleBar ref={scrollRef2} style={{ flexShrink: 0, maxHeight: 260, minWidth: 200}}>
+                                        <SimpleBar ref={scrollRef2} style={{ flexShrink: 0, maxHeight: 260, minWidth: 205}}>
                                             <span className={styles.profile}>{simResult.whole.프로필}</span>
                                         </SimpleBar>
                                         <div className={!showBotFade2 ? styles.fadeBot2 : `${styles.fadeBot2} ${styles.visible}`}></div>
@@ -217,7 +217,7 @@ export default function TarotCompo ({mainRef, subRef1, subRef2, subRef3, subRef4
                                     </div>
                                     <div className={styles.giftWrapper}>
                                         <div className={!showTopFade3 ? styles.fadeTop3 : `${styles.fadeTop3} ${styles.visible}`}></div>
-                                        <SimpleBar ref={scrollRef3} style={{ flexShrink: 0, maxHeight: 260, minWidth: 190}}>
+                                        <SimpleBar ref={scrollRef3} style={{ flexShrink: 0, maxHeight: 260, minWidth: 195}}>
                                             <span className={styles.gift}>{simResult.whole.전생특전}</span>
                                         </SimpleBar>
                                         <div className={!showBotFade3 ? styles.fadeBot3 : `${styles.fadeBot3} ${styles.visible}`}></div>

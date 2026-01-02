@@ -197,7 +197,7 @@ export default function TabletCompo ({mainRef, subRef1, subRef2, subRef3, subRef
                                     </div>
                                     <div className={styles.profileWrapper}>
                                         <div className={!showTopFade2 ? styles.fadeTop2 : `${styles.fadeTop2} ${styles.visible}`}></div>
-                                        <SimpleBar ref={scrollRef2} style={{ flexShrink: 0, maxHeight: 245, minWidth: 180}}>
+                                        <SimpleBar ref={scrollRef2} style={{ flexShrink: 0, maxHeight: 245, minWidth: 185}}>
                                             <span className={styles.profile}>{simResult.whole.프로필}</span>
                                         </SimpleBar>
                                         <div className={!showBotFade2 ? styles.fadeBot2 : `${styles.fadeBot2} ${styles.visible}`}></div>

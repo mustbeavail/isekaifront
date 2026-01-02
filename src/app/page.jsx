@@ -107,36 +107,36 @@ export default function Entrance() {
 
   return (
     <>
-      {isLoading ? null :
-            <div className="container">
-              <div className={styles.animeWrapper}>
-                <div  ref={movingHumanRef} className={styles.movingHuman}>
-                  <img ref={spinningHumanRef} className={styles.spinningHuman} src="/human.png" alt="사람"/>
-                </div>
-                <img ref={truckRef} className={styles.truck} src="/truck.png" alt="트럭"/>
-                <div className={styles.skipWrapper}>
-                  <div className={`${styles.skip} ${smallPhraseEnd ? styles.fadeOut : ''}`} onClick={skip}>건너뛰기⏭️</div>
-                </div>
-                {!animeEnd ? null :
-                  <img className={`${styles.dead} ${styles.fadeIn}`} src="/dead.png" alt="기억할게"/>}
-              </div>
-            {!animeEnd ? null :
-              <div className={styles.mainWrapper}>
-                <div ref={phraseRef} className={`${styles.phrase} ${styles.fadeIn}`}>
-                  <span>저런! 당신은 소환마법(물리) 에 당하고 말았어요!<br/>여행준비는 되셨나요?</span>
-                </div>
-                {!phraseEnd ? null :
-                  <div ref={smallPhraseRef} className={`${styles.smallPhrase} ${styles.fadeIn}`}>
-                    <span className={styles.buttonDescription}>이세계 전문 여행사</span>
-                    <Link href="/component/reincarnation" className={styles.button}>
-                      <span className={styles.gem}>GemExpress</span> 방문하기
-                    </Link>
-                  </div>
-                }
-              </div>     
-            }
+      <title>이세계 전생 시뮬레이션</title>
+      <h1 className='sr-only'>다양한 이세계 세계관 전생 시뮬레이션</h1>
+      <div className={isLoading ? 'container hidden' : "container"}>
+        <div className={styles.animeWrapper}>
+          <div  ref={movingHumanRef} className={styles.movingHuman}>
+            <img ref={spinningHumanRef} className={styles.spinningHuman} src="/human.png" alt="사람"/>
+          </div>
+          <img ref={truckRef} className={styles.truck} src="/truck.png" alt="트럭"/>
+          <div className={styles.skipWrapper}>
+            <div className={`${styles.skip} ${smallPhraseEnd ? styles.fadeOut : ''}`} onClick={skip}>건너뛰기⏭️</div>
+          </div>
+          {!animeEnd ? null :
+            <img className={`${styles.dead} ${styles.fadeIn}`} src="/dead.png" alt="기억할게"/>}
+        </div>
+      {!animeEnd ? null :
+        <div className={styles.mainWrapper}>
+          <div ref={phraseRef} className={`${styles.phrase} ${styles.fadeIn}`}>
+            <span>저런! 당신은 소환마법(물리) 에 당하고 말았어요!<br/>여행준비는 되셨나요?</span>
+          </div>
+          {!phraseEnd ? null :
+            <div ref={smallPhraseRef} className={`${styles.smallPhrase} ${styles.fadeIn}`}>
+              <span className={styles.buttonDescription}>이세계 전문 여행사</span>
+              <Link href="/component/reincarnation" className={styles.button}>
+                <span className={styles.gem}>GemExpress</span> 방문하기
+              </Link>
             </div>
+          }
+        </div>     
       }
+      </div>
     </>
   )
 }

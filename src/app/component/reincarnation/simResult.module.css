@@ -71,7 +71,7 @@
 }
 
 .mainMovingTablet{
-    animation: mainMovingTablet 1s ease-out forwards;
+    animation: mainMovingTablet 0.7s ease-out forwards;
 }
 
 .vibe{
@@ -130,11 +130,6 @@
 }
 
 @keyframes mainMovingTablet {
-    40% {
-        transform: translateX(-50%) translateY(-50%) scale(1.4);
-        top: 440%;
-        left: 680%;
-    }
     100% {
         transform: translateX(-50%) translateY(-50%) scale(1.4);
         top:480%;

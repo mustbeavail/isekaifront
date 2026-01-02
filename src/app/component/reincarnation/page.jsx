@@ -144,7 +144,7 @@ const Reincarnation = () => {
     const runSim = async () => {
 
         /////////////////////////////////////////////////////////////////
-        const whole = {
+/*         const whole = {
             '세계관명시': 'SF',
             '시놉시스':'테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스',
             '프로필':'테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필',
@@ -157,11 +157,11 @@ const Reincarnation = () => {
         callbackAnimeSeq();
         setSimResult({whole, simIdx, subGenre});
         setResDone('done');
-        setLoadingDone(true);
+        setLoadingDone(true); */
         /////////////////////////////////////////////////////////////////
 
 
-/*         let finalPreferred = preferredIsekai;
+        let finalPreferred = preferredIsekai;
 
         if(!guestId){
             alert('유저 식별불가, 다시 시도해주세요.');
@@ -214,7 +214,7 @@ const Reincarnation = () => {
                 alert('서버에 연결할 수 없습니다. 잠시 후 다시 시도해주세요.');
             }
             location.href='/component/reincarnation';
-        }; */
+        };
     };
 
     // idx로 시뮬레이션 결과 불러오기
@@ -275,6 +275,8 @@ const Reincarnation = () => {
     return (
         <div className={animeEnd && !resultMount ? styles.lightOut : animeEnd && resultMount ? styles.lightOutResult : ''}>
             <div className="container">
+                <title>이세계 전생 시뮬레이션</title>
+                <h1 className='sr-only'>다양한 이세계 세계관 전생 시뮬레이션</h1>
                 {!initDone ? null : !animeEnd ?
                     <>
                         <CatalModal
