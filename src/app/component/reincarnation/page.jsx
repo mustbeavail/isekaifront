@@ -220,8 +220,11 @@ const Reincarnation = () => {
     // idx로 시뮬레이션 결과 불러오기
     const getResultByIdx = async(idx) => {
         try {
-            const {data} = await axios.get(`${API_URL}/getResultByIdx`, {idx});
-            setSimResult(data);
+            const {data} = await axios.get(`${API_URL}/getResultByIdx`, {params: {simIdx:idx}});
+            const whole = JSON.parse(data.whole);
+            const simIdx = data.sim_idx;
+            const subGenre = data.sub_genre;
+            setSimResult({whole, simIdx, subGenre});
             setAnimeEnd(true);
             setLoadingDone(true);
         }catch(err){

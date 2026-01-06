@@ -38,12 +38,16 @@ export default function ClientInit() {
             storedId = v4();
             store.dispatch({type:'guest/setId', payload: {storedId}});
             saveGuest(storedId, now);
+            localStorage.setItem('lastAccess', Date.now());
         }else{
             store.dispatch({type:'guest/setId', payload: {storedId}});
             store.dispatch({type:'guest/isFirst'});
-            revisitingGuest(storedId, now);
+            const lastAccess = Number(localStorage.getItem('lastAccess'));
+            if(Date.now() - lastAccess >= 60*60*1000) {
+                revisitingGuest(storedId, now);
+            }
+            localStorage.setItem('lastAccess', Date.now());
         }
-
     },[]);
 
     return null;

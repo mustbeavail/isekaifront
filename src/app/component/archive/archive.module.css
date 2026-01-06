@@ -1,0 +1,205 @@
+.emptyHeader{
+    width: 100%;
+    height: 150px;
+}
+
+.archiveContentWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.archiveBoard{
+    position: relative;
+    background-image: url("/archiveBoard.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 875px;
+    height: 602px;
+}
+
+.archiveClipboard{
+    background-image: url("/clipboard.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 657px;
+    height: 854px;
+    margin-top: -150px;
+    padding: 200px 120px 100px 140px;
+    display: grid;
+}
+
+.boardContentWrapper1{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    left: 19.9%;
+    top: 28%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 190px;
+    height: 165px;
+}
+
+.boardContentWrapper2{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    left: 50.3%;
+    top: 28%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 190px;
+    height: 165px;
+}
+
+.boardContentWrapper3{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    left: 80.3%;
+    top: 28%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 190px;
+    height: 165px;
+}
+
+.boardContentWrapper4{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    left: 35.3%;
+    top: 69%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 190px;
+    height: 165px;
+}
+
+.boardContentWrapper5{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    left: 65.4%;
+    top: 69%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 190px;
+    height: 165px;
+}
+
+.boardContentHead{
+    cursor: default;
+    font-size: 22px;
+    font-family: Jua;
+    border-bottom: 1px solid gray;
+}
+
+.boardContent{
+    font-size: 18px;
+}
+
+.boardContentBtn{
+    cursor: pointer;
+    font-family: Jua;
+    font-size: 17px;
+    margin: auto auto 0 auto;
+    border-bottom: 2px solid black;
+}
+
+.clipboardDefaultWrapper{
+    cursor: default;
+    font-family: Jua;
+    padding-top: 150px;
+    font-size: 30px;
+    text-align: center;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.clipboardContentWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    cursor: default;
+    font-family: Jua;
+    font-size: 30px;
+    text-align: center;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.clipboardContentWrapper.visible{
+    opacity: 1;
+}
+
+.clipboardDefaultWrapper.visible{
+    opacity: 1;
+}
+
+.synopWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    width: 390px;
+    border-bottom: 2px solid gray;
+}
+
+.profileWrapper{
+    width: 390px;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 2px solid gray;
+    align-items: center;
+}
+
+.giftWrapper{
+    width: 390px;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 2px solid gray;
+    align-items: center;
+}
+
+.abilWrapper{
+    width: 390px;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 2px solid gray;
+    align-items: center;
+}
+
+.clipboardHead{
+    width: 390px;
+    height: 40px;
+}
+
+.clipboardBody{
+    width: 390px;
+    font-size: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.clipboardSubHead{
+    font-size: 23px;
+    width: 140px;
+}
+
+.clipboardSubBody{
+    width: 250px;
+    font-size: 18px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
