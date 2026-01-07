@@ -450,7 +450,7 @@ const Reincarnation = () => {
                             }
                             <div className={styles.buttons}>
                                 <Link href="/component/archive" className={styles.buttonItem}>🌍 다른 세계 보러가기</Link>
-                                <Link href="/component/reincarnation" className={styles.buttonItem}>🕰️ 내 이전 세계 보러가기</Link>
+                                {/* <Link href="/component/reincarnation" className={styles.buttonItem}>🕰️ 내 이전 세계 보러가기</Link> */}
                             </div>
                         </div>
                     </> : animeEnd && !loadingDone ? <span ref={loadingPhraseRef} className={styles.loadingPhrase}>{loadingPhrase}</span> :

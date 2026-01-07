@@ -1,0 +1,55 @@
+.head{
+    text-align: center;
+    font-size: 30px;
+    font-family: Jua;
+    flex-basis: 100%;
+    border-bottom: 2px solid rgb(255, 221, 148);
+}
+
+.plainStatsWrapper{
+    margin: 50px auto;
+    display: flex;
+    width: 780px;
+    flex-wrap: wrap;
+    border: 3px solid gray;
+    border-radius: 5px;
+}
+
+.userStatsContent{
+    flex-basis: 100%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.twoInLineWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    width: 1600px;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.chartWrapper{
+    width: 780px;
+    overflow-x: auto;
+}
+
+.dateWrapper{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-basis: 50%;
+}
+
+.twoInLineWrapper:last-child{
+    padding-bottom: 200px;
+    margin-bottom: 50px;
+    border-bottom: 5px solid gray;
+}
+
+.chartHead{
+    font-size: 22px;
+    font-family: Jua;
+    color: rgb(238, 90, 22);
+}
