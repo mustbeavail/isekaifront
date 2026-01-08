@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import styles from "./entrancePage.module.css";
+import Footer from './footer';
 
 export default function Entrance() {
 
@@ -137,6 +138,7 @@ export default function Entrance() {
         </div>     
       }
       </div>
+      <Footer visible={!isLoading}/>
     </>
   )
 }

@@ -33,7 +33,7 @@
 
 .truckWrapper {
     position: absolute;
-    top: 13%;
+    top: 7%;
     left: 150%;
 }
 
@@ -444,19 +444,16 @@
 }
 
 .callbackPhraseWrapper {
-    position: absolute;
-    top:100%;
-    left:50%;
-    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     gap: -6px;
     align-items: center;
-    margin-top: -10%;
+    margin: auto;
     font-family: Jua;
     font-size: 40px;
     width: 1000px;
+    height: 1100px;
 }
 
 .callbackPhrase {
@@ -665,7 +662,12 @@
     outline: none;
 }
 
-@media (max-width: 900px) {
+.containerFiller{
+    width: 100%;
+    height: 1100px;
+}
+
+@media (max-width: 1100px) {
     .clipboardWrapper{
         left: 170%;
         width: 822px;
@@ -727,7 +729,6 @@
     }
 
     .callbackPhraseWrapper{
-        top: 80%;
         width: 750px;
         font-size: 28px;
     }
@@ -736,12 +737,12 @@
     }
 }
 
-@media (max-width: 690px) {
+@media (max-width: 700px) {
     .clipboardWrapper {
         left: 170%;
-        width: 350px;
-        height: 473px;
-        padding: 121px 69px 20px 80px;
+        width: 390px;
+        height: 520px;
+        padding: 140px 69px 20px 80px;
         background-size: 95%;
     }
     .ghostWrapper{
@@ -752,7 +753,7 @@
         width: 70px;
     }
     .truck{
-        width: 200px;
+        width: 150px;
     }
     .truckWrapper{
         top: 3%;
@@ -785,15 +786,16 @@
         font-size: 9px;
     }
     .genderBox{
-        font-size: 7.5px;
+        font-size: 10px;
         width: 25px;
         margin-top: -3px;
-        transform: scale(0.8);
+        transform: scale(0.6);
         flex-basis: 32%;
     }
     .selectButton{
         font-size: 8px;
         margin-top: 0px;
+        margin-left: 5px;
         padding: 1.5px 3px;
     }
     .preferredIsekai{
@@ -803,7 +805,7 @@
     .inputBox{
         margin-left: 4px;
         font-size: 9px;
-        width: 50%;
+        width: 60%;
         border-bottom: 0.5px solid black;
     }
     .inputItem{
@@ -811,7 +813,7 @@
     }
     .dateBox{
         margin-top: 0;
-        margin-left: 0px;
+        margin-left: 5px;
         font-size: 5px;
     }
     .specialAbilOption{
@@ -826,7 +828,7 @@
         margin-top: 4%;
     }
     .specialAnno{
-        font-size: 5px;
+        font-size: 7px;
     }
     .specialAbilHead{
         padding: 5px 6px;
@@ -844,8 +846,8 @@
     }
     
     .callbackPhraseWrapper{
-        top: 110%;
-        width: 640px;
+        width: 240px;
+        height: fit-content;
         font-size: 12px;
     }
 
@@ -860,5 +862,8 @@
     }
     .loadingPhrase{
         font-size: 20px;
+    }
+    .containerFiller{
+        display: none;
     }
 }

@@ -3,10 +3,18 @@
     height: 150px;
 }
 
+.pageHeader{
+    margin: auto;
+    width: 1500px;
+    font-family: Jua;
+    font-size: 20px;
+}
+
 .archiveContentWrapper{
-    width: 100%;
+    width: 1500px;
     display: flex;
     justify-content: center;
+    margin: auto;
 }
 .archiveBoard{
     position: relative;
@@ -202,4 +210,121 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+@media (max-width:1100px) {
+
+    .emptyHeader{
+        height: 100px;
+    }
+
+    .pageHeader{
+        padding-left: 55px;
+    }
+
+    .archiveContentWrapper{
+        flex-direction: column;
+        padding-left: 55px;
+    }
+
+    .archiveClipboard{
+        margin-left: 95px;
+        margin-top: -30px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .emptyHeader{
+        height: 50px;
+    }
+
+    .pageHeader{
+        width: 600px;
+        font-size: 10px;
+        padding-left: 0;
+    }
+
+    .archiveContentWrapper{
+        flex-direction: column;
+        padding-left: 0;
+        width: 600px;
+    }
+
+    .archiveBoard{
+        width: 350px;
+        height: 240px;
+    }
+
+    .boardContentWrapper1,
+    .boardContentWrapper2,
+    .boardContentWrapper3,
+    .boardContentWrapper4,
+    .boardContentWrapper5 {
+        width: 76px;
+        height: 66px;
+    }
+
+    .boardContentHead{
+        font-size: 8.8px;
+    }
+
+    .boardContent{
+        font-size: 7.2px
+    }
+
+    .boardContentBtn{
+        font-size: 6.8px;
+        border-bottom: 1px solid black;
+    }
+
+    .archiveClipboard{
+        margin-left: 40px;
+        margin-top: -10px;
+        padding: 80px 48px 40px 56px;
+        width: 263px;
+        height: 342px;
+    }
+
+    .clipboardContentWrapper,
+    .clipboardDefaultWrapper {
+        font-size: 12px;
+    }
+
+    .clipboardDefaultWrapper{
+        padding-top: 60px;
+    }
+
+    .synopWrapper{
+        width: 156px;
+    }
+
+    .profileWrapper,
+    .giftWrapper,
+    .abilWrapper {
+        width: 156px;
+        height: 40px;
+    }
+
+    .clipboardHead{
+        width: 156px;
+        height: 16px;
+    }
+
+    .clipboardBody{
+        width: 156px;
+        font-size: 8px;
+    }
+
+    .clipboardSubHead{
+        font-size: 9.2px;
+        width: 56px;
+    }
+
+    .clipboardSubBody{
+        width: 100px;
+        font-size: 7.2px;
+    }
+
 }

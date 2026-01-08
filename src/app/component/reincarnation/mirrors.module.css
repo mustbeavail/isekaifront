@@ -314,7 +314,7 @@
     100% {transform: scale(7.7);}
 }
 
-@media (max-width: 1200px){
+@media (max-width: 1100px){
     .center{
         width: 70px;
         height: 70px;
@@ -369,7 +369,7 @@
     }
 }
 
-@media(max-width: 830px){
+@media(max-width: 700px){
     .center{
         width: 42px;
         height: 42px;

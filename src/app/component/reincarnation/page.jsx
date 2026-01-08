@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
 import Mirrors from './mirrors';
+import Footer from '../../footer';
 
 const Reincarnation = () => {
 
@@ -144,7 +145,7 @@ const Reincarnation = () => {
     const runSim = async () => {
 
         /////////////////////////////////////////////////////////////////
-/*         const whole = {
+        const whole = {
             '세계관명시': 'SF',
             '시놉시스':'테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스',
             '프로필':'테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필',
@@ -157,11 +158,11 @@ const Reincarnation = () => {
         callbackAnimeSeq();
         setSimResult({whole, simIdx, subGenre});
         setResDone('done');
-        setLoadingDone(true); */
+        setLoadingDone(true);
         /////////////////////////////////////////////////////////////////
 
 
-        let finalPreferred = preferredIsekai;
+/*         let finalPreferred = preferredIsekai;
 
         if(!guestId){
             alert('유저 식별불가, 다시 시도해주세요.');
@@ -214,7 +215,7 @@ const Reincarnation = () => {
                 alert('서버에 연결할 수 없습니다. 잠시 후 다시 시도해주세요.');
             }
             location.href='/component/reincarnation';
-        };
+        }; */
     };
 
     // idx로 시뮬레이션 결과 불러오기
@@ -237,8 +238,6 @@ const Reincarnation = () => {
     useEffect(()=>{
         if(!guestId) return;
 
-        document.body.style.overflowX = 'hidden';
-
         const idx = searchParams.get('simIdx');
         const run = async () => {
             if(idx){
@@ -249,9 +248,6 @@ const Reincarnation = () => {
 
         run();
 
-        return () => {
-            document.body.style.overflowX = '';
-        }
     },[guestId]);
 
     // 로딩문구 띄우기
@@ -289,6 +285,7 @@ const Reincarnation = () => {
                         <div ref={ghostWrapperRef} className={styles.ghostWrapper}>
                             <img ref={ghostRef} className={styles.ghost} src="/ghost.png" alt="유령"/>
                         </div>
+                        {!callbackAnime ? <div className={styles.containerFiller}></div> : null}
                         <div ref={truckRef} className={styles.truckWrapper}>
                             <img className={styles.truck} src="/truck.png" alt="트럭"/>
                         </div>
@@ -297,7 +294,7 @@ const Reincarnation = () => {
                                 <span ref={callbackPhraseRef1} className={styles.callbackPhrase}>이번생에 고생 참 많으셨어요</span>
                                 <span ref={callbackPhraseRef2} className={styles.callbackPhrase}>잠시만 서계시면 여신님의 마법으로<br/>새로운 세계로 가게되실거에요</span>
                                 <span ref={callbackPhraseRef3} className={styles.callbackPhrase}>새로운 운명에 축복 가득하시길 기원해요</span>
-                            </div>    
+                            </div>
                         }
                         <div className={!callbackAnime ? styles.clipboardWrapper : `${styles.clipboardWrapper} ${styles.callbackAnime}`}>
                             {!nextFlag ?
@@ -457,6 +454,7 @@ const Reincarnation = () => {
                     animeEnd && loadingDone ? <Mirrors waitForRef={waitForRef} simResult={simResult} setResultMount={setResultMount}/> : null
                 }
             </div>
+            <Footer visible={initDone}/>
         </div>
     )
 }

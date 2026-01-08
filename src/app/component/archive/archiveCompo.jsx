@@ -2,6 +2,7 @@
 import styles from './archive.module.css';
 import {useState} from 'react';
 import { useRouter } from "next/navigation";
+import Link from 'next/link';
 
 export default function ArchiveCompo ({ranSimResult}) {
 
@@ -32,6 +33,9 @@ export default function ArchiveCompo ({ranSimResult}) {
     return(
         <>
             <div className={styles.emptyHeader}></div>
+            <div className={styles.pageHeader}>
+                <Link href='/component/reincarnation'>설문 페이지로 이동 ➡️</Link>
+            </div>
             <div className={styles.archiveContentWrapper}>
                 <div className={styles.archiveBoard}>
                     <div 

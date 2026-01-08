@@ -5,7 +5,7 @@ import SimResult from './simResult';
 import { useSearchParams } from 'next/navigation';
 
 export default function Mirrors({waitForRef, simResult, setResultMount}) {
-
+      
     let mainRef = useRef(null);
     let mainWrapperRef = useRef(null);
     let centerRef = useRef(null);
