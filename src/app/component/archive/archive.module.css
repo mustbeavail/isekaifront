@@ -228,8 +228,39 @@
     }
 
     .archiveClipboard{
-        margin-left: 95px;
+        margin-left: -20px;
         margin-top: -30px;
+    }
+
+    .archiveContentWrapper{
+        width: 750px;
+    }
+
+    .archiveBoard{
+        width: 612.5px;
+        height: 421.4px;
+    }
+
+    .boardContentWrapper1,
+    .boardContentWrapper2,
+    .boardContentWrapper3,
+    .boardContentWrapper4,
+    .boardContentWrapper5 {
+        width: 133px;
+        height: 115.5px;
+    }
+
+    .boardContentHead{
+        font-size: 15.4px;
+    }
+
+    .boardContent{
+        font-size: 12.6px
+    }
+
+    .boardContentBtn{
+        font-size: 6.8px;
+        border-bottom: 1px solid black;
     }
 
 }

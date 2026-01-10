@@ -30,7 +30,12 @@ const Reincarnation = () => {
     const [preferredIsekai, setPreferredIsekai] = useState('');
     const [wishedAbil, setWishedAbil] = useState('');
     const [wishedGift, setWishedGift] = useState('');
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Intl.DateTimeFormat('ko-KR', {
+        timeZone: 'Asia/Seoul',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    }).format(new Date()).replace(/\. /g, '-').replace('.', '');
     const [callbackAnime, setCallbackAnime] = useState(false);
     const [animeEnd, setAnimeEnd] = useState(false);
     const [resDone, setResDone] = useState('idle');
@@ -291,8 +296,8 @@ const Reincarnation = () => {
                         </div>
                         {!callbackAnime ? null :
                             <div className={styles.callbackPhraseWrapper}>
-                                <span ref={callbackPhraseRef1} className={styles.callbackPhrase}>이번생에 고생 참 많으셨어요</span>
-                                <span ref={callbackPhraseRef2} className={styles.callbackPhrase}>잠시만 서계시면 여신님의 마법으로<br/>새로운 세계로 가게되실거에요</span>
+                                <span ref={callbackPhraseRef1} className={styles.callbackPhrase}>이번 생에 고생 참 많으셨어요</span>
+                                <span ref={callbackPhraseRef2} className={styles.callbackPhrase}>잠시만 서 계시면 여신님의 마법으로<br/>새로운 세계로 가게 되실 거에요</span>
                                 <span ref={callbackPhraseRef3} className={styles.callbackPhrase}>새로운 운명에 축복 가득하시길 기원해요</span>
                             </div>
                         }
@@ -304,11 +309,11 @@ const Reincarnation = () => {
                                             이세계 전문 여행사<br/>GemExpress에 어서오세요!
                                         </span>
                                         <span className={styles.inputDescItem2}>
-                                            우리 여신님은 갑작스러운 전생마법에 희생당한 불운한 영혼들을 위해 두번째 기회를 제공한답니다!<br/>
-                                            특별한 능력이나 동료를 비롯한 각종 전생특전 혜택까지!<br/>
-                                            어디론가 훌쩍 떠나고싶단 생각 해보신적 있나요?<br/>
+                                            우리 여신님은 갑작스러운 전생 마법에 희생당한 불운한 영혼들을 위해 두 번째 기회를 제공한답니다!<br/>
+                                            특별한 능력이나 동료를 비롯한 각종 전생 특전 혜택까지!<br/><br/>
+                                            어디론가 훌쩍 떠나고 싶단 생각 해보신 적 있나요?<br/>
                                             반복되는 일상이 너무 지겨우시다구요?<br/>
-                                            간단한 신청서를 작성하시고 오늘 바로 전생해보세요!
+                                            간단한 신청서를 작성하시고 오늘 바로 전생해 보세요!
                                         </span>
                                         <span className={styles.inputDescItem3}>
                                             *우리 여신님은 생전에 지은 업보등으로 인한 극한세계관 전생에 대하여 책임지지 않으며,<br/>
@@ -328,6 +333,7 @@ const Reincarnation = () => {
                                         <span className={styles.inputItem}>
                                             ① 이름 : <input
                                                         type='text'
+                                                        maxLength='20'
                                                         className={styles.inputBox}
                                                         value={userName}
                                                         onChange={(e)=>{
@@ -373,6 +379,7 @@ const Reincarnation = () => {
                                         <span className={styles.inputItemOneRow}>
                                             ⑤ 직업 혹은 취미, 특기 : <input
                                                                         type='text'
+                                                                        maxLength='20'
                                                                         className={styles.inputBox}
                                                                         onChange={(e)=>{
                                                                             setSpecialty(e.target.value);
