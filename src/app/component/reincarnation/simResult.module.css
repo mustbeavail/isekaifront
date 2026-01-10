@@ -2,7 +2,7 @@
     display: flex;
     position: relative;
     width: 100%;
-    height: 800px;
+    height: 1000px;
 }
 
 .hide{
@@ -32,7 +32,7 @@
     transform: translateX(-50%) translateY(-50%);
     width: 80%;
     min-width: 1350px;
-    top: 55%;
+    top: 45%;
     left: 50%;
 }
 
@@ -164,5 +164,108 @@
 @keyframes loadingFill{
     100%{
         width: 100%;
+    }
+}
+
+@media (max-width: 1100px){
+
+    .resultContainer{
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+    }
+
+    .menuWrapper{
+        margin-top: 810px;
+        margin-left: -390px;
+    }
+
+    .isekaiImageWrapper{
+        min-width: 675px;
+        top: 25%;
+        left: 42%;
+    }
+
+    .isekaiInfoWrapper{
+        pointer-events: auto;
+    }
+
+    @keyframes mainMovingTablet {
+        100% {
+            transform: translateX(-50%) translateY(-50%) scale(1.5);
+            top:840%;
+            left:200%;
+        }
+    }
+
+    @keyframes mainMoving {
+        40% {
+            transform: translateX(-50%) translateY(-50%) scale(1.3);
+            top: 300%;
+            left: 120%;
+        }
+        50% {
+            filter: brightness(35) blur(3px);
+        }
+        100% {
+            transform: translateX(-50%) translateY(-50%) scale(1.3);
+            top:855%;
+            left:120%;
+        }
+    }
+}
+
+@media (max-width: 700px){
+
+    .resultContainer{
+        width: 360px;
+        height: 360px;
+        justify-content: flex-start;
+    }
+
+    .menuWrapper{
+        margin-top: 545px;
+        margin-left: 0;
+        width: 90px;
+        height: 50px;
+        gap: 10px;
+    }
+
+    .buttonItem{
+        padding: 5px 10px;
+        font-size: 7px;
+    }
+
+    .isekaiImageWrapper{
+        min-width: 337.5px;
+        top: 27%;
+        left: 39%;
+    }
+
+    .isekaiInfoWrapper{
+        pointer-events: auto;
+    }
+    @keyframes mainMovingTablet {
+        100% {
+            transform: translateX(-50%) translateY(-50%) scale(0.8);
+            top:570%;
+            left:100%;
+        }
+    }
+
+    @keyframes mainMoving {
+        40% {
+            transform: translateX(-50%) translateY(-50%) scale(0.7);
+            top: 140%;
+            left: 80%;
+        }
+        50% {
+            filter: brightness(35) blur(3px);
+        }
+        100% {
+            transform: translateX(-50%) translateY(-50%) scale(0.7);
+            top:578%;
+            left:62%;
+        }
     }
 }

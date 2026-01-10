@@ -130,22 +130,47 @@ export default function TabletCompo ({mainRef, subRef1, subRef2, subRef3, subRef
                         <div className={styles.infoBtnWrapper}>
                             <div
                                 className={!synopSelected ? styles.infoBtn : `${styles.infoBtn} ${styles.infoBtn1Sel}`}
-                                onClick={()=>{setSynopSelected(prev => !prev)}}>
+                                onClick={
+                                    synopSelected ?
+                                    ()=>{
+                                    returnSlot(Number(synopClass.replace(/\D/g, "")));
+                                    setSynopClass('');
+                                    setSynopSelected(prev => !prev);}
+                                    :
+                                    ()=>{setSynopSelected(prev => !prev);}}>
                                 {!synopSelected ?'ㆍ 시놉시스 ❔' :'ㆍ 시놉시스'}
                             </div>
                             <div
                                 className={!profileSelected ? styles.infoBtn : `${styles.infoBtn} ${styles.infoBtn2Sel}`}
-                                onClick={()=>{setProfileSelected(prev => !prev)}}>
+                                onClick={
+                                    profileSelected ?
+                                    ()=>{
+                                    returnSlot(Number(profileClass.replace(/\D/g, "")));
+                                    setProfileClass('');
+                                    setProfileSelected(prev => !prev);}
+                                    :
+                                    ()=>{setProfileSelected(prev => !prev);}}>
                                 {!profileSelected ?'ㆍ 새로운 몸 ❔' :'ㆍ 새로운 몸'}
                             </div>
                             <div
                                 className={!giftSelected ? styles.infoBtn : `${styles.infoBtn} ${styles.infoBtn3Sel}`}
-                                onClick={()=>{setGiftSelected(prev => !prev)}}>
+                                onClick={
+                                    giftSelected ?
+                                    ()=>{
+                                    returnSlot(Number(giftClass.replace(/\D/g, "")));
+                                    setGiftClass(''); setGiftSelected(prev => !prev);}
+                                    :
+                                    ()=>{setGiftSelected(prev => !prev);}}>
                                 {!giftSelected ?'ㆍ 여신의 선물 ❔' :'ㆍ 여신의 선물'}
                             </div>
                             <div
                                 className={!abilSelected ? styles.infoBtn : `${styles.infoBtn} ${styles.infoBtn4Sel}`}
-                                onClick={()=>{setAbilSelected(prev => !prev)}}>
+                                onClick={
+                                    abilSelected ?
+                                    ()=>{
+                                    returnSlot(Number(abilClass.replace(/\D/g, "")));
+                                    setAbilClass(''); setAbilSelected(prev => !prev);} :
+                                    ()=>{setAbilSelected(prev => !prev);}}>
                                 {!abilSelected ?'ㆍ 고유능력 ❔' :'ㆍ 고유능력'}
                             </div>
                         </div>
