@@ -518,15 +518,12 @@
     background-color: black;
     animation: fadeIn 2s linear forwards;
     width: 100%;
-    min-height: 100vh;
 }
 
 .lightOutResult {
     background-color: black;
     animation: fadeIn 2s linear forwards;
     width: 100%;
-    min-width: 1700px;
-    min-height: 1000px;
 }
 
 .loadingPhrase {
@@ -734,9 +731,7 @@
     .loadingPhrase{
         font-size: 25px;
     }
-    .lightOutResult{
-        min-height: 0;
-    }
+
 }
 
 @media (max-width: 700px) {
@@ -867,8 +862,5 @@
     }
     .containerFiller{
         display: none;
-    }
-    .lightOutResult{
-        min-height: 0;
     }
 }

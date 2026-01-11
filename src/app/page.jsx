@@ -47,11 +47,13 @@ export default function Entrance() {
 
     if(!guestId) return;
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
 
     setIsLoading(false);
 
     return () => {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
   }, [guestId]);
 

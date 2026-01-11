@@ -151,7 +151,7 @@ const Reincarnation = () => {
 
         /////////////////////////////////////////////////////////////////
         const whole = {
-            '세계관명시': '동양판타지',
+            '세계관명시': 'SF',
             '시놉시스':'테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스',
             '프로필':'테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필',
             '전생특전':'테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전',
@@ -164,6 +164,8 @@ const Reincarnation = () => {
         setSimResult({whole, simIdx, subGenre});
         setResDone('done');
         setLoadingDone(true);
+        document.body.style.overflowX = '';
+        document.documentElement.style.overflowX = '';
         /////////////////////////////////////////////////////////////////
 
 
@@ -212,6 +214,8 @@ const Reincarnation = () => {
             console.log(data);
             setSimResult(data);
             setResDone('done');
+            document.body.style.overflowX = '';
+            document.documentElement.style.overflowX = '';
         }catch(err){
             if(err.response) {
                 alert(err.response.data.message);
@@ -243,15 +247,21 @@ const Reincarnation = () => {
     useEffect(()=>{
         if(!guestId) return;
 
+        document.body.style.overflowX = 'hidden';
+        document.documentElement.style.overflowX = 'hidden';
         const idx = searchParams.get('simIdx');
         const run = async () => {
             if(idx){
                 await getResultByIdx(idx);
+                document.body.style.overflowX = '';
+                document.documentElement.style.overflowX = '';
             };
             setInitDone(true);
         };
 
         run();
+
+        return () => {document.body.style.overflowX = ''; document.documentElement.style.overflowX = '';};
 
     },[guestId]);
 

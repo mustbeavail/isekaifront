@@ -648,8 +648,8 @@
 @media (max-width: 1100px){
     .mainOriCard{
         transform: translateX(-50%) translateY(-50%) scale(1.5);
-        top: 300%;
-        left: 120%;
+        top: 250%;
+        left: 385%;
     }
 
     .subWrapperCover{
@@ -668,7 +668,7 @@
     .subOriCard3,
     .subOriCard4 {
         top:855%;
-        left:120%;
+        left:300%;
         pointer-events: auto;
         transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(0deg);
     }
@@ -685,7 +685,7 @@
         100% {
             transform: translateX(-50%) translateY(-50%) scale(0.9) rotate(0deg);
             top: 210%;
-            left: 0%;
+            left: 240%;
         }
     }
 
@@ -693,7 +693,7 @@
         100% {
             transform: translateX(-50%) translateY(-50%) scale(0.9) rotate(0deg);
             top: 210%;
-            left: 300%;
+            left: 540%;
         }
     }
 
@@ -701,15 +701,15 @@
         100% {
             transform: translateX(-50%) translateY(-50%) scale(0.9) rotate(0deg);
             top: 500%;
-            left: -80%;
+            left: 240%;
         }
     }
 
     @keyframes slot4{
         100% {
             transform: translateX(-50%) translateY(-50%) scale(0.9) rotate(0deg);
-            top: 480%;
-            left: 380%;
+            top: 500%;
+            left: 540%;
         }
     }
         
@@ -717,7 +717,7 @@
         100% {
             transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(5deg);
             top:870%;
-            left:255%;
+            left:455%;
         }
     }
 
@@ -725,7 +725,7 @@
         100% {
             transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(-4deg);
             top:710%;
-            left:240%;
+            left:440%;
         }
     }
 
@@ -733,7 +733,7 @@
         100% {
             transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(7deg);
             top:820%;
-            left:380%;
+            left:580%;
         }
     }
 
@@ -741,7 +741,7 @@
         100% {
             transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(1deg);
             top:660%;
-            left:370%;
+            left:570%;
         }
     }
 
@@ -752,9 +752,9 @@
 
 @media (max-width: 700px){
     .mainOriCard{
-        transform: translateX(-50%) translateY(-50%) scale(1);
-        top: 140%;
-        left: 80%;
+        transform: translateX(-50%) translateY(-50%) scale(0.7);
+        top: 100%;
+        left: 165%;
     }
 
     .subWrapperCover{
@@ -771,10 +771,10 @@
     .subOriCard2,
     .subOriCard3,
     .subOriCard4 {
-        top:578%;
-        left:62%;
+        top:572%;
+        left:152%;
         pointer-events: auto;
-        transform: translateX(-50%) translateY(-50%) scale(0.37) rotate(0deg);
+        transform: translateX(-50%) translateY(-50%) scale(0.33) rotate(0deg);
     }
 
     .infoBtnWrapper{
@@ -787,65 +787,65 @@
 
     @keyframes slot1{
         100% {
-            transform: translateX(-50%) translateY(-50%) scale(0.58) rotate(0deg);
+            transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(0deg);
             top: 150%;
-            left: -10%;
+            left: 85%;
         }
     }
 
     @keyframes slot2{
         100% {
-            transform: translateX(-50%) translateY(-50%) scale(0.58) rotate(0deg);
+            transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(0deg);
             top: 150%;
-            left: 165%;
+            left: 250%;
         }
     }
 
     @keyframes slot3{
         100% {
-            transform: translateX(-50%) translateY(-50%) scale(0.58) rotate(0deg);
+            transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(0deg);
             top: 345%;
-            left: -10%;
+            left: 85%;
         }
     }
 
     @keyframes slot4{
         100% {
-            transform: translateX(-50%) translateY(-50%) scale(0.58) rotate(0deg);
+            transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(0deg);
             top: 345%;
-            left: 160%;
+            left: 250%;
         }
     }
     
     @keyframes synopMoving {
         100% {
-            transform: translateX(-50%) translateY(-50%) scale(0.37) rotate(5deg);
-            top:580%;
-            left:135%;
+            transform: translateX(-50%) translateY(-50%) scale(0.33) rotate(5deg);
+            top:575%;
+            left:220%;
         }
     }
 
     @keyframes profileMoving {
         100% {
-            transform: translateX(-50%) translateY(-50%) scale(0.37) rotate(-4deg);
-            top:470%;
-            left:110%;
+            transform: translateX(-50%) translateY(-50%) scale(0.33) rotate(-4deg);
+            top:480%;
+            left:205%;
         }
     }
 
     @keyframes giftMoving {
         100% {
-            transform: translateX(-50%) translateY(-50%) scale(0.37) rotate(7deg);
+            transform: translateX(-50%) translateY(-50%) scale(0.33) rotate(3deg);
             top:540%;
-            left:200%;
+            left:282%;
         }
     }
 
     @keyframes abilMoving {
         100% {
-            transform: translateX(-50%) translateY(-50%) scale(0.37) rotate(1deg);
-            top:440%;
-            left:195%;
+            transform: translateX(-50%) translateY(-50%) scale(0.33) rotate(1deg);
+            top:450%;
+            left:280%;
         }
     }
 

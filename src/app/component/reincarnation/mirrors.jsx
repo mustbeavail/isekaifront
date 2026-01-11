@@ -52,12 +52,14 @@ export default function Mirrors({waitForRef, simResult, setResultMount}) {
         }else {
             if(!animeEnd) {
                 document.body.style.overflow = 'hidden';
+                document.documentElement.style.overflow = 'hidden';
                 animeSeq();
             }
         }
-        if(animeEnd) document.body.style.overflow = '';
+        if(animeEnd) {document.body.style.overflow = ''; document.documentElement.style.overflow = '';}
         return () => {
             document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
           }
     },[animeEnd]);
 
