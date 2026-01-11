@@ -178,6 +178,7 @@
     height: fit-content;
     flex-wrap: wrap;
     font-family: Jua;
+    cursor: default;
 }
 
 .inputDescItem1 {

@@ -46,14 +46,14 @@ export default function Entrance() {
   useEffect(() => {
 
     if(!guestId) return;
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflowX = 'hidden';
+    document.documentElement.style.overflowX = 'hidden';
 
     setIsLoading(false);
 
     return () => {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
+      document.body.style.overflowX = '';
+      document.documentElement.style.overflowX = '';
     }
   }, [guestId]);
 
@@ -99,7 +99,8 @@ export default function Entrance() {
     const smallPhrase = smallPhraseRef.current;
     if(animeEnd2){
       smallPhrase.addEventListener('animationend', () => setSmallPhraseEnd(true));
-      document.body.style.overflow = '';
+      document.body.style.overflowX = '';
+      document.documentElement.style.overflowX = '';
     }else{
       return;
     }

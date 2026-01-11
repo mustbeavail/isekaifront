@@ -1,0 +1,116 @@
+.privacyWrapper{
+    margin: auto;
+    width: 1200px;
+    padding: 50px 0
+}
+
+.backBtn{
+    float: right;
+    background-color: #f2d9b8;
+    color: #5a4633;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.backBtn:hover {
+    background-color: #e6c49f;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.backBtn:active {
+    background-color: #d6b58a;
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #000;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    border-left: 4px solid #007bff;
+    padding-left: 12px;
+}
+
+.text {
+    margin-bottom: 15px;
+}
+
+.list {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.listItem {
+    margin-bottom: 8px;
+}
+
+.link {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.footerInfo {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+@media (max-width: 1100px){
+
+    .privacyWrapper{
+        width: 700px;
+    }
+}
+
+@media (max-width: 700px){
+
+    .privacyWrapper{
+        width: 320px;
+    }
+
+    .backBtn{
+        font-size: 12px;
+        padding: 10px 10px;
+    }
+
+    .title {
+        font-size: 1.5rem;  /* 제목 크기 축소 (2rem -> 1.5rem) */
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+    
+      .sectionTitle {
+        font-size: 1.1rem;  /* 소제목 크기 축소 (1.25rem -> 1.1rem) */
+        margin-top: 30px;
+        padding-left: 10px;
+      }
+    
+      .text, .listItem {
+        font-size: 0.95rem; /* 본문 글씨를 모바일 가독성에 맞게 조정 */
+        line-height: 1.6;
+      }
+    
+      .list {
+        padding-left: 15px; /* 리스트 들여쓰기 축소 */
+      }
+}
+

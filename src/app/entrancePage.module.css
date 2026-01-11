@@ -125,6 +125,7 @@
     text-align: center;
     font-family: Jua;
     font-size: 30px;
+    cursor: default;
 }
 
 .smallPhrase {
@@ -139,6 +140,7 @@
 .buttonDescription {
     color: #5a3000;
     font-size: 15px;
+    cursor: default;
 }
 
 .gem {
