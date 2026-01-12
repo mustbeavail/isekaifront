@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './mainPage.module.css';
+import styles from './catalModal.module.css';
 
 export default function CatalModal({ visible, onClose, onSend }) {
     const topics = [

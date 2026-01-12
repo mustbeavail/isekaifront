@@ -3,6 +3,7 @@ import styles from "./mainPage.module.css";
 import { useState, useEffect, useRef } from "react";
 import Link from 'next/link';
 import CatalModal from './cartalogueModal';
+import PersonalArchiveModal from './personalArchiveModal';
 import { useSelector } from "react-redux";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
@@ -50,7 +51,7 @@ const Reincarnation = () => {
     const searchParams = useSearchParams();
     const [initDone, setInitDone] = useState(false);
     const [resultMount, setResultMount] = useState(false);
-    
+    const [archiveModalVisible, setArchiveModalVisible] = useState(false);
 
     // ref 기다리기
     const waitForRef = (ref, callback, resolve) => {
@@ -150,7 +151,7 @@ const Reincarnation = () => {
     const runSim = async () => {
 
         /////////////////////////////////////////////////////////////////
-        const whole = {
+/*         const whole = {
             '세계관명시': 'SF',
             '시놉시스':'테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스',
             '프로필':'테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필',
@@ -165,11 +166,11 @@ const Reincarnation = () => {
         setResDone('done');
         setLoadingDone(true);
         document.body.style.overflowX = '';
-        document.documentElement.style.overflowX = '';
+        document.documentElement.style.overflowX = ''; */
         /////////////////////////////////////////////////////////////////
 
 
-/*         let finalPreferred = preferredIsekai;
+        let finalPreferred = preferredIsekai;
 
         if(!guestId){
             alert('유저 식별불가, 다시 시도해주세요.');
@@ -224,7 +225,7 @@ const Reincarnation = () => {
                 alert('서버에 연결할 수 없습니다. 잠시 후 다시 시도해주세요.');
             }
             location.href='/component/reincarnation';
-        }; */
+        };
     };
 
     // idx로 시뮬레이션 결과 불러오기
@@ -296,7 +297,13 @@ const Reincarnation = () => {
                         <CatalModal
                             visible={catalModalVisible}
                             onClose={() => setCatalModalVisible(false)}
-                            onSend={(value)=>{setPreferredIsekai(value); sessionStorage.setItem('preferredIsekai', value);}}/>
+                            onSend={(value)=>{setPreferredIsekai(value); sessionStorage.setItem('preferredIsekai', value);}}
+                        />
+                        <PersonalArchiveModal
+                            visible={archiveModalVisible}
+                            onClose={()=>{setArchiveModalVisible(false)}}
+                            guestId={guestId}
+                        />
                         <div ref={ghostWrapperRef} className={styles.ghostWrapper}>
                             <img ref={ghostRef} className={styles.ghost} src="/ghost.png" alt="유령"/>
                         </div>
@@ -464,7 +471,7 @@ const Reincarnation = () => {
                             }
                             <div className={styles.buttons}>
                                 <Link href="/component/archive" className={styles.buttonItem}>🌍 다른 세계 보러가기</Link>
-                                {/* <Link href="/component/reincarnation" className={styles.buttonItem}>🕰️ 내 이전 세계 보러가기</Link> */}
+                                <div className={styles.buttonItem} onClick={()=>{setArchiveModalVisible(true)}}>🕰️ 내 이전 세계 보러가기</div>
                             </div>
                         </div>
                     </> : animeEnd && !loadingDone ? <span ref={loadingPhraseRef} className={styles.loadingPhrase}>{loadingPhrase}</span> :

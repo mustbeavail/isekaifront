@@ -1,0 +1,207 @@
+/* 1. 기본 레이아웃 (기존 유지) */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: default;
+}
+
+.modal {
+    background-color: #fdfaf5;
+    border: 2px solid #d6c8a9;
+    border-radius: 12px;
+    padding: 24px 32px;
+    max-width: 500px; /* 게시판을 위해 기존 400px에서 조금 넓힘 */
+    width: 95%;
+    box-shadow: 0 8px 24px rgba(162, 142, 109, 0.25);
+    position: relative;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #a28e6d;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.title {
+    margin: 0 0 16px;
+    color: #74654e;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* 2. 상단 필터/정렬 */
+.filterContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+}
+
+.selectBox {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #d6c8a9;
+    background-color: #fdfaf5;
+    color: #74654e;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.option{
+    text-align: left;
+}
+/* 3. 게시판 리스트 스타일 */
+.archiveList {
+    border: 1px solid #d6c8a9;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: #fff;
+}
+
+.listHeader {
+    display: grid;
+    grid-template-columns: 1.5fr 1.3fr 2fr 1.5fr 0.5fr;
+    background-color: #f5e9d8;
+    padding: 12px 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #74654e;
+    text-align: center;
+}
+
+.listItem {
+    display: grid;
+    grid-template-columns: 1.5fr 1.3fr 2fr 1.5fr 0.5fr;
+    padding: 10px 8px;
+    border-top: 1px solid #f0ede6;
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.item {
+    padding: 2px 5px;
+}
+
+.listItemEmpty {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10px 8px;
+    border-top: 1px solid #f0ede6;
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.linkBtn {
+    cursor: pointer;
+    padding: 4px 0;
+    background-color: #a28e6d;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    transition: background 0.2s;
+}
+
+.linkBtn:hover {
+    background-color: #74654e;
+}
+
+/* 4. 페이지네이션 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.pageBtn {
+    border: 1px solid #d6c8a9;
+    background: white;
+    color: #74654e;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pageBtn.activePage {
+    background-color: #a28e6d;
+    color: white;
+}
+
+/* 5. 공통 버튼 (닫기 등) */
+.backBtn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid #d6c8a9;
+    background-color: #f5e9d8;
+    color: #a28e6d;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.backBtn:hover {
+    background-color: #fdfaf5;
+}
+
+.ellipsis {
+    display: flex;
+    align-items: flex-end;
+    padding: 0 4px;
+    color: #a28e6d;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 700px) {
+    .modal {
+        padding: 20px 16px; /* 패딩을 줄여 공간 확보 */
+        width: 95%;
+        max-width: none;
+    }
+
+    .title {
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+    }
+
+    /* 리스트 헤더와 아이템의 폰트 크기 축소 */
+    .listHeader, .listItem {
+        font-size: 0.75rem; /* 폰트 크기를 줄여 텍스트 겹침 방지 */
+        padding: 10px 4px;
+        /* 간격 미세 조정: 데이터가 많다면 비율을 조정하세요 */
+        grid-template-columns: 1.2fr 1.2fr 1.8fr 1.3fr 0.7fr; 
+    }
+
+    .linkBtn {
+        font-size: 0.7rem;
+        padding: 4px 2px;
+    }
+
+    /* 페이지네이션 버튼 크기 조절 */
+    .pagination {
+        gap: 4px;
+    }
+
+    .pageBtn {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+
+    .backBtn {
+        width: 100%; /* 모바일에서는 버튼을 가로로 꽉 차게 하면 터치가 쉽습니다 */
+        padding: 12px;
+    }
+}
