@@ -18,7 +18,7 @@
 }
 .archiveBoard{
     position: relative;
-    background-image: url("/archiveBoard.webp");
+    background-image: url("/archiveboard.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

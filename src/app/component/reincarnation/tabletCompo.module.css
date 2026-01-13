@@ -130,7 +130,7 @@
     flex-wrap: wrap;
     align-content: start;
     position: absolute;
-    background-image: url("/subPopup1.webp");
+    background-image: url("/subpopup1.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -150,7 +150,7 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
-    background-image: url("/subPopup2.webp");
+    background-image: url("/subpopup2.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -170,7 +170,7 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
-    background-image: url("/subPopup3.webp");
+    background-image: url("/subpopup3.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -190,7 +190,7 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
-    background-image: url("/subPopup4.webp");
+    background-image: url("/subpopup4.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

@@ -13,7 +13,7 @@
 }
 
 .mainTarot.theSun{
-    background-image: url("/theSun.webp");
+    background-image: url("/thesun.webp");
 }
 
 .mainTarot.death{
@@ -21,7 +21,7 @@
 }
 
 .mainTarot.theMoon{
-    background-image: url("/theMoon.webp");
+    background-image: url("/themoon.webp");
 }
 
 .sub4Wrapper{
@@ -88,7 +88,7 @@
     flex-wrap: wrap;
     align-content: start;
     position: absolute;
-    background-image: url("/subTarot4.webp");
+    background-image: url("/subtarot4.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -110,7 +110,7 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
-    background-image: url("/subTarot1.webp");
+    background-image: url("/subtarot1.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -132,7 +132,7 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
-    background-image: url("/subTarot2.webp");
+    background-image: url("/subtarot2.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -154,7 +154,7 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
-    background-image: url("/subTarot3.webp");
+    background-image: url("/subtarot3.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

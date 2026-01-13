@@ -120,7 +120,7 @@ export default function SimResult({simResult, waitForRef, setResultMount, guestI
                         simResult.whole.세계관명시 == '판타지' ?
                             <img
                                 className={styles.isekaiImage}
-                                src={simResult.subGenre == '던전 공략물' ? '/fanDungeon.webp' : '/fantasy.webp'}
+                                src={simResult.subGenre == '던전 공략물' ? '/fandungeon.webp' : '/fantasy.webp'}
                                 alt={'판타지배경'}
                             /> :
 
@@ -128,27 +128,27 @@ export default function SimResult({simResult, waitForRef, setResultMount, guestI
                             <img
                                 className={styles.isekaiImage}
                                 src={simResult.subGenre == '능력자 배틀물' ||
-                                    simResult.subGenre == '히어로물' ? '/urbanFanBattle.webp' : '/urbanFan.webp'}
+                                    simResult.subGenre == '히어로물' ? '/urbanfanbattle.webp' : '/urbanfan.webp'}
                                 alt={'어반판타지배경'}
                             /> :
 
                         simResult.whole.세계관명시 == '다크판타지' ? 
                             <img
                                 className={styles.isekaiImage}
-                                src={simResult.subGenre == '코즈믹 호러' ? '/darkFanCosmic.webp' : '/darkFan.webp'}
+                                src={simResult.subGenre == '코즈믹 호러' ? '/darkfancosmic.webp' : '/darkfan.webp'}
                                 alt={'다크판타지배경'}
                             /> :
 
                         simResult.whole.세계관명시 == '동양판타지' ?
-                            <img className={styles.isekaiImage} src={'/oriFan.webp'} alt={'동양판타지배경'}/> :
+                            <img className={styles.isekaiImage} src={'/orifan.webp'} alt={'동양판타지배경'}/> :
 
                         simResult.whole.세계관명시 == 'SF' ?
                             <img
                                 className={styles.isekaiImage}
-                                src={simResult.subGenre == '사이버펑크' ? '/SFCyberpunk.webp' :
-                                    simResult.subGenre.includes('아포칼립스') ? '/SFApocal.webp' :
-                                    simResult.subGenre == '거대로봇물' ? '/SFGiantMech.webp' :
-                                    '/SF.webp'}
+                                src={simResult.subGenre == '사이버펑크' ? '/sfcyberpunk.webp' :
+                                    simResult.subGenre.includes('아포칼립스') ? '/sfapocal.webp' :
+                                    simResult.subGenre == '거대로봇물' ? '/sfgiantMech.webp' :
+                                    '/sf.webp'}
                                 alt={'SF배경'}
                             /> : null
                     }

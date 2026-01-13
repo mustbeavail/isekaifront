@@ -1,5 +1,5 @@
 .mainOriCard{
-    background-image: url("/mainOriCard.webp");
+    background-image: url("/mainoricard.webp");
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
@@ -77,7 +77,7 @@
     flex-wrap: wrap;
     align-content: start;
     position: absolute;
-    background-image: url("/subOriCard1.webp");
+    background-image: url("/suboricard1.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -99,7 +99,7 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
-    background-image: url("/subOriCard2.webp");
+    background-image: url("/suboricard2.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -121,7 +121,7 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
-    background-image: url("/subOriCard3.webp");
+    background-image: url("/suboricard3.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -143,7 +143,7 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
-    background-image: url("/subOriCard4.webp");
+    background-image: url("/suboricard4.webp");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
