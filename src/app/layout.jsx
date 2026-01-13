@@ -1,6 +1,7 @@
 import ReduxProvider from "./ReduxProvider";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import { Suspense } from 'react'
 
 export const metadata = {
   title: '이세계 전생 시뮬레이션',
@@ -19,8 +20,10 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ReduxProvider>
-          {children}
-          <Toaster position="bottom-center"/>
+          <Suspense>
+            {children}
+            <Toaster position="bottom-center"/>
+          </Suspense>
         </ReduxProvider>
       </body>
     </html>
