@@ -81,7 +81,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    top:480%;
+    top:510%;
     left:-100%;
     width: 304.76px;
     height: 432.82px;
@@ -106,7 +106,7 @@
     width: 304.76px;
     height: 432.82px;
     transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(0deg);
-    top:480%;
+    top:510%;
     left:-100%;
     opacity: 1;
     z-index: 8;
@@ -128,7 +128,7 @@
     width: 292.98px;
     height: 432.06px;
     transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(0deg);
-    top:480%;
+    top:510%;
     left:-100%;
     opacity: 1;
     z-index: 7;
@@ -150,7 +150,7 @@
     width: 292.98px;
     height: 432.06px;
     transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(0deg);
-    top:480%;
+    top:510%;
     left:-100%;
     opacity: 1;
     z-index: 6;
@@ -556,15 +556,15 @@
 @keyframes synopMoving {
     100% {
         transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(5deg);
-        top:550%;
-        left:25%;
+        top:600%;
+        left:30%;
     }
 }
 
 @keyframes profileMoving {
     100% {
         transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(-4deg);
-        top:405%;
+        top:435%;
         left:65%;
     }
 }
@@ -572,7 +572,7 @@
 @keyframes giftMoving {
     100% {
         transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(7deg);
-        top:643%;
+        top:673%;
         left:160%;
     }
 }
@@ -580,7 +580,7 @@
 @keyframes abilMoving {
     100% {
         transform: translateX(-50%) translateY(-50%) scale(0.63) rotate(1deg);
-        top:480%;
+        top:510%;
         left:195%;
     }
 }
@@ -716,7 +716,7 @@
     @keyframes synopMoving {
         100% {
             transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(5deg);
-            top:870%;
+            top:900%;
             left:455%;
         }
     }
@@ -724,15 +724,15 @@
     @keyframes profileMoving {
         100% {
             transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(-4deg);
-            top:710%;
-            left:440%;
+            top:750%;
+            left:445%;
         }
     }
 
     @keyframes giftMoving {
         100% {
             transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(7deg);
-            top:820%;
+            top:850%;
             left:580%;
         }
     }
@@ -740,7 +740,7 @@
     @keyframes abilMoving {
         100% {
             transform: translateX(-50%) translateY(-50%) scale(0.5) rotate(1deg);
-            top:660%;
+            top:710%;
             left:570%;
         }
     }

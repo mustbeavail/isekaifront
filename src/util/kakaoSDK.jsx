@@ -15,7 +15,6 @@ function useKakao() {
             script.src = 'https://developers.kakao.com/sdk/js/kakao.min.js';
             script.onload = () => {
                 window.Kakao.init(KAKAO_KEY);
-                console.log('Kakao SDK initialized:', window.Kakao.isInitialized());
             };
             document.head.appendChild(script);
         }

@@ -130,7 +130,7 @@ const Reincarnation = () => {
         }
         /* let loadingCnt = 0; */
         while (freshResDone.current == 'start' && !loadingStop){
-            console.log('로딩문구 출력중');
+            console.log('loading...');
             let phrases = getRandom(wholeLoadingPhrases);
 
             for (let index = 0; index < phrases.length; index++) {
@@ -212,7 +212,6 @@ const Reincarnation = () => {
         setResDone('start');
         try{
             const {data} = await axios.post(`${API_URL}/reincarnation`, {guestId, userName, birth, gender, specialty, wishedAbil, wishedGift, finalPreferred});
-            console.log(data);
             setSimResult(data);
             setResDone('done');
             document.body.style.overflowX = '';
@@ -474,8 +473,17 @@ const Reincarnation = () => {
                                 <div className={styles.buttonItem} onClick={()=>{setArchiveModalVisible(true)}}>🕰️ 내 이전 세계 보러가기</div>
                             </div>
                         </div>
-                    </> : animeEnd && !loadingDone ? <span ref={loadingPhraseRef} className={styles.loadingPhrase}>{loadingPhrase}</span> :
-                    animeEnd && loadingDone ? <Mirrors waitForRef={waitForRef} simResult={simResult} setResultMount={setResultMount}/> : null
+                    </> : animeEnd && !loadingDone ?
+                        <div className={styles.loadingWrapper}>
+                            <span ref={loadingPhraseRef} className={styles.loadingPhrase}>{loadingPhrase}</span>
+                        </div> :
+                    animeEnd && loadingDone ?
+                        <Mirrors
+                            waitForRef={waitForRef}
+                            simResult={simResult}
+                            setResultMount={setResultMount}
+                            guestId={guestId}
+                        /> : null
                 }
             </div>
             <Footer visible={initDone}/>

@@ -6,14 +6,16 @@ import SnsShareModal from './snsShareModal';
 import TarotCompo from './tarotCompo';
 import TabletCompo from './tabletCompo';
 import OriCompo from './oriCompo';
+import PersonalArchiveModal from './personalArchiveModal';
 
-export default function SimResult({simResult, waitForRef, setResultMount}) {
+export default function SimResult({simResult, waitForRef, setResultMount, guestId}) {
 
     const [mainMoved, setMainMoved] = useState(false);
     const [animeEnd, setAnimeEnd] = useState(false);
     const [clearInfo, setClearInfo] = useState(false);
     const [genre, setGenre] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [archiveModalVisible, setArchiveModalVisible] = useState(false);
     let isekaiImageRef = useRef(null);
     let infoWrapperRef = useRef(null);
     let mainRef = useRef(null);
@@ -100,12 +102,18 @@ export default function SimResult({simResult, waitForRef, setResultMount}) {
     return (
         <>
             <SnsShareModal visible={showModal} onClose={()=>setShowModal(false)}/>
+            <PersonalArchiveModal
+                            visible={archiveModalVisible}
+                            onClose={()=>{setArchiveModalVisible(false)}}
+                            guestId={guestId}
+            />
             <div className={styles.resultContainer}>
                 <div ref={menuRef} className={styles.menuWrapper}>
                     <div className={styles.buttonItem} onClick={!animeEnd ? '' : returnToHome}>다시하기</div>
                     <div className={styles.buttonItem} onClick={!animeEnd ? '' : ()=>setClearInfo(prev=> !prev)}>📸 감상하기</div>
                     <div className={styles.buttonItem} onClick={!animeEnd ? '' : ()=>setShowModal(prev=> !prev)}>🌐 결과 공유하기</div>
                     <div className={styles.buttonItem} onClick={!animeEnd ? '' : toArchive}>🌍 다른 세계 보러가기</div>
+                    <div className={styles.buttonItem} onClick={()=>{setArchiveModalVisible(true)}}>🕰️ 내 이전 세계</div>
                 </div>
                 <div ref={isekaiImageRef} className={styles.isekaiImageWrapper}>
                     {

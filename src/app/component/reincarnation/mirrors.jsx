@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import SimResult from './simResult';
 import { useSearchParams } from 'next/navigation';
 
-export default function Mirrors({waitForRef, simResult, setResultMount}) {
+export default function Mirrors({waitForRef, simResult, setResultMount, guestId}) {
       
     let mainRef = useRef(null);
     let mainWrapperRef = useRef(null);
@@ -124,7 +124,15 @@ export default function Mirrors({waitForRef, simResult, setResultMount}) {
                         </div>
                     </div>
                 </div>
-            : <><SimResult simResult={simResult} waitForRef={waitForRef} setResultMount={setResultMount}/></>}
+            :   <>
+                    <SimResult
+                        simResult={simResult}
+                        waitForRef={waitForRef}
+                        setResultMount={setResultMount}
+                        guestId={guestId}
+                    />
+                </>
+            }
         </>
     )
 }

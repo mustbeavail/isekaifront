@@ -49,8 +49,8 @@ export default function Privacy() {
                     </ul>
 
                     <div className={styles.footerInfo}>
-                        <p>공고일자: 2026년 1월 11일</p>
-                        <p>시행일자: 2026년 1월 11일</p>
+                        <p>공고일자: 2026년 1월 14일</p>
+                        <p>시행일자: 2026년 1월 14일</p>
                     </div>
                 </div>
             </div>

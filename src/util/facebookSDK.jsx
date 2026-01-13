@@ -20,7 +20,6 @@ function useFacebook() {
             script.src = '"https://connect.facebook.net/en_US/sdk.js"';
             script.onload = () => {
                 window.fbAsyncInit();
-                console.log('Facebook SDK initialized:', window.FB.isInitialized());
             };
             script.crossorigin='anonymous';
             document.head.appendChild(script);
