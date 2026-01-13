@@ -18,7 +18,7 @@ export default function SnsShareModal({visible, onClose}){
               title: '이세계 전생 시뮬레이션',
               description: '당신이 이세계에 전생한다면?',
               imageUrl:
-                'https://https://isekaireincarnation.com/fantasy.webp',
+                'https://isekaireincarnation.com/fantasy.webp',
               imageWidth: 400,
               imageHeight: 300,
               link: {
