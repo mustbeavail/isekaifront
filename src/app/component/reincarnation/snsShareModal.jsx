@@ -6,8 +6,7 @@ import { toast } from "react-hot-toast";
 
 export default function SnsShareModal({visible, onClose}){
 
-    const url = 'https://naver.com';
-    //const url = window.location.href;
+    const url = window.location.href;
 
     useKakao();
 
@@ -19,20 +18,20 @@ export default function SnsShareModal({visible, onClose}){
               title: '이세계 전생 시뮬레이션',
               description: '당신이 이세계에 전생한다면?',
               imageUrl:
-                'https://i.pinimg.com/originals/90/4d/5f/904d5f8470285ad8061d5ab386900b96.jpg',
+                'https://https://isekaireincarnation.com/fantasy.webp',
               imageWidth: 400,
               imageHeight: 300,
               link: {
-                webUrl: 'https://naver.com',
-                mobileWebUrl: 'https://naver.com'
+                webUrl: url,
+                mobileWebUrl: url
               },
             },
             buttons: [
               {
                 title: '웹으로 이동',
                 link: {
-                  webUrl: 'https://naver.com',
-                  mobileWebUrl: 'https://naver.com'
+                  webUrl: url,
+                  mobileWebUrl: url
                 },
               },
             ],
