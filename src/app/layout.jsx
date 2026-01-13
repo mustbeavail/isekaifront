@@ -17,6 +17,11 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
         <link href="https://fonts.googleapis.com/css2?family=Condiment&family=Fugaz+One&family=Jua&family=Lavishly+Yours&family=Mea+Culpa&family=Saira+Stencil+One&display=swap" rel="stylesheet"/>
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
+        <meta property="og:title" content="이세계 전생 시뮬레이터" />
+        <meta property="og:description" content="내가 이세계에 전생한다면?" />
+        <meta property="og:image" content="https://isekaireincarnation.com/thumbnail.webp" />
+        <meta property="og:url" content="https://isekaireincarnation.com" />
+        <meta property="og:type" content="website" />
       </head>
       <body>
         <ReduxProvider>
