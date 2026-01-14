@@ -204,10 +204,6 @@
     text-align: right;
     margin-left: auto;
     margin-top: 10px;
-    -webkit-text-size-adjust: 100% !important;
-    -moz-text-size-adjust: none !important;
-    -ms-text-size-adjust: none !important;
-    text-size-adjust: 100% !important;
 }
 
 .inputItem {
@@ -579,10 +575,6 @@
     }
     .inputDescItem3{
         font-size: 7px;
-        -webkit-text-size-adjust: 100% !important;
-        -moz-text-size-adjust: none !important;
-        -ms-text-size-adjust: none !important;
-        text-size-adjust: 100% !important;
     }
     .buttonItem{
         font-size: 12px;
@@ -665,12 +657,7 @@
         font-size: 11px;
     }
     .inputDescItem3 {
-        margin-top: 1px;
-        font-size: 4px;
-        -webkit-text-size-adjust: 100% !important;
-        -moz-text-size-adjust: none !important;
-        -ms-text-size-adjust: none !important;
-        text-size-adjust: 100% !important;
+        display: none;
     }
     .buttonItem {
         padding: 3px 6px;
