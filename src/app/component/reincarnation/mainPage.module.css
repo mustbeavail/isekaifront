@@ -574,9 +574,8 @@
         font-size: 22px;
     }
     .inputDescItem3{
-        font-size: 7px;
-        -webkit-text-size-adjust: none;
-        max-height: 999999px;
+        font-size: 28px;
+        transform: scale(0.25);
     }
     .buttonItem{
         font-size: 12px;
@@ -660,7 +659,8 @@
     }
     .inputDescItem3 {
         margin-top: 1px;
-        font-size: 4px;
+        font-size: 16px;
+        transform: scale(0.25);
     }
     .buttonItem {
         padding: 3px 6px;

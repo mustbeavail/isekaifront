@@ -32,6 +32,9 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
         <link href="https://fonts.googleapis.com/css2?family=Condiment&family=Fugaz+One&family=Jua&family=Lavishly+Yours&family=Mea+Culpa&family=Saira+Stencil+One&display=swap" rel="stylesheet"/>
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1397643175532190"
+                crossorigin="anonymous">
+        </script>
       </head>
       <body>
         <ReduxProvider>
