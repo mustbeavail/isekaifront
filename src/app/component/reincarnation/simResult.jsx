@@ -148,7 +148,7 @@ export default function SimResult({simResult, waitForRef, setResultMount, guestI
                                 className={styles.isekaiImage}
                                 src={simResult.subGenre == '사이버펑크' ? '/sfcyberpunk.webp' :
                                     simResult.subGenre.includes('아포칼립스') ? '/sfapocal.webp' :
-                                    simResult.subGenre == '거대로봇물' ? '/sfgiantMech.webp' :
+                                    simResult.subGenre == '거대로봇물' ? '/sfgiantmech.webp' :
                                     '/sf.webp'}
                                 alt={'SF배경'}
                             /> : null
