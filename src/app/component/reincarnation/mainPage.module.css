@@ -575,6 +575,7 @@
     }
     .inputDescItem3{
         font-size: 7px;
+        -webkit-text-size-adjust: none;
     }
     .buttonItem{
         font-size: 12px;
