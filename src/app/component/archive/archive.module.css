@@ -272,7 +272,7 @@
     }
 
     .pageHeader{
-        width: 600px;
+        width: 350px;
         font-size: 10px;
         padding-left: 0;
     }
@@ -280,7 +280,7 @@
     .archiveContentWrapper{
         flex-direction: column;
         padding-left: 0;
-        width: 600px;
+        width: 350px;
     }
 
     .archiveBoard{
@@ -298,11 +298,11 @@
     }
 
     .boardContentHead{
-        font-size: 8.8px;
+        font-size: 8.5px;
     }
 
     .boardContent{
-        font-size: 7.2px
+        font-size: 7px
     }
 
     .boardContentBtn{
