@@ -20,6 +20,10 @@ export const metadata = {
     ],
     locale: 'ko_KR',
     type: 'website',
+    viewport: {
+      width: 'device-width',
+      initialScale: 1,
+    },
   },
 }
 
