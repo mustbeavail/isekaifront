@@ -204,6 +204,10 @@
     text-align: right;
     margin-left: auto;
     margin-top: 10px;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: 100%;
 }
 
 .inputItem {
@@ -574,8 +578,11 @@
         font-size: 22px;
     }
     .inputDescItem3{
-        font-size: 28px;
-        transform: scale(0.25);
+        font-size: 7px;
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: none;
+        -ms-text-size-adjust: none;
+        text-size-adjust: 100%;
     }
     .buttonItem{
         font-size: 12px;
@@ -659,8 +666,11 @@
     }
     .inputDescItem3 {
         margin-top: 1px;
-        font-size: 16px;
-        transform: scale(0.25);
+        font-size: 4px;
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: none;
+        -ms-text-size-adjust: none;
+        text-size-adjust: 100%;
     }
     .buttonItem {
         padding: 3px 6px;
