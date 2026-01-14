@@ -20,7 +20,6 @@ export default function Mirrors({waitForRef, simResult, setResultMount, guestId}
     }
 
     const animeSeq = async () => {
-        await new Promise(resolve => setTimeout(resolve, 2500));
         await new Promise(resolve => waitForRef(aRef, addFadeIn, resolve));
         aRef.current.addEventListener('animationend', ()=>addFadeIn(bRef.current));
         bRef.current.addEventListener('animationend', ()=>addFadeIn(cRef.current));
@@ -53,7 +52,7 @@ export default function Mirrors({waitForRef, simResult, setResultMount, guestId}
             if(!animeEnd) {
                 document.body.style.overflow = 'hidden';
                 document.documentElement.style.overflow = 'hidden';
-                animeSeq();
+                setTimeout(animeSeq, 2500);
             }
         }
         if(animeEnd) {document.body.style.overflow = ''; document.documentElement.style.overflow = '';}

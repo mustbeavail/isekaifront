@@ -87,7 +87,7 @@ export default function SimResult({simResult, waitForRef, setResultMount, guestI
             location.href='/';
         };
         setResultMount(true);
-        animeSeq();
+        setTimeout(animeSeq, 2500);
         router.replace(`/component/reincarnation?simIdx=${simResult.simIdx}`);
         genreToEng(simResult.whole.세계관명시);
     },[]);
