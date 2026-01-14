@@ -34,7 +34,8 @@ export default function SimResult({simResult, waitForRef, setResultMount, guestI
 
     // 애니메이션 순서대로 실행
     const animeSeq = async () => {
-        await new Promise(resolve=>{waitForRef(isekaiImageRef, (ref)=>{waitFadeIn(ref, resolve)})});
+        await new Promise(resolve=>{waitForRef(isekaiImageRef, (ref)=>{ref.classList.add(styles.fadeIn)}, resolve)});
+        await new Promise(resolve=>{waitFadeIn(isekaiImageRef.current, resolve)});
         await new Promise(resolve=>{infoWrapperRef.current.classList.add(styles.fadeIn); resolve();});
         await new Promise(resolve=>{waitFadeIn(infoWrapperRef.current, resolve)});
         await new Promise(resolve=>{

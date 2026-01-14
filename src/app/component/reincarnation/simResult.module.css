@@ -24,7 +24,6 @@
 
 .isekaiImageWrapper{
     width: fit-content;
-    animation: fadeIn 1s linear forwards;
     margin-left: 20px;
     grid-column: 2 / 3;
     grid-row: 1 / 2;
