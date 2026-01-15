@@ -45,6 +45,10 @@ export default function Mirrors({waitForRef, simResult, setResultMount, guestId}
 
     // 애니메이션, url 쿼리 검사
     useEffect(()=>{
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
         const idx = searchParams.get('idx');
         if(idx){
             setAnimeEnd(true);

@@ -737,4 +737,11 @@
             left: 243%;
         }
     }
+
+    .synopsis,
+    .profile,
+    .gift,
+    .abil {
+        font-size: 22px;
+    }
 }
