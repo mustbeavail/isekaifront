@@ -32,7 +32,7 @@ export default function PersonalArchiveModal ({visible, onClose, guestId}) {
         if(!page || !align || !guestId || !visible) return;
 
         const dataSeq = async () => {
-            await new Promise(resolve => {getPersonalArchive(guestId, page, align), resolve()});
+            await getPersonalArchive(guestId, page, align);
             setInitDone(true);
         };
 

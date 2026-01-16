@@ -107,7 +107,7 @@ const Reincarnation = () => {
         await firstCallbackAnime();
         await secondCallbackAnime();
         await new Promise(resolve => callbackPhraseRef3.current.addEventListener('animationend', ()=>setTimeout(()=>resolve(), 2500)));
-        await new Promise(resolve => {setAnimeEnd(true); resolve();});
+        setAnimeEnd(true);
     };
 
     // 로딩
@@ -141,7 +141,7 @@ const Reincarnation = () => {
             /* if(loadingCnt > 6) freshResDone.current = 'done'; */
         };
         if(loadingPhraseRef.current){
-            await new Promise(resolve => {loadingPhraseRef.current.classList.add(styles.fadeOut); resolve();});
+            loadingPhraseRef.current.classList.add(styles.fadeOut);
             await new Promise(resolve => {loadingPhraseRef.current.addEventListener('animationend', ()=>{setTimeout(resolve, 1500);})});
         }
         setLoadingDone(true);
@@ -152,7 +152,7 @@ const Reincarnation = () => {
 
         /////////////////////////////////////////////////////////////////
 /*         const whole = {
-            '세계관명시': 'SF',
+            '세계관명시': '동양판타지',
             '시놉시스':'테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스테스트용 시놉시스',
             '프로필':'테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필테스트용 프로필',
             '전생특전':'테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전테스트용 전생특전',

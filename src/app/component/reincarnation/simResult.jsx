@@ -36,30 +36,26 @@ export default function SimResult({simResult, waitForRef, setResultMount, guestI
     const animeSeq = async () => {
         await new Promise(resolve=>{waitForRef(isekaiImageRef, (ref)=>{ref.classList.add(styles.fadeIn)}, resolve)});
         await new Promise(resolve=>{waitFadeIn(isekaiImageRef.current, resolve)});
-        await new Promise(resolve=>{infoWrapperRef.current.classList.add(styles.fadeIn); resolve();});
+        infoWrapperRef.current.classList.add(styles.fadeIn);
         await new Promise(resolve=>{waitFadeIn(infoWrapperRef.current, resolve)});
-        await new Promise(resolve=>{
-            if(simResult.whole.세계관명시 == 'SF'){
-                loadingRef.current.classList.add(styles.fakeLoading);
-                loadingRef.current.addEventListener('animationend', ()=>{mainRef.current.classList.add(styles.mainMovingTablet)});
-                mainRef.current.addEventListener('animationend', (e)=>{
-                    if(e.target !== mainRef.current) return;
-                    setMainMoved(true);
-                    setAnimeEnd(true);
-                    menuRef.current.classList.add(styles.fadeIn);})
-                resolve();
-            }else{
-                infoWrapperRef.current.classList.add(styles.vibe);
-                mainRef.current.classList.add(styles.mainMoving);
-                mainRef.current.addEventListener('animationend', ()=>{
-                    setMainMoved(true);
-                    waitForRef(
-                        subRef1,
-                        (ref)=>{ref.addEventListener('animationend', ()=>{setAnimeEnd(true); menuRef.current.classList.add(styles.fadeIn);});});
-                })
-                resolve();
-            };
-        });
+        if(simResult.whole.세계관명시 == 'SF'){
+            loadingRef.current.classList.add(styles.fakeLoading);
+            loadingRef.current.addEventListener('animationend', ()=>{mainRef.current.classList.add(styles.mainMovingTablet)});
+            mainRef.current.addEventListener('animationend', (e)=>{
+                if(e.target !== mainRef.current) return;
+                setMainMoved(true);
+                setAnimeEnd(true);
+                menuRef.current.classList.add(styles.fadeIn);});
+        }else{
+            infoWrapperRef.current.classList.add(styles.vibe);
+            mainRef.current.classList.add(styles.mainMoving);
+            mainRef.current.addEventListener('animationend', ()=>{
+                setMainMoved(true);
+                waitForRef(
+                    subRef1,
+                    (ref)=>{ref.addEventListener('animationend', ()=>{setAnimeEnd(true); menuRef.current.classList.add(styles.fadeIn);});});
+            })
+        };
     };
 
     // 시작화면으로 돌아가기 함수
