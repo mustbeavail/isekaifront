@@ -7,7 +7,7 @@ const Archive = async () => {
 
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const cookieHeader = cookieStore
         .getAll()
         .map(c => `${c.name}=${c.value}`)
