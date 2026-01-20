@@ -13,7 +13,7 @@ const Archive = async () => {
         .map(c => `${c.name}=${c.value}`)
         .join('; ');
 
-    const ranSimResult = await axios.get(`${API_URL}/todayIsekai`, {headers: {cookie: cookieHeader ?? ''}});
+    const ranSimResult = await axios.get(`http://backend:8080/todayIsekai`, {headers: {cookie: cookieHeader ?? ''}});
 
     return (
         <>
