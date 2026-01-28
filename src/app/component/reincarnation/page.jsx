@@ -129,7 +129,7 @@ const Reincarnation = () => {
             return arr[idx];
         }
         /* let loadingCnt = 0; */
-        while (freshResDone.current == 'start' && !loadingStop){
+        while (freshResDone.current == 'start'){
             console.log('loading...');
             let phrases = getRandom(wholeLoadingPhrases);
 
@@ -269,11 +269,10 @@ const Reincarnation = () => {
     useEffect(()=>{
         freshResDone.current = resDone;
         if(resDone !== 'start') return;
-        if(loadingStop) randomLoadingPhrase(freshResDone, loadingStop);
-        else randomLoadingPhrase(freshResDone);
+        randomLoadingPhrase(freshResDone);
 
-        return () => setLoadingStop(true);
-    },[resDone, loadingStop]);
+        return () => freshResDone.current = 'idle';
+    },[resDone]);
 
     // 새로고침시 이전 입력값 가져오기
     useEffect(()=>{
