@@ -49,7 +49,7 @@ export default function Mirrors({waitForRef, simResult, setResultMount, guestId}
             top: 0,
             behavior: 'smooth'
           });
-        const idx = searchParams.get('idx');
+        const idx = searchParams.get('simIdx');
         if(idx){
             setAnimeEnd(true);
         }else {
