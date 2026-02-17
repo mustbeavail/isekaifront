@@ -76,51 +76,51 @@ export default function Mirrors({waitForRef, simResult, setResultMount, guestId}
                         </div>
                         <div ref={aRef} className={styles.aWrapper}>
                             <div className={styles.subMirrorWrapperA1}>
-                                <img className={styles.subMirrorA1} src='/submirror1.webp' alt='서브거울'/>
+                                <img className={styles.subMirrorA1} src='/submirror1.webp' alt='기계풍거울'/>
                             </div>
                             <div className={styles.subMirrorWrapperA2}>
-                                <img className={styles.subMirrorA2} src='/submirror2.webp' alt='서브거울'/>
+                                <img className={styles.subMirrorA2} src='/submirror2.webp' alt='중세풍거울'/>
                             </div>
                             <div className={styles.subMirrorWrapperA3}>
-                                <img className={styles.subMirrorA3} src='/submirror3.webp' alt='서브거울'/>
+                                <img className={styles.subMirrorA3} src='/submirror3.webp' alt='수묵화풍거울'/>
                             </div>
                             <div className={styles.subMirrorWrapperA4}>
-                                <img className={styles.subMirrorA4} src='/submirror4.webp' alt='서브거울'/>
+                                <img className={styles.subMirrorA4} src='/submirror4.webp' alt='판타지중세풍거울'/>
                             </div>
                             <div ref={bRef} className={styles.bWrapper}>
                                 <div className={styles.subMirrorWrapperB1}>
-                                    <img className={styles.subMirrorB1} src='/submirror7.webp' alt='서브거울'/>
+                                    <img className={styles.subMirrorB1} src='/submirror7.webp' alt='사이버펑크풍거울'/>
                                 </div>
                                 <div className={styles.subMirrorWrapperB2}>
-                                    <img className={styles.subMirrorB2} src='/submirror6.webp' alt='서브거울'/>
+                                    <img className={styles.subMirrorB2} src='/submirror6.webp' alt='고급동양풍거울'/>
                                 </div>
                                 <div className={styles.subMirrorWrapperB3}>
-                                    <img className={styles.subMirrorB3} src='/submirror11.webp' alt='서브거울'/>
+                                    <img className={styles.subMirrorB3} src='/submirror11.webp' alt='원형거울'/>
                                 </div>
                                 <div ref={cRef} className={styles.cWrapper}>
                                     <div className={styles.subMirrorWrapperC1}>
-                                        <img className={styles.subMirrorC1} src='/submirror5.webp' alt='서브거울'/>
+                                        <img className={styles.subMirrorC1} src='/submirror5.webp' alt='동양풍거울'/>
                                     </div>
                                     <div className={styles.subMirrorWrapperC2}>
-                                        <img className={styles.subMirrorC2} src='/submirror8.webp' alt='서브거울'/>
+                                        <img className={styles.subMirrorC2} src='/submirror8.webp' alt='화려한동양풍거울'/>
                                     </div>
                                     <div className={styles.subMirrorWrapperC3}>
-                                        <img className={styles.subMirrorC3} src='/submirror9.webp' alt='서브거울'/>
+                                        <img className={styles.subMirrorC3} src='/submirror9.webp' alt='무지개픽셀거울'/>
                                     </div>
                                     <div className={styles.subMirrorWrapperC4}>
-                                        <img className={styles.subMirrorC4} src='/submirror10.webp' alt='서브거울'/>
+                                        <img className={styles.subMirrorC4} src='/submirror10.webp' alt='픽셀거울'/>
                                     </div>
                                     <div className={styles.subMirrorWrapperC5}>
-                                        <img className={styles.subMirrorC5} src='/submirror11.webp' alt='서브거울'/>
+                                        <img className={styles.subMirrorC5} src='/submirror11.webp' alt='원형거울'/>
                                     </div>
                                     <div className={styles.subMirrorWrapperC6}>
-                                        <img className={styles.subMirrorC6} src='/submirror10.webp' alt='서브거울'/>
+                                        <img className={styles.subMirrorC6} src='/submirror10.webp' alt='픽셀거울'/>
                                     </div>
                                     <div className={styles.subMirrorWrapperC7}>
-                                        <img className={styles.subMirrorC7} src='/submirror9.webp' alt='서브거울'/>
+                                        <img className={styles.subMirrorC7} src='/submirror9.webp' alt='무지개색픽셀거울'/>
                                     </div>
                                     <div className={styles.subMirrorWrapperC8}>
-                                        <img className={styles.subMirrorC8} src='/submirror11.webp' alt='서브거울'/>
+                                        <img className={styles.subMirrorC8} src='/submirror11.webp' alt='원형거울'/>
                                     </div>
                                 </div>
                             </div>
