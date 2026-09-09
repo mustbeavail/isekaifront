@@ -10,6 +10,21 @@ import axios from "axios";
 import Mirrors from './mirrors';
 import Footer from '../../footer';
 
+// 치트 능력치 선택지 (value 는 저장·전송값, label·anno 는 화면표시용)
+const ABIL_OPTIONS = [
+    {value: '명석한두뇌', label: '명석한 두뇌', anno: '머리가 안좋으면 몸이 고생한다'},
+    {value: '강인한신체', label: '강인한 신체', anno: '몸이 안좋으면 머리가 고생한다'},
+    {value: '치명적매력', label: '치명적 매력', anno: '알파의 삶을 살아보자'},
+    {value: '압도적인운', label: '압도적인 운', anno: '압도적인 운 앞에 모든 것은 무의미'},
+];
+
+// 여신의 선물 선택지 (value 는 저장·전송값, label·anno 는 화면표시용)
+const GIFT_OPTIONS = [
+    {value: '막대한재력', label: '막대한 재력', anno: '어떤 세계에도 통용되는 제1가치'},
+    {value: '영혼의파트너', label: '영혼의 파트너', anno: '가장 어두운 때에도 혼자가 아니야'},
+    {value: '특별한장비', label: '특별한 장비', anno: '장인이 아니면 도구탓을 하자'},
+];
+
 const Reincarnation = () => {
 
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -403,65 +418,31 @@ const Reincarnation = () => {
                                         </span>
                                         <div className={styles.isekaiSpecialWrapper}>
                                             <span className={`${styles.specialHead} ${styles.specialAbilHead}`}>⑥ 치트 능력치💪</span>
-                                            <span 
-                                                className={wishedAbil=='명석한두뇌' ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
-                                                onClick={(e)=>{
-                                                        setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
-                                                        sessionStorage.setItem('wishedAbil', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
-                                                    ·명석한 두뇌<br/>
-                                                    <span className={styles.specialAnno}> 머리가 안좋으면 몸이 고생한다</span>
-                                            </span>
-                                            <span
-                                                className={wishedAbil=='강인한신체' ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
-                                                onClick={(e)=>{
-                                                        setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
-                                                        sessionStorage.setItem('wishedAbil', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
-                                                    ·강인한 신체<br/>
-                                                    <span className={styles.specialAnno}> 몸이 안좋으면 머리가 고생한다</span>
-                                            </span>
-                                            <span
-                                                className={wishedAbil=='치명적매력' ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
-                                                onClick={(e)=>{
-                                                        setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
-                                                        sessionStorage.setItem('wishedAbil', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
-                                                    ·치명적 매력<br/>
-                                                    <span className={styles.specialAnno}> 알파의 삶을 살아보자</span>
-                                            </span>
-                                            <span
-                                                className={wishedAbil=='압도적인운' ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
-                                                onClick={(e)=>{
-                                                        setWishedAbil(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
-                                                        sessionStorage.setItem('wishedAbil', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
-                                                    ·압도적인 운<br/>
-                                                    <span className={styles.specialAnno}> 압도적인 운 앞에 모든 것은 무의미</span>
-                                            </span>
+                                            {ABIL_OPTIONS.map((option)=>(
+                                                <span
+                                                    key={option.value}
+                                                    className={wishedAbil==option.value ? `${styles.specialAbilOption} ${styles.selected}` : styles.specialAbilOption}
+                                                    onClick={()=>{
+                                                            setWishedAbil(option.value);
+                                                            sessionStorage.setItem('wishedAbil', option.value);}}>
+                                                        ·{option.label}<br/>
+                                                        <span className={styles.specialAnno}> {option.anno}</span>
+                                                </span>
+                                            ))}
                                         </div>
                                         <div className={styles.isekaiSpecialWrapper}>
                                             <span className={`${styles.specialHead} ${styles.specialGiftHead}`}>⑦ 여신의 선물🎁</span>
-                                            <span
-                                                className={wishedGift=='막대한재력' ? `${styles.specialGiftOption} ${styles.selected}` : styles.specialGiftOption}
-                                                onClick={(e)=>{
-                                                        setWishedGift(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
-                                                        sessionStorage.setItem('wishedGift', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
-                                                    ·막대한 재력<br/>
-                                                    <span className={styles.specialAnno}> 어떤 세계에도 통용되는 제1가치</span>
-                                            </span>
-                                            <span
-                                                className={wishedGift=='영혼의파트너' ? `${styles.specialGiftOption} ${styles.selected}` : styles.specialGiftOption}
-                                                onClick={(e)=>{
-                                                        setWishedGift(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
-                                                        sessionStorage.setItem('wishedGift', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
-                                                    ·영혼의 파트너<br/>
-                                                    <span className={styles.specialAnno}> 가장 어두운 때에도 혼자가 아니야</span>
-                                            </span>
-                                            <span
-                                                className={wishedGift=='특별한장비' ? `${styles.specialGiftOption} ${styles.selected}` : styles.specialGiftOption}
-                                                onClick={(e)=>{
-                                                        setWishedGift(e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));
-                                                        sessionStorage.setItem('wishedGift', e.currentTarget.innerText.slice(1, e.currentTarget.innerText.indexOf('\n')).replace(/\s+/g, ''));}}>
-                                                    ·특별한 장비<br/>
-                                                    <span className={styles.specialAnno}> 장인이 아니면 도구탓을 하자</span>
-                                            </span>
+                                            {GIFT_OPTIONS.map((option)=>(
+                                                <span
+                                                    key={option.value}
+                                                    className={wishedGift==option.value ? `${styles.specialGiftOption} ${styles.selected}` : styles.specialGiftOption}
+                                                    onClick={()=>{
+                                                            setWishedGift(option.value);
+                                                            sessionStorage.setItem('wishedGift', option.value);}}>
+                                                        ·{option.label}<br/>
+                                                        <span className={styles.specialAnno}> {option.anno}</span>
+                                                </span>
+                                            ))}
                                         </div>
                                         <div className={`${styles.buttonItem} ${styles.submitButton}`} onClick={()=>runSim()}>제출하기</div>
                                     </div>
