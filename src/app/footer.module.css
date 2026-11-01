@@ -4,57 +4,96 @@
 
 .footer {
     width: 100%;
-    height: 80px;
-    background-color: rgb(192, 192, 192);
-    border-top: 4px solid gray;
+    background-color: #2b2420;
+    color: #d9cfc4;
 }
 
-.contentWrapper{
+.inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px var(--padding) 36px;
     display: flex;
-    width: 80%;
-    margin: 25px auto;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
 }
 
-.subject{
-    font-size: 18px;
-    font-weight: 600;
+.brand {
+    max-width: 380px;
 }
 
-.bar{
-    font-size: 18px;
-    margin: 0 10px;
-    cursor: default;
+.brandName {
+    display: inline-block;
+    font-family: Jua;
+    font-size: 24px;
+    color: #ffd59a;
 }
 
-@media (max-width:1100px){
-
-    .subject{
-        font-size: 15px;
-        font-weight: 600;
-    }
-    .bar{
-        font-size: 15px;
-        margin: 0 10px;
-    }
+.brandDesc {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #b8ab9c;
 }
 
-@media (max-width:700px){
+.columns {
+    display: flex;
+    gap: 64px;
+}
 
-    .footer {
-        width: 100%;
-        height: 60px;
-        background-color: rgb(192, 192, 192);
-        border-top: 2px solid gray;
+.columnTitle {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+}
+
+.links {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+}
+
+.link {
+    display: inline-block;
+    font-size: 14px;
+    color: #d9cfc4;
+}
+
+.link:hover {
+    color: #ffd59a;
+    text-decoration: underline;
+}
+
+.link:focus-visible,
+.brandName:focus-visible {
+    outline: 2px solid #ffd59a;
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+.bottom {
+    border-top: 1px solid #443a33;
+    padding: 18px var(--padding);
+    text-align: center;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #8f8378;
+}
+
+@media (max-width: 700px) {
+    .inner {
+        flex-direction: column;
+        gap: 28px;
+        padding: 36px var(--padding) 28px;
     }
-
-    .subject{
-        font-size: 8px;
-        font-weight: 600;
+    .brandName {
+        font-size: 20px;
     }
-
-    .bar{
-        font-size: 8px;
-        margin: 0 10px;
+    .columns {
+        gap: 40px;
     }
 }

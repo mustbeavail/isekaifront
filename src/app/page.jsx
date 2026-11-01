@@ -1,147 +1,121 @@
-'use client';
 import Link from 'next/link';
-import { useState, useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
-import styles from "./entrancePage.module.css";
+import styles from './entrancePage.module.css';
+import EntranceAnime from './entranceAnime';
 import Footer from './footer';
+import JsonLd from './jsonLd';
+import { GENRES, STEPS } from './mainIntroData';
+import { SITE_URL, SITE_NAME, WEBSITE_ID, WEBAPP_ID, buildMetadata } from '../util/seo';
+
+const MAIN_TITLE = '이세계 전생 시뮬레이터 | 이세계 전생 테스트 · 환생 시뮬레이션';
+const MAIN_DESC = '내가 이세계에 전생한다면? 간단한 설문으로 AI가 판타지, 다크 판타지, SF, 사이버펑크 등 나만의 이세계 전생 이야기를 만들어 주는 무료 이세계 전생 테스트, 환생 시뮬레이션.';
+
+export const metadata = buildMetadata({
+    absoluteTitle: MAIN_TITLE,
+    description: MAIN_DESC,
+    path: '/',
+});
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'WebSite',
+            '@id': WEBSITE_ID,
+            name: SITE_NAME,
+            alternateName: ['이세계 전생 테스트', '환생 시뮬레이션'],
+            url: `${SITE_URL}/`,
+            inLanguage: 'ko-KR',
+        },
+        {
+            '@type': 'WebApplication',
+            '@id': WEBAPP_ID,
+            name: SITE_NAME,
+            url: `${SITE_URL}/component/reincarnation`,
+            description: MAIN_DESC,
+            applicationCategory: 'EntertainmentApplication',
+            operatingSystem: 'Web',
+            inLanguage: 'ko-KR',
+            genre: GENRES.map(g => g.name),
+            isAccessibleForFree: true,
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
+        },
+        {
+            '@type': 'WebPage',
+            '@id': `${SITE_URL}/#webpage`,
+            name: MAIN_TITLE,
+            description: MAIN_DESC,
+            url: `${SITE_URL}/`,
+            inLanguage: 'ko-KR',
+            isPartOf: { '@id': WEBSITE_ID },
+            about: { '@id': WEBAPP_ID },
+        },
+    ],
+};
 
 export default function Entrance() {
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [animeEnd, setAnimeEnd] = useState(false);
-  const [phraseEnd, setPhraseEnd] = useState(false);
-  const [animeEnd2, setAnimeEnd2] = useState(false);
-  const [smallPhraseEnd, setSmallPhraseEnd] = useState(false);
-  let guestId = useSelector(state => state.guest.guestId);
-  let isFirst = useSelector(state => state.guest.isFirst);
-  const truckRef = useRef(null);
-  const movingHumanRef = useRef(null);
-  const spinningHumanRef = useRef(null);
-  const phraseRef = useRef(null);
-  const smallPhraseRef = useRef(null);
-
-  // 애니메이션 스킵
-  const waitForRef = (ref, callback) => {
-    if (ref.current) callback(ref.current);
-    else requestAnimationFrame(() => waitForRef(ref, callback));
-  };
-  
-  const skip = () => {
-    waitForRef(truckRef, (truck) => {
-      truck.style.animationDelay = '0s';
-      truck.style.animationDuration = '0.0001s';
-      waitForRef(movingHumanRef, (movingHuman) => {
-        movingHuman.style.animationDuration = '0.0001s';
-          waitForRef(phraseRef, (phrase) => {
-            phrase.style.animationDuration = '0.0001s';
-            waitForRef(smallPhraseRef, (smallPhrase) => {
-              smallPhrase.style.animationDuration = '0.0001s';
-            });
-          });
-      });
-    });
-  };
-
-  // 오버플로우 끄기
-  useEffect(() => {
-
-    if(!guestId) return;
-    document.body.style.overflowX = 'hidden';
-    document.documentElement.style.overflowX = 'hidden';
-
-    setIsLoading(false);
-
-    return () => {
-      document.body.style.overflowX = '';
-      document.documentElement.style.overflowX = '';
-    }
-  }, [guestId]);
-
-  // 애니메이션
-  useEffect(() => {
-    const truck = truckRef.current;
-    const movingHuman = movingHumanRef.current;
-    const spinningHuman = spinningHumanRef.current;
-
-    const handleTruckEnd = () => {
-      movingHuman.classList.add(styles.humanFly);
-      spinningHuman.classList.add(styles.humanSpinner);
-    };
-
-    if(!isLoading){
-      truck.addEventListener('animationend', handleTruckEnd);
-      movingHuman.addEventListener('animationend', () => setAnimeEnd(true));
-    }else{
-      return;
-    };
-
-    return () => {
-      truck.removeEventListener('animationend', handleTruckEnd);
-      movingHuman.removeEventListener('animationend', () => setAnimeEnd(true));
-    };
-  }, [isLoading]);
-
-  useEffect(()=>{
-    const phrase = phraseRef.current;
-    if(animeEnd){
-      phrase.addEventListener('animationend', () => setPhraseEnd(true));
-      phrase.addEventListener('animationend', () => setAnimeEnd2(true));
-    }else{
-      return;
-    }
-    return () => {
-      phrase.removeEventListener('animationend', () => setPhraseEnd(true));
-      phrase.removeEventListener('animationend', () => setAnimeEnd2(true));
-    };
-  },[animeEnd]);
-
-  useEffect(()=>{
-    const smallPhrase = smallPhraseRef.current;
-    if(animeEnd2){
-      smallPhrase.addEventListener('animationend', () => setSmallPhraseEnd(true));
-      document.body.style.overflowX = '';
-      document.documentElement.style.overflowX = '';
-    }else{
-      return;
-    }
-    return () => {
-      smallPhrase.removeEventListener('animationend', () => setSmallPhraseEnd(true));
-    };
-  },[animeEnd2])
-
-  return (
-    <>
-      <title>이세계 전생 시뮬레이션</title>
-      <h1 className='sr-only'>다양한 이세계 세계관 전생 시뮬레이션</h1>
-      <div className={isLoading ? 'container hidden' : "container"}>
-        <div className={styles.animeWrapper}>
-          <div  ref={movingHumanRef} className={styles.movingHuman}>
-            <img ref={spinningHumanRef} className={styles.spinningHuman} src="/human.png" alt="사람"/>
-          </div>
-          <img ref={truckRef} className={styles.truck} src="/truck.png" alt="트럭"/>
-          <div className={styles.skipWrapper}>
-            <div className={`${styles.skip} ${smallPhraseEnd ? styles.fadeOut : ''}`} onClick={skip}>건너뛰기⏭️</div>
-          </div>
-          {!animeEnd ? null :
-            <img className={`${styles.dead} ${styles.fadeIn}`} src="/dead.png" alt="기억할게"/>}
-        </div>
-      {!animeEnd ? null :
-        <div className={styles.mainWrapper}>
-          <div ref={phraseRef} className={`${styles.phrase} ${styles.fadeIn}`}>
-            <span>저런! 당신은 소환마법(물리) 에 당하고 말았어요!<br/>여행준비는 되셨나요?</span>
-          </div>
-          {!phraseEnd ? null :
-            <div ref={smallPhraseRef} className={`${styles.smallPhrase} ${styles.fadeIn}`}>
-              <span className={styles.buttonDescription}>이세계 전문 여행사</span>
-              <Link href="/component/reincarnation" className={styles.button}>
-                <span className={styles.gem}>GemExpress</span> 방문하기
-              </Link>
+    return (
+        <>
+            <JsonLd data={jsonLd}/>
+            <div className={`container ${styles.mainContainer}`}>
+                <header className={styles.header}>
+                    <nav className={styles.nav} aria-label='주요 메뉴'>
+                        <Link href='/component/reincarnation' className={styles.navItem}>전생하기</Link>
+                        <Link href='/component/archive' className={styles.navItem}>아카이브</Link>
+                        <Link href='/component/about' className={styles.navItem}>소개</Link>
+                    </nav>
+                </header>
+                <EntranceAnime/>
             </div>
-          }
-        </div>     
-      }
-      </div>
-      <Footer visible={!isLoading}/>
-    </>
-  )
+
+            <section className={styles.intro}>
+                <div className={styles.introInner}>
+                    <h1 className={styles.introTitle}>이세계 전생 시뮬레이터 <span className={styles.introTitleSub}>나만의 이세계 전생 테스트</span></h1>
+                    <p className={styles.introLead}>
+                        트럭에 치이는 순간, 당신의 새로운 삶이 시작돼요.
+                        <strong> 이세계 전생 시뮬레이터</strong>는 간단한 설문을 바탕으로 AI가 내가 이세계에 전생했을 때의 이야기를 만들어 주는
+                        <strong> 이세계 전생 테스트</strong>예요. 어떤 몸으로 다시 태어나고, 어떤 능력을 갖고, 어떤 운명을 걷게 될지
+                        <strong> 환생 시뮬레이션</strong>으로 직접 확인해 보세요.
+                    </p>
+
+                    <h2 className={styles.introHeading}>환생 시뮬레이션은 이렇게 진행돼요</h2>
+                    <ol className={styles.steps}>
+                        {STEPS.map((s, i) => (
+                            <li key={s.title} className={styles.step}>
+                                <span className={styles.stepNum}>{i + 1}</span>
+                                <div>
+                                    <h3 className={styles.stepTitle}>{s.title}</h3>
+                                    <p className={styles.stepDesc}>{s.desc}</p>
+                                </div>
+                            </li>
+                        ))}
+                    </ol>
+
+                    <h2 className={styles.introHeading}>전생할 수 있는 이세계 장르</h2>
+                    <p className={styles.introText}>
+                        판타지부터 다크 판타지, SF까지 다섯 가지 메인 장르가 있어요.
+                        장르마다 서브 장르가 무작위로 정해져서 같은 장르를 골라도 매번 다른 세계를 만날 수 있어요.
+                    </p>
+                    <ul className={styles.genres}>
+                        {GENRES.map(g => (
+                            <li key={g.name} className={styles.genre}>
+                                <h3 className={styles.genreName}>{g.name}</h3>
+                                <p className={styles.genreDesc}>{g.desc}</p>
+                                <p className={styles.genreSubs}>
+                                    <span className={styles.genreSubsLabel}>서브 장르</span>
+                                    {g.subs.join(' · ')}
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div className={styles.introCta}>
+                        <Link href='/component/reincarnation' className={styles.ctaButton}>
+                            <span className={styles.ctaGem}>GemExpress</span> 에서 전생 신청하기
+                        </Link>
+                    </div>
+                </div>
+            </section>
+            <Footer visible={true}/>
+        </>
+    );
 }

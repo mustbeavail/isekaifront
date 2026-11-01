@@ -303,7 +303,6 @@ const Reincarnation = () => {
     return (
         <div className={animeEnd && !resultMount ? styles.lightOut : animeEnd && resultMount ? styles.lightOutResult : ''}>
             <div className="container">
-                <title>이세계 전생 시뮬레이션</title>
                 <h1 className='sr-only'>다양한 이세계 세계관 전생 시뮬레이션</h1>
                 {!initDone ? null : !animeEnd ?
                     <>
